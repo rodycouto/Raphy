@@ -3,14 +3,7 @@ const moment = require('moment')
 const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
-
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-     
+   
     var gitlink = "https://github.com/rodycouto/Maya-GitHub.git"
     var linksupport = "https://docs.google.com/forms/d/e/1FAIpQLSeEMnYYmlaVv_nG4PBdPD8CA6Q-MdBi-9KW_xVrqjs2MG5AqQ/viewform?usp=sf_link"
     var gitdance = "https://imgur.com/C78LrtY.gif"
@@ -21,7 +14,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply('🚫 Libere este comando no level 10')
     }
 
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Repositório Maya no GitHub')
         .setDescription('Caso você queira acesso ao código fonte da Maya, ele está disponível no Github\n⠀⠀⠀⠀⠀⠀⠀⠀')

@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
     let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member || message.mentions.users.first()
     var level = await db.fetch(`level_${user.id}`)
     if (level < 10) {
@@ -17,7 +10,7 @@ exports.run = async (client, message, args) => {
     }
 
     var linkserver = 'https://discord.gg/YpFWgJuuUV'
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor('#1e3ddf')
         .setTitle('BETA - Dicas da Maya - CommandFile')
         .setDescription('Permite você usar comandos em outras pastas e diminuir o tamanho do index')
