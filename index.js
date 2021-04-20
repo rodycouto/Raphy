@@ -99,9 +99,11 @@ client.on("message", async (message) => {
         }
     }
 
-    if (db.get(`blockchannel_${message.channel.id}`)) {
-        message.delete()
-        return message.channel.send('Meus comandos foram bloqueados neste canal.').then(msg => msg.delete({ timeout: 4000 })).catch(err => { return })
+    if (!message.member.hasPermission("ADMINISTRATOR")) {
+        if (db.get(`blockchannel_${message.channel.id}`)) {
+            message.delete()
+            return message.channel.send(':x: **COMANDOS BLOQUEADOS** | Apenas administradores podem usar meus comandos neste canal.').then(msg => msg.delete({ timeout: 4000 })).catch(err => { return })
+        }
     }
 
     const cmd = client.commands.get(command) || client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(command))
