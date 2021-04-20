@@ -4,20 +4,13 @@ const ms = require('parse-ms')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-      const adm = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-      return message.inlineReply(adm)
-    }
-
     let timeout = 6140000
     let author = await db.fetch(`pego_${message.author.id}`)
 
     if (author !== null && timeout - (Date.now() - author) > 0) {
         let time = ms(timeout - (Date.now() - author))
 
-        const presomax = new Discord.MessageEmbed()
+        var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -31,7 +24,7 @@ exports.run = async (client, message, args) => {
         if (author2 !== null && timeout2 - (Date.now() - author2) > 0) {
             let time = ms(timeout2 - (Date.now() - author2))
 
-            const fuga = new Discord.MessageEmbed()
+            var fuga = new Discord.MessageEmbed()
                 .setColor('GRAY')
                 .setDescription('‼️ Você está prestes a tentar fungir da penitenciária. A sua pena pode aumentar.\n \nVocê deseja tentar a fuga?')
 
@@ -48,15 +41,15 @@ exports.run = async (client, message, args) => {
                         var luck = ['win', 'lose']
                         var result = luck[Math.floor(Math.random() * luck.length)]
 
-                        const fugindo = new Discord.MessageEmbed()
+                        var fugindo = new Discord.MessageEmbed()
                             .setColor('BLUE')
                             .setTitle('🏃 Fugindo da detenção...')
 
-                        const wins = new Discord.MessageEmbed()
+                        var wins = new Discord.MessageEmbed()
                             .setColor('GREEN')
                             .setTitle('✅ Você fugiu da detenção com sucesso.')
 
-                        const lose = new Discord.MessageEmbed()
+                        var lose = new Discord.MessageEmbed()
                             .setColor('#FF0000')
                             .setTitle('🚨 Você foi pego!')
                             .setDescription(`${message.author} foi pego tentando escapar. Prisão máxima!`)

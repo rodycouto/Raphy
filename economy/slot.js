@@ -92,15 +92,15 @@ exports.run = async (client, message, args) => {
     if (mamute === null) { mamute = "" }
     if (!db.get(`mamute_${user.id}`)) { mamute = "" }
 
-    var nada = !arma && !picareta && !vara && !machado
+    let nada = !arma && !picareta && !vara && !machado
     if (nada) { nada = 'Não há nada aqui' }
     if (!nada) { nada = '' }
 
-    var nada2 = !title && !faca && !loli && !fossil && !mamute
+    let nada2 = !title && !faca && !loli && !fossil && !mamute
     if (nada2) { nada2 = 'Não há nada aqui' }
     if (!nada2) { nada2 = '' }
 
-    const Embed = new Discord.MessageEmbed()
+    var Embed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`📖 **Inventário de ${user.user.username}**`)
         .setDescription('📊 Bolsa de Valores | Em Breve')

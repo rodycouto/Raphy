@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
 
   var frase = list[Math.floor(Math.random() * list.length)]
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('#efff00')
     .setAuthor(`Finanças de ${user.user.tag}`, user.user.displayAvatarURL())
     .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))

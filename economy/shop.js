@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     var loli = '<:Loli:831571527744356422>'
     var StarM  = '<:starM:832974891635572787>'
 
-    const loja = new Discord.MessageEmbed()
+    var loja = new Discord.MessageEmbed()
         .setColor('YELLOW')
         .setTitle('🏪 Lojinha Maya 24h')
         .setDescription('Aqui na Lojinha Maya, você pode comprar várias coisas para ter acesso a comandos e funções incriveis.')

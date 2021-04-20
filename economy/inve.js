@@ -100,7 +100,7 @@ exports.run = async (client, message, args) => {
     if (nada2) { nada2 = 'Não há nada aqui' }
     if (!nada2) { nada2 = '' }
 
-    const Embed = new Discord.MessageEmbed()
+    var Embed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(`📖 **Inventário de ${user.user.username}**`)
         .setDescription('📊 Bolsa de Valores | Em Breve')

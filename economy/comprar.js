@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
-        const presomax = new Discord.MessageEmbed()
+        var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     } else {
 
         if (!args[0]) {
-            const noargs = new Discord.MessageEmbed()
+            var noargs = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle('<:StarPoint:766794021128765469> Sistema de Compras Maya')
                 .setDescription('Aqui você pode comprar os itens da lojinha. É muito simples, basta usar o comando, assim você compra itens e pode usa-lo.\n \nDigite o nome do item com meu prefixo que eu te falo mais informações sobre ele.')
@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -48,7 +48,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 5000) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -56,7 +56,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -64,7 +64,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -76,7 +76,7 @@ exports.run = async (client, message, args) => {
                 db.add(`bank_${client.user.id}`, 5000)
                 db.set(`vara_${message.author.id}`, "Vara de pesca")
 
-                const buypesca = new Discord.MessageEmbed()
+                var buypesca = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', você comprou uma 🎣 `Vara de Pesca`')
@@ -94,7 +94,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -102,7 +102,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 400) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -110,7 +110,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -118,7 +118,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -130,7 +130,7 @@ exports.run = async (client, message, args) => {
                 db.add(`bank_${client.user.id}`, 400)
                 db.set(`machado_${message.author.id}`, "Machado")
 
-                const buypesca = new Discord.MessageEmbed()
+                var buypesca = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', você comprou um 🪓 `Machado`')
@@ -148,7 +148,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -156,7 +156,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 100000) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -164,7 +164,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -172,7 +172,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -183,7 +183,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`money_${message.author.id}`, 100000)
                 db.add(`bank_${client.user.id}`, 100000)
                 db.set(`arma_${message.author.id}`, "Arma")
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', você comprou uma 🔫 `Arma`')
@@ -197,7 +197,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -208,7 +208,7 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply('Quantas águas você quer comprar? `' + prefix + 'buy aguas quantidade`')
             }
             if (money < args[1] * 10) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -216,7 +216,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -224,7 +224,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra negada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -235,7 +235,7 @@ exports.run = async (client, message, args) => {
             var acima = db.get(`agua_${message.author.id}`)
             if (acima > 70) {
                 db.subtract(`agua_${message.author.id}`, args[1] * 1)
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('LIMITE DE ÁGUAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **70 copos d'água**.`)
@@ -245,7 +245,7 @@ exports.run = async (client, message, args) => {
             if (money = 10 || money > 10) {
                 db.subtract(`money_${message.author.id}`, args[1] * 10)
                 db.add(`bank_${client.user.id}`, args[1] * 10)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', ' + 'você comprou ' + `${args[1]}` + ' 🥤 `Copos de água`')
@@ -263,7 +263,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -271,7 +271,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 350) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -279,7 +279,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -287,7 +287,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -299,7 +299,7 @@ exports.run = async (client, message, args) => {
                 db.add(`bank_${client.user.id}`, 350)
                 db.set(`picareta_${message.author.id}`, "Picareta")
                 db.add(`offpicareta_${message.author.id}`, 50)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', você comprou uma ⛏️ `Picareta`')
@@ -317,7 +317,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar esta permissão.`)
@@ -325,7 +325,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 10000000) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`)
@@ -333,7 +333,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -341,7 +341,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -352,13 +352,13 @@ exports.run = async (client, message, args) => {
                 db.subtract(`money_${message.author.id}`, 10000000)
                 db.add(`bank_${client.user.id}`, 10000000)
                 db.set(`title_${message.author.id}`, "ON")
-                const buyTitle = new Discord.MessageEmbed()
+                var buyTitle = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', você comprou a permissão 🔰 `Título`')
                 message.inlineReply(buyTitle)
 
-                const premium = new Discord.MessageEmbed()
+                var premium = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Você liberou uma nova função')
                     .setDescription(`${message.author}, você agora consegue escolher um Título que será mostrado no seu perfil.`)
@@ -379,7 +379,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -390,7 +390,7 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply('Quantas iscas você quer comprar? `' + prefix + 'buy iscas quantidade`')
             }
             if (money < args[1] * 10) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -398,7 +398,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -406,7 +406,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra negada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -417,7 +417,7 @@ exports.run = async (client, message, args) => {
             var acima = db.get(`iscas_${message.author.id}`)
             if (acima > 50) {
                 db.subtract(`iscas_${message.author.id}`, args[1] * 1)
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('LIMITE DE ISCAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **50 iscas**.`)
@@ -427,7 +427,7 @@ exports.run = async (client, message, args) => {
             if (money > args[1] * 10) {
                 db.subtract(`money_${message.author.id}`, args[1] * 10)
                 db.add(`bank_${client.user.id}`, args[1] * 10)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
                     .setDescription(`${message.author}` + ', ' + 'você comprou ' + `${args[1]}` + ' 🪱 `Iscas`')
@@ -441,7 +441,7 @@ exports.run = async (client, message, args) => {
             if (money === null) { money = 0 }
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro para comprar este item.`)
@@ -453,7 +453,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro.`)
@@ -461,7 +461,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('✅ Compra negada')
                     .setDescription(`${message.author}, você está com divida.`)
@@ -469,7 +469,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (!money > args[1] * 1000) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Compra negada')
                     .setDescription(`${message.author}, você não tem dinheiro suficiente para comprar este item.`)
@@ -481,7 +481,7 @@ exports.run = async (client, message, args) => {
             var acima = db.get(`cartas_${message.author.id}`)
             if (acima > 10) {
                 db.subtract(`cartas_${message.author.id}`, args[1])
-                const limit = new Discord.MessageEmbed()
+                var limit = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('LIMITE DE CARTAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **10 cartas**.`)
@@ -491,7 +491,7 @@ exports.run = async (client, message, args) => {
             db.subtract(`money_${message.author.id}`, args[1] * 1000)
             db.add(`bank_${client.user.id}`, args[1] * 1000)
 
-            const buycarta = new Discord.MessageEmbed()
+            var buycarta = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setTitle('✅ Compra aprovada')
                 .setDescription(`${message.author}` + ', ' + 'você comprou ' + `${args[1]}` + ' 💌 `Cartas`')

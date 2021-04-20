@@ -4,20 +4,13 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-      const adm = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-      return message.inlineReply(adm)
-    }
-
     let timeout1 = 6140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
-        const presomax = new Discord.MessageEmbed()
+        let presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')

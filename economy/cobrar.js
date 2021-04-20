@@ -4,13 +4,6 @@ const ms = require('parse-ms')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        var adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     let timeout1 = 6140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 

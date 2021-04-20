@@ -4,13 +4,6 @@ const ms = require('parse-ms')
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   let money = parseInt(args[1])
   let moneydb = await db.get(`money_${message.author.id}`)
   let a = message.author
@@ -21,7 +14,7 @@ exports.run = async (client, message, args) => {
   if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
     let time = ms(timeout1 - (Date.now() - author1))
 
-    const presomax = new Discord.MessageEmbed()
+    var presomax = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('🚨 Você está em prisão máxima!')
       .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -38,7 +31,7 @@ exports.run = async (client, message, args) => {
     if (!args[0]) {
       let prefix = db.get(`prefix_${message.guild.id}`)
       if (prefix === null) prefix = '-'
-      const noargs = new Discord.MessageEmbed()
+      var noargs = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle(':spades: :hearts: 21 Pontos - Blackjack :clubs: :diamonds:')
         .setDescription('Precisa de ajuda? `' + prefix + 'bjhelp`')
@@ -50,7 +43,7 @@ exports.run = async (client, message, args) => {
       let prefix = db.get(`prefix_${message.guild.id}`)
       if (prefix === null) prefix = '-'
 
-      const nomumber = new Discord.MessageEmbed()
+      var nomumber = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle('Qual o valor que deseja apostar?')
         .setDescription('Dinheiro disponivel: ' + moneydb + '<:StarPoint:766794021128765469>')
@@ -60,7 +53,7 @@ exports.run = async (client, message, args) => {
     }
 
     if (moneydb === null) {
-      const nomumber = new Discord.MessageEmbed()
+      var nomumber = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle("Você não tem dinheiro suficiente")
       message.inlineReply(nomumber)
@@ -182,7 +175,7 @@ exports.run = async (client, message, args) => {
         dealerMsg += " = " + dealer.score.toString()
       }
 
-      const gambleEmbed = new Discord.MessageEmbed()
+      var gambleEmbed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setAuthor(`${message.author.username} começou um BlackJack!`, message.author.displayAvatarURL())
         .addField('Suas Cartas', '**' + cardsMsg + '**')

@@ -7,20 +7,13 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     let timeout1 = 6140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
-        const presomax = new Discord.MessageEmbed()
+        var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -29,7 +22,7 @@ exports.run = async (client, message, args) => {
     } else {
 
         if (!args[0]) {
-            const noargs = new Discord.MessageEmbed()
+            var noargs = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle('💸 Comando Doar')
                 .setDescription('Doe MPoints pra galera, é simples e rápido!\n \n*MPoints perdidos não serão recuperados. Cuidado para não ser enganado*')
@@ -39,7 +32,7 @@ exports.run = async (client, message, args) => {
         }
 
         if (['help', 'ajuda'].includes(args[0])) {
-            const ajuda = new Discord.MessageEmbed()
+            var ajuda = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle('💸 Comando Doar')
                 .setDescription('Doe MPoints pra galera, é simples e rápido!\n \n*MPoints perdidos não serão recuperados. Cuidado para não ser enganado*')
@@ -48,7 +41,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(ajuda)
         }
 
-        const incorrect = new Discord.MessageEmbed()
+        var incorrect = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Formato incorreto')
             .setDescription('Não sabe usar o comando doar?\n' + '`' + prefix + 'doar help`')
@@ -70,7 +63,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (user.id == message.author.id) {
-                const noamout = new Discord.MessageEmbed()
+                var noamout = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('Você não pode doar para você mesmo.')
                 return message.inlineReply(noamout)
@@ -81,13 +74,13 @@ exports.run = async (client, message, args) => {
             }
 
             if (mon < 0 && mon === 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('Você não tem dinheiro para doar.')
                 return message.inlineReply(nota)
             }
 
-            const confirm = new Discord.MessageEmbed()
+            var confirm = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle('Confirmação...')
                 .setDescription(`Confirmar transação no valor de ${mon}<:StarPoint:766794021128765469>MPoints para ${user}?`)
@@ -106,7 +99,7 @@ exports.run = async (client, message, args) => {
                     if (reaction.emoji.name === '✅') { // Sim
                         msg.delete()
 
-                        const embed = new Discord.MessageEmbed()
+                        var embed = new Discord.MessageEmbed()
                             .setColor('GREEN')
                             .setTitle('Transação efetuada com sucesso!')
                         message.channel.send('🔄 Efetuando a transação...').then(msg => msg.delete({ timeout: 4000 })).then(msg => msg.channel.send(embed))
@@ -127,7 +120,7 @@ exports.run = async (client, message, args) => {
         }
 
         if (user.id == message.author.id) {
-            const noamout = new Discord.MessageEmbed()
+            var noamout = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('Você não pode doar para você mesmo.')
             return message.inlineReply(noamout)
@@ -137,21 +130,21 @@ exports.run = async (client, message, args) => {
         if (money === null) money = '0'
 
         if (money < args[1]) {
-            const not = new Discord.MessageEmbed()
+            var not = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setDescription(`Você precisa ter pelo menos ${args[1]}<:StarPoint:766794021128765469> na carteira para poder doar.`)
             return message.inlineReply(not)
         }
 
         if (args[1] < 0) {
-            const nota = new Discord.MessageEmbed()
+            var nota = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('Diga um valor maior que 0')
             return message.inlineReply(nota)
         }
 
         if (isNaN(args[1])) {
-            const notnumber = new Discord.MessageEmbed()
+            var notnumber = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('Valor não reconhecido')
                 .setDescription('O valor que você digitou não é um número.')
@@ -161,7 +154,7 @@ exports.run = async (client, message, args) => {
         db.add(`money_${user.id}`, args[1])
         db.subtract(`money_${message.author.id}`, args[1])
 
-        const embed = new Discord.MessageEmbed()
+        var embed = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setDescription(`${message.author} doou ${args[1]}<:StarPoint:766794021128765469>MPoints para ${user}.`)
         return message.channel.send(embed)

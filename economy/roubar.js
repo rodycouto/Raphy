@@ -4,20 +4,13 @@ const ms = require('parse-ms')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-      const adm = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-      return message.inlineReply(adm)
-    }
-
     let timeout1 = 6140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
-        const presomax = new Discord.MessageEmbed()
+        var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -30,7 +23,7 @@ exports.run = async (client, message, args) => {
 
         let user = message.mentions.members.first()
         if (!user) {
-            const nook = new Discord.MessageEmbed()
+            var nook = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('Siga o formato correto')
                 .setDescription('`' + prefix + 'roubar @user`')
@@ -52,14 +45,14 @@ exports.run = async (client, message, args) => {
         if (autormoney == null) autormoney = 0
 
         if (usermoney <= 0) {
-            const nomoney = new Discord.MessageEmbed()
+            var nomoney = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle(`${user.user.username} não possui dinheiro.`)
             return message.inlineReply(nomoney)
         }
 
         if (usermoney < 0) {
-            const nomoney = new Discord.MessageEmbed()
+            var nomoney = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle(`${user.user.username} não possui dinheiro.`)
             return message.inlineReply(nomoney)

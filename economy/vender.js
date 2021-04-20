@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
-        const presomax = new Discord.MessageEmbed()
+        var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     } else {
 
         if (!args[0]) {
-            const noargs = new Discord.MessageEmbed()
+            var noargs = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle('<:StarPoint:766794021128765469> Sistema de Vendas Maya')
                 .setDescription('Aqui você pode vender seus itens em troca de MPoints. É muito simples, basta usar o comando, assim você pode vender os itens obtidos.\n \nDigite o nome do item com meu prefixo que eu te falo mais informações sobre ele.')
@@ -61,7 +61,7 @@ exports.run = async (client, message, args) => {
         if (['peixe', 'peixes', 'fish'].includes(args[0])) {
 
             if (peixes === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem peixes para vender.`)
@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (peixes < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de peixes para vender.`)
@@ -81,7 +81,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (peixes == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem peixes para vender.`)
@@ -89,7 +89,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (peixes < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem peixes para vender.`)
@@ -100,7 +100,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`peixes_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 7)
                 db.subtract(`bank_${client.user.id}`, args[1] * 7)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 🐟 ${args[1]} peixes e obteve ${args[1] * 7}<:StarPoint:766794021128765469>MPoints`)
@@ -111,7 +111,7 @@ exports.run = async (client, message, args) => {
         if (['ossos', 'bone', 'osso'].includes(args[0])) {
 
             if (ossos === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem ossos para vender.`)
@@ -123,7 +123,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (ossos < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de ossos para vender.`)
@@ -131,7 +131,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (ossos == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem ossos para vender.`)
@@ -139,7 +139,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (ossos < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem ossos para vender.`)
@@ -150,7 +150,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`ossos_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 9)
                 db.subtract(`bank_${client.user.id}`, args[1] * 9)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 🦴 ${args[1]} ossos e obteve ${args[1] * 5}<:StarPoint:766794021128765469>MPoints`)
@@ -161,7 +161,7 @@ exports.run = async (client, message, args) => {
         if (['camaroes', 'camarões', 'camarao', 'camarão'].includes(args[0])) {
 
             if (camarao === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem camarões para vender.`)
@@ -173,7 +173,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (camarao < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de camarões para vender.`)
@@ -181,7 +181,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (camarao == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem camarões para vender.`)
@@ -189,7 +189,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (camarao < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem camarões para vender.`)
@@ -200,7 +200,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`camarao_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 9)
                 db.subtract(`bank_${client.user.id}`, args[1] * 9)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 🍤 ${args[1]} camarões e obteve ${args[1] * 12}<:StarPoint:766794021128765469>MPoints`)
@@ -210,7 +210,7 @@ exports.run = async (client, message, args) => {
         if (['minerio', 'min', 'minerios', 'pedra', 'ferro', 'minérios', 'minério'].includes(args[0])) {
 
             if (minerio === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem minerios para vender.`)
@@ -222,7 +222,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (minerio < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de minerios para vender.`)
@@ -230,7 +230,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (minerio == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem minerios para vender.`)
@@ -238,7 +238,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (minerio < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem minerios para vender.`)
@@ -249,7 +249,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`minerio_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 9)
                 db.subtract(`bank_${client.user.id}`, args[1] * 9)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 🪨 ${args[1]} minerios e obteve ${args[1] * 15}<:StarPoint:766794021128765469>MPoints`)
@@ -260,7 +260,7 @@ exports.run = async (client, message, args) => {
         if (['diamantes', 'diamante', 'diamond'].includes(args[0])) {
 
             if (diamond === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem diamantes para vender.`)
@@ -272,7 +272,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (diamond < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de diamantes para vender.`)
@@ -280,7 +280,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (diamond == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem diamantes para vender.`)
@@ -288,7 +288,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (diamond < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem diamantes para vender.`)
@@ -299,7 +299,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`diamond_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 100)
                 db.subtract(`bank_${client.user.id}`, args[1] * 100)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 💎 ${args[1]} diamantes e obteve ${args[1] * 100}<:StarPoint:766794021128765469>MPoints`)
@@ -310,7 +310,7 @@ exports.run = async (client, message, args) => {
         if (['madeira', 'madeiras', 'wood', 'tronco'].includes(args[0])) {
 
             if (madeira === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem madeiras para vender.`)
@@ -322,7 +322,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (madeira < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de madeiras para vender.`)
@@ -330,7 +330,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (madeira == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem madeiras para vender.`)
@@ -338,7 +338,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (madeira < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem madeiras para vender.`)
@@ -349,7 +349,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`madeira_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 8)
                 db.subtract(`bank_${client.user.id}`, args[1] * 8)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 🪵 ${args[1]} madeiras e obteve ${args[1] * 15}<:StarPoint:766794021128765469>MPoints`)
@@ -360,7 +360,7 @@ exports.run = async (client, message, args) => {
         if (['maças', 'apple', 'maça', 'apples'].includes(args[0])) {
 
             if (apple === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem maças para vender.`)
@@ -372,7 +372,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (apple < args[1]) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem tudo isso de maças para vender.`)
@@ -380,7 +380,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (apple == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem maças para vender.`)
@@ -388,7 +388,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (apple < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('❌ Venda negada')
                     .setDescription(`${message.author}, você não tem maças para vender.`)
@@ -399,7 +399,7 @@ exports.run = async (client, message, args) => {
                 db.subtract(`apple_${message.author.id}`, args[1])
                 db.add(`money_${message.author.id}`, args[1] * 4)
                 db.subtract(`bank_${client.user.id}`, args[1] * 4)
-                const buyarma = new Discord.MessageEmbed()
+                var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
                     .setDescription(`${message.author} vendeu 🍎 ${args[1]} maças e obteve ${args[1] * 4}<:StarPoint:766794021128765469>MPoints`)

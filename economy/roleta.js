@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const db = require("quick.db")
 const ms = require('parse-ms')
 
-const slotItems = ["💸", "💵", "💶", "💷", "💴"]
+var slotItems = ["💸", "💵", "💶", "💷", "💴"]
 
 exports.run = async (client, message, args) => {
 
@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
-        const presomax = new Discord.MessageEmbed()
+        var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
         } else {
 
             if (!args[0]) {
-                const noargs = new Discord.MessageEmbed()
+                var noargs = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('Roleta Maya')
                     .setDescription('Aqui você pode apostar ou perder o dinheiro apostado, então cuidado.\n \n**Observações**\nPerdeu? Você perde o valor apostado.\nVitória? Você pode ganhar 3x mais o valor apostado.')
@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
                 }
 
                 if (money === null) {
-                    const nota = new Discord.MessageEmbed()
+                    var nota = new Discord.MessageEmbed()
                         .setColor('#FF0000')
                         .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
                     return message.inlineReply(nota)
@@ -64,14 +64,14 @@ exports.run = async (client, message, args) => {
                 if (!db.get(`money_${message.author.id}`)) { money = 0 }
 
                 if (money < 0) {
-                    const nota = new Discord.MessageEmbed()
+                    var nota = new Discord.MessageEmbed()
                         .setColor('#FF0000')
                         .setDescription(`${message.author}, você não pode jogar com divida.`)
                     return message.inlineReply(nota)
                 }
 
                 if (money == 0) {
-                    const nota = new Discord.MessageEmbed()
+                    var nota = new Discord.MessageEmbed()
                         .setColor('#FF0000')
                         .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
                     return message.inlineReply(nota)
@@ -108,7 +108,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (isNaN(args[0])) {
-                const nonumber = new Discord.MessageEmbed()
+                var nonumber = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle(`${args[0]}, digite um número.`)
                     .setDescription('`' + prefix + 'roleta valor`')
@@ -116,7 +116,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (args[1]) {
-                const nonumber = new Discord.MessageEmbed()
+                var nonumber = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setTitle('Por favor, digite um número válido')
                     .setDescription('`' + prefix + 'roleta valor`')
@@ -126,7 +126,7 @@ exports.run = async (client, message, args) => {
             let money = db.get(`money_${message.author.id}`)
 
             if (money === null) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
                 return message.inlineReply(nota)
@@ -136,21 +136,21 @@ exports.run = async (client, message, args) => {
             if (!db.get(`money_${message.author.id}`)) { money = 0 }
 
             if (money < 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setDescription(`${message.author}, você não pode jogar com divida.`)
                 return message.inlineReply(nota)
             }
 
             if (money == 0) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
                 return message.inlineReply(nota)
             }
 
             if (args[0] > money) {
-                const nota = new Discord.MessageEmbed()
+                var nota = new Discord.MessageEmbed()
                     .setColor('#FF0000')
                     .setDescription(`${message.author}, você não tem todo esse dinheiro.`)
                 return message.inlineReply(nota)

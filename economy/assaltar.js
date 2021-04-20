@@ -4,13 +4,6 @@ const ms = require('parse-ms')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     let timeout1 = 6140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 
@@ -29,7 +22,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         if (!args[0]) {
-            const noargs = new Discord.MessageEmbed()
+            var noargs = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setTitle('Comando Assaltar')
                 .setDescription('O comando assaltar te garante 100% do dinheiro que o @user tem na carteira.\n \nCaso a pessoa que você assaltar também tenha uma arma, você tem a chance de ser assaltado de volta.')
@@ -39,7 +32,7 @@ exports.run = async (client, message, args) => {
 
         let arma = await db.get(`arma_${message.author.id}`)
         if (arma === null) {
-            const nota = new Discord.MessageEmbed()
+            var nota = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('❌ Comando Negado')
                 .setDescription(`${message.author}, é necessário que você tenho uma **🔫 Arma** para assaltar alguém.`)
@@ -48,7 +41,7 @@ exports.run = async (client, message, args) => {
 
         let user = message.mentions.members.first()
         if (!user) {
-            const nook = new Discord.MessageEmbed()
+            var nook = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('Siga o formato correto')
                 .setDescription('`' + prefix + 'assaltar @user`')
@@ -57,7 +50,7 @@ exports.run = async (client, message, args) => {
 
         if (!db.get(`arma_${message.author.id}`)) {
 
-            const nota = new Discord.MessageEmbed()
+            var nota = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('❌ Comando Negado')
                 .setDescription(`${message.author}, é necessário que você tenha uma **🔫 Arma** para assaltar alguém.`)
@@ -79,7 +72,7 @@ exports.run = async (client, message, args) => {
         if (autormoney == null) autormoney = 0
 
         if (usermoney === 0 || usermoney < 0) {
-            const nomoney = new Discord.MessageEmbed()
+            var nomoney = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setDescription(`${user} não possui dinheiro.`)
             return message.inlineReply(nomoney)

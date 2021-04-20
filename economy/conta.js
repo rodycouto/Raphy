@@ -31,9 +31,10 @@ exports.run = async (client, message, args) => {
     'Já minerou hoje?',
     'A rifa é um bom lugar para os sortudos'
   ]
+
   var frase = list[Math.floor(Math.random() * list.length)]
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('#efff00')
     .setAuthor(`Finanças de ${user.user.tag}`, user.user.displayAvatarURL())
     .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
