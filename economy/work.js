@@ -17,13 +17,13 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(presomax)
     } else {
 
-        let timeout = 600000
+        let timeout = 86400000
         let author = await db.fetch(`worked_${message.author.id}`)
 
         if (author !== null && timeout - (Date.now() - author) > 0) {
             let time = ms(timeout - (Date.now() - author))
              
-            return message.inlineReply(`Você pode trabalhar novamente em ${time.minutes}m e ${time.seconds}s`)
+            return message.inlineReply(`Você já trabalhou hoje, descance um pouco! Volte em ${time.hours}h, ${time.minutes}m, e ${time.seconds}s`)
         } else {
             let amount = 33
             let amountxp = 150

@@ -34,6 +34,7 @@ client.on("message", async (message) => {
         }
     }
     xp(message)
+    xpguild(message)
 
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         if (db.get(`nolink_${message.guild.id}`)) {
@@ -90,11 +91,29 @@ client.on("message", async (message) => {
                 let xpchannel = db.get(`xpchannel_${message.guild.id}`)
                 if (xpchannel === null) { return }
                 if (!db.get(`xpchannel_${message.guild.id}`)) { return }
-                if (client.channels.cache.get(xpchannel)) {
-                    const newlevel = new Discord.MessageEmbed()
+                const newlevel = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel} no ranking global!`)
+                message.author.send(newlevel).catch(err => { return })
+            }
+        }
+    }
+
+    function xpguild(message) {
+        if (message) {
+            let xp1 = db.add(`xp1_${message.guild.id}_${message.author.id}`, 2)
+            let level1 = Math.floor(0.5 * Math.sqrt(xp1))
+            let lvl1 = db.get(`level1_${message.guild.id}_${message.author.id}`) || db.set(`level1_${message.guild.id}_${message.author.id}`, 1)
+            if (level1 > lvl1) {
+                let newlevel1 = db.set(`level1_${message.guild.id}_${message.author.id}`, level1)
+                let xp1channel = db.get(`xpchannel_${message.guild.id}`)
+                if (xp1channel === null) { return }
+                if (!db.get(`xpchannel_${message.guild.id}`)) { return }
+                if (client.channels.cache.get(xp1channel)) {
+                    const newlevel1 = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel}!`)
-                    client.channels.cache.get(xpchannel).send(newlevel)
+                        .setDescription(`:tada: ${message.author}, você subiu para o level ${newlevel1} no servidor!`)
+                    client.channels.cache.get(xp1channel).send(newlevel1)
                 }
             }
         }
@@ -250,9 +269,9 @@ client.on("guildMemberAdd", (member) => {
 })
 
 client.on("ready", () => {
-    let activities = ['Me marca que eu falo o prefixo', '@maya', '412 Comandos Onlines']
+    let activities = ['Me marca que eu falo o prefixo', '@maya', '412 Comandos Onlines', '#FiqueEmCasa']
     i = 0
-    setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: "WATCHING" }), 10000)
+    setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: "WATCHING" }), 7000)
 })
 
 client.on("message", async (message) => {

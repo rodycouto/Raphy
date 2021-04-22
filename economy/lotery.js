@@ -4,6 +4,16 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
+    var prize = db.get('loteria')
+    if (prize === null) { prize = '0' }
+    var embed = new Discord.MessageEmbed()
+        .setColor('YELLOW')
+        .setTitle('LOTERIA MAYA')
+        .setDescription(`<:02zero:832667759800352838> Seja bem vindo a Loteria Maya!\nSe você quiser participar, compre tickets na loja.`)
+        .addField('Valor atual', `${prize}<:StarPoint:766794021128765469>MPoints`)
+    return message.inlineReply('Loteria também será igual a vida real, apenas espere um pouco.', embed)
+    db.get(`ticketloteria_${message.author.id}`)
+
     let timeout1 = 6140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 

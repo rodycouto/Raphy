@@ -6,6 +6,8 @@ exports.run = async (client, message, args) => {
   var linkgithub = 'https://github.com/rodycouto/MayaCommands/blob/main/README.md'
   var linksupport = 'https://forms.gle/vtJ5qBqFDd9rL5JU8'
   var linkservidor = 'https://discord.gg/YpFWgJuuUV'
+  var mercadopago = 'https://mpago.la/2jYiNDg'
+  var invitebot = 'https://discord.com/api/oauth2/authorize?client_id=821471191578574888&permissions=8&scope=bot'
   let prefix = db.get(`prefix_${message.guild.id}`)
   if (prefix === null) { prefix = "-" }
 
@@ -13,10 +15,10 @@ exports.run = async (client, message, args) => {
     var newhelp = new Discord.MessageEmbed()
       .setColor('#CD853F')
       .setTitle('⭐ Centralzinha de Ajuda da Maya ⭐')
-      .setDescription('Se você quiser informações sobre as pastas de comandos que eu tenho, use `' + `${prefix}help categoria` + '` ou apenas o comando.\n \nExemplo: `' + `${prefix}marry` + '` que eu te falo tudo sobre o comando.')
-      .addField('Acesso rápido', `:tools: [Lista de Comandos](${linkgithub})\n☎️ [Suporte](${linksupport})\n🧩 [Meu servidor](${linkservidor})\n:heart: [Me adicione](https://discord.com/api/oauth2/authorize?client_id=821471191578574888&permissions=8&scope=bot)`)
-      .addField('Faça parte da Maya', '`' + prefix + 'gif` | ' + '`' + prefix + 'ideiamaya`')
-      .setFooter(`${prefix}help categoria`)
+      .setDescription('Use `' + `${prefix}help categoria` + '` para a pastas de comandos')
+      .addField('Acesso rápido', `:tools: [Lista de Comandos](${linkgithub})\n☎️ [Suporte](${linksupport})\n🧩 [Meu servidor](${linkservidor})\n:heart: [Me adicione](${invitebot})`)
+      .addField('Me ajude a ficar online', `<a:MoneyWings:834899137991540797> [Doar R$1,00](${mercadopago})`)
+      .setFooter(`${prefix}gif | ${prefix}ideiamaya`)
     return message.inlineReply(`Heey! Tudo bem ${message.author}?`, newhelp)
   }
 
@@ -182,12 +184,12 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['owner'].includes(args[0])) {
+  if (['owner', 'rody', 'dono'].includes(args[0])) {
     var embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle(':gear: Comandos exclusivos do Owner')
       .setDescription('Comandos exclusivos do meu criador')
-      .addField('• Comandos Online: (8)', '`' + prefix + 'add <item> [@user]` Adiciona algo\n' + '`' + prefix + 'del <item> [@user]` Deleta algo\n' + '`' + prefix + 'give <item> [@user]` Dá algo\n' + '`' + prefix + 'reboot` Me reinicia\n' + '`' + prefix + 'remove <item> [@user]` Retira algo\n' + '`' + prefix + 'servers 1/2/3...` Lista de servidores\n' + '`' + prefix + 'status [argumento]` Muda meu status')
+      .addField('• Comandos Online: (8)', '`' + prefix + 'add <item> [@user]` Adiciona algo\n' + '`' + prefix + 'del <item> [@user]` Deleta algo\n' + '`' + prefix + 'give <item> [@user]` Dá algo\n' + '`' + prefix + 'remove <item> [@user]` Retira algo\n' + '`' + prefix + 'reboot` Me reinicia\n' + '`' + prefix + 'servers 1/2/3...` Lista de servidores\n' + '`' + prefix + 'status [argumento]` Muda meu status')
       .addField('• Comandos Offline: (0)', `:tools: [Lista de Comandos](${linkgithub})`)
       .setFooter('• Comandos em construção: (4)')
     return message.inlineReply(embed)

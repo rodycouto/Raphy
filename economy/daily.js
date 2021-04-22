@@ -3,11 +3,11 @@ const ms = require('parse-ms')
 const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
-  
-  let timeout = 86400000
-  let amount = 300
 
-  let timeout1 = 6140000
+  var timeout = 86400000 // 24hrs
+  var amountmoney = 5
+  var amountxp = 300
+  var timeout1 = 6140000
   let author1 = await db.fetch(`pego_${message.author.id}`)
 
   if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
@@ -24,16 +24,17 @@ exports.run = async (client, message, args) => {
     let daily = await db.fetch(`daily_${message.author.id}`)
     if (daily !== null && timeout - (Date.now() - daily) > 0) {
       let time = ms(timeout - (Date.now() - daily))
-      return message.inlineReply(`Você já pegou seus pontos hoje. Volte em ${time.days}d, ${time.hours}h, ${time.minutes}m, e ${time.seconds}s`)
+      return message.inlineReply(`Você já pegou seus pontos hoje. Volte em ${time.hours}h, ${time.minutes}m, e ${time.seconds}s`)
     } else {
 
       let money = db.fetch(`money_${message.author.id}`)
       if (money === null) { money = 0 }
 
-      db.add(`money_${message.author.id}`, amount)
+      db.add(`money_${message.author.id}`, amountmoney)
+      db.add(`xp_${message.author.id}`, amountxp)
       db.set(`daily_${message.author.id}`, Date.now())
 
-      message.inlineReply(`Você adquiriu ${amount} <:StarPoint:766794021128765469>MPoints.`)
+      message.inlineReply(`Você adquiriu ${amountmoney} <:StarPoint:766794021128765469>MPoints e ${amountxp} <:level:766847577416138772>XP.`)
     }
   }
 }
