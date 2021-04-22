@@ -42,13 +42,13 @@ exports.run = async (client, message, args) => {
             .setTitle("👑 Ranking Global - XP")
             .setColor("YELLOW")
         lb.forEach(d => {
-            embedxp.addField(`${d.rank}. ${d.user.tag}`, `Level - ${d.level}\nXP - ${d.xp} / ${d.xpreq}`)
+            embedxp.addField(`${d.rank}. ${d.user.tag}`, `Lvl. - ${d.level} (${d.xp} / ${d.xpreq})`)
         })
         embedxp.setFooter(`Seu ranking: ${myrank}`)
         return message.channel.send(embedxp)
     }
 
-    if (['dinheiro', 'money', 'cash', 'mp'].includes(args[0])) {
+    if (['dinheiro', 'money', 'cash', 'mp', 'coin', 'moeda'].includes(args[0])) {
         let data = db.all().filter(i => i.ID.startsWith("bank_")).sort((a, b) => b.data - a.data)
         let myrank = data.map(m => m.ID).indexOf(`bank_${message.author.id}`) + 1 || "N/A"
         data.length = 10
@@ -78,4 +78,9 @@ exports.run = async (client, message, args) => {
         embedxp.setFooter(`Seu ranking: ${myrank}`)
         return message.channel.send(embedxp)
     }
+
+    if (!['dinheiro', 'money', 'cash', 'mp', 'coin', 'moeda', 'xp', 'level', 'nivel'].includes(args[0])) {
+        return message.inlineReply('Ranking não encontrado, digite `' + prefix + 'rank`')
+    }
+
 }
