@@ -34,7 +34,10 @@ exports.run = async (client, message, args) => {
     }
 
     if (['moneyid'].includes(args[0])) {
-        let id = args[0]
+        let id = args[1]
+        if (!id) {
+            return message.inlineReply('`' + prefix + 'del moneyid ID`')
+        }
         db.delete(`money_${id}`)
         db.delete(`bank_${id}`)
         return message.inlineReply('Feito!')
@@ -200,7 +203,7 @@ exports.run = async (client, message, args) => {
         db.delete(`rptimeout_${user.id}`)
         db.delete(`robtime_${user.id}`)
         db.delete(`lotery_${user.id}`)
-        db.delete(`work_${user.id}`)
+        db.delete(`worked_${user.id}`)
         db.delete(`slut_${user.id}`)
         db.delete(`preso_${user.id}`)
         db.delete(`pego_${user.id}`)
