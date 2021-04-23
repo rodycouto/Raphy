@@ -38,10 +38,10 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(`Você não pode roubar você mesmo.`)
         }
 
-        var usermoney = db.get(`money_${user.id}`)
+        var usermoney = db.get(`mpoints_${user.id}`)
         if (usermoney == null) usermoney = 0
 
-        var autormoney = db.get(`money_${message.author.id}`)
+        var autormoney = db.get(`mpoints_${message.author.id}`)
         if (autormoney == null) autormoney = 0
 
         if (usermoney <= 0) {
@@ -79,7 +79,7 @@ exports.run = async (client, message, args) => {
                     .setTitle("🚨 A polícia te pegou e você foi preso!")
                     .setDescription(`A fiança custou ${amount}<:StarPoint:766794021128765469>`)
                 message.inlineReply(embed1)
-                db.subtract(`money_${message.author.id}`, amount)
+                db.subtract(`mpoints_${message.author.id}`, amount)
                 db.set(`robtime_${message.author.id}`, Date.now())
             } else if (result == 'win') {
                 let amount = Math.floor(Math.random() * usermoney) + 1
@@ -89,8 +89,8 @@ exports.run = async (client, message, args) => {
                     .setDescription(`O lucro do roubo foi de ${amount}<:StarPoint:766794021128765469>`)
 
                 message.inlineReply(moneyEmbed)
-                db.subtract(`money_${user.id}`, amount)
-                db.add(`money_${message.author.id}`, amount)
+                db.subtract(`mpoints_${user.id}`, amount)
+                db.add(`mpoints_${message.author.id}`, amount)
                 db.set(`robtime_${message.author.id}`, Date.now())
             }
         }

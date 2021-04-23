@@ -5,7 +5,7 @@ const ms = require('parse-ms')
 exports.run = async (client, message, args) => {
 
   let money = parseInt(args[1])
-  let moneydb = await db.get(`money_${message.author.id}`)
+  let moneydb = await db.get(`mpoints_${message.author.id}`)
   let a = message.author
 
   let timeout1 = 6140000
@@ -125,11 +125,11 @@ exports.run = async (client, message, args) => {
 
     async function bet(outcome) {
       if (outcome === "win") {
-        db.add(`money_${message.author.id}`, money)
+        db.add(`mpoints_${message.author.id}`, money)
       }
       if (outcome === "lose") {
-        db.subtract(`money_${message.author.id}`, money)
-        db.add(`bank_${client.user.id}`, money)
+        db.subtract(`mpoints_${message.author.id}`, money)
+        db.add(`banco_${client.user.id}`, money)
       }
     }
 

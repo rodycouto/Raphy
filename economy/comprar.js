@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(presomax)
     } else {
 
-        var money = db.get(`money_${message.author.id}`)
+        var money = db.get(`mpoints_${message.author.id}`)
         if (money === null) { money = 0 }
 
         if (!args[0]) {
@@ -42,8 +42,8 @@ exports.run = async (client, message, args) => {
             if (money === null) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro para comprar este item.`) }
 
             if (money = 140 || money > 140) {
-                db.subtract(`money_${message.author.id}`, 140)
-                db.add(`bank_${client.user.id}`, 140)
+                db.subtract(`mpoints_${message.author.id}`, 140)
+                db.add(`banco_${client.user.id}`, 140)
                 db.set(`vara_${message.author.id}`, "Vara de pesca")
 
                 var buypesca = new Discord.MessageEmbed()
@@ -63,8 +63,8 @@ exports.run = async (client, message, args) => {
             if (money < 35) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
 
             if (money = 35 || money > 35) {
-                db.subtract(`money_${message.author.id}`, 35)
-                db.add(`bank_${client.user.id}`, 35)
+                db.subtract(`mpoints_${message.author.id}`, 35)
+                db.add(`banco_${client.user.id}`, 35)
                 db.set(`machado_${message.author.id}`, "Machado")
 
                 var buypesca = new Discord.MessageEmbed()
@@ -84,8 +84,8 @@ exports.run = async (client, message, args) => {
             if (money < 4000) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
 
             if (money = 4000 || money > 4000) {
-                db.subtract(`money_${message.author.id}`, 4000)
-                db.add(`bank_${client.user.id}`, 4000)
+                db.subtract(`mpoints_${message.author.id}`, 4000)
+                db.add(`banco_${client.user.id}`, 4000)
                 db.set(`arma_${message.author.id}`, "Arma")
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
@@ -105,7 +105,7 @@ exports.run = async (client, message, args) => {
             if (money < args[1] * 10) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
 
             db.add(`ticketloteria_${message.author.id}`, args[1])
-            db.subtract(`money_${message.author.id}`, args[1] * 10)
+            db.subtract(`mpoints_${message.author.id}`, args[1] * 10)
             db.add('loteria', args[1] * 10)
             var buyarma = new Discord.MessageEmbed()
                 .setColor('GREEN')
@@ -134,8 +134,8 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply(nota)
             }
 
-            db.subtract(`money_${message.author.id}`, args[1] * 2)
-            db.add(`bank_${client.user.id}`, args[1] * 2)
+            db.subtract(`mpoints_${message.author.id}`, args[1] * 2)
+            db.add(`banco_${client.user.id}`, args[1] * 2)
             var buyarma = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setTitle('✅ Compra aprovada')
@@ -163,8 +163,8 @@ exports.run = async (client, message, args) => {
             }
 
             if (money = 1 || money > 1) {
-                db.subtract(`money_${message.author.id}`, args[1])
-                db.add(`bank_${client.user.id}`, args[1])
+                db.subtract(`mpoints_${message.author.id}`, args[1])
+                db.add(`banco_${client.user.id}`, args[1])
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
@@ -182,8 +182,8 @@ exports.run = async (client, message, args) => {
             if (money < 85) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
 
             if (money = 85 || money > 85) {
-                db.subtract(`money_${message.author.id}`, 85)
-                db.add(`bank_${client.user.id}`, 85)
+                db.subtract(`mpoints_${message.author.id}`, 85)
+                db.add(`banco_${client.user.id}`, 85)
                 db.set(`picareta_${message.author.id}`, "Picareta")
                 db.set(`offpicareta_${message.author.id}`, 50)
                 var buyarma = new Discord.MessageEmbed()
@@ -203,8 +203,8 @@ exports.run = async (client, message, args) => {
             if (money < 10000) { return message.inlineReply(`${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
 
             if (money = 10000 || money > 10000) {
-                db.subtract(`money_${message.author.id}`, 10000)
-                db.add(`bank_${client.user.id}`, 10000)
+                db.subtract(`mpoints_${message.author.id}`, 10000)
+                db.add(`banco_${client.user.id}`, 10000)
                 db.set(`title_${message.author.id}`, "ON")
                 var buyTitle = new Discord.MessageEmbed()
                     .setColor('GREEN')
@@ -247,8 +247,8 @@ exports.run = async (client, message, args) => {
             }
 
             if (money > args[1]) {
-                db.subtract(`money_${message.author.id}`, args[1])
-                db.add(`bank_${client.user.id}`, args[1])
+                db.subtract(`mpoints_${message.author.id}`, args[1])
+                db.add(`banco_${client.user.id}`, args[1])
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Compra aprovada')
@@ -277,8 +277,8 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply(limit)
             }
 
-            db.subtract(`money_${message.author.id}`, args[1])
-            db.add(`bank_${client.user.id}`, args[1])
+            db.subtract(`mpoints_${message.author.id}`, args[1])
+            db.add(`banco_${client.user.id}`, args[1])
             var buycarta = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setTitle('✅ Compra aprovada')

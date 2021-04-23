@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
         } else {
 
             let fichas = db.get(`fichas_${message.author.id}`)
-            let money = db.get(`money_${message.author.id}`)
+            let money = db.get(`mpoints_${message.author.id}`)
 
             let formato = 'Siga o formato correto: `' + prefix + 'roleta valor`'
             let valor = args[0]
@@ -89,7 +89,7 @@ exports.run = async (client, message, args) => {
                 setTimeout(function () {
                     db.set(`roletatimeout_${message.author.id}`, Date.now())
                     db.subtract(`fichas_${message.author.id}`, 1)
-                    db.add(`money_${message.author.id}`, winprize)
+                    db.add(`mpoints_${message.author.id}`, winprize)
                     message.inlineReply(winembed)
                 }, 6300)
                 return message.inlineReply(jogando).then(msg => msg.delete({ timeout: 6000 }).catch(err => { return }))
@@ -99,8 +99,8 @@ exports.run = async (client, message, args) => {
                 setTimeout(function () {
                     db.set(`roletatimeout_${message.author.id}`, Date.now())
                     db.subtract(`fichas_${message.author.id}`, 1)
-                    db.subtract(`money_${message.author.id}`, valor)
-                    db.add(`bank_${client.user.id}`, valor)
+                    db.subtract(`mpoints_${message.author.id}`, valor)
+                    db.add(`banco_${client.user.id}`, valor)
                     message.inlineReply(loseembed)
                 }, 6300)
                 return message.inlineReply(jogando).then(msg => msg.delete({ timeout: 6000 }).catch(err => { return }))

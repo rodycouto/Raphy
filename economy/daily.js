@@ -27,10 +27,10 @@ exports.run = async (client, message, args) => {
       return message.inlineReply(`Você já pegou seus pontos hoje. Volte em ${time.hours}h, ${time.minutes}m, e ${time.seconds}s`)
     } else {
 
-      let money = db.fetch(`money_${message.author.id}`)
+      let money = db.fetch(`mpoints_${message.author.id}`)
       if (money === null) { money = 0 }
 
-      db.add(`money_${message.author.id}`, amountmoney)
+      db.add(`mpoints_${message.author.id}`, amountmoney)
       db.add(`xp_${message.author.id}`, amountxp)
       db.set(`daily_${message.author.id}`, Date.now())
 

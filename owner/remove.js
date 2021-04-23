@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply('`' + prefix + 'remove bank @user Valor`')
         }
 
-        db.subtract(`bank_${user.id}`, amount)
+        db.subtract(`banco_${user.id}`, amount)
         return message.inlineReply(`O dinheiro foi removido do banco de ${user}`)
     }
 
@@ -116,7 +116,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(`**${args[2]}** não é um número.`)
         }
 
-        db.subtract(`money_${user.id}`, amount)
+        db.subtract(`mpoints_${user.id}`, amount)
         return message.inlineReply(`Dinheiro removido da conta de ${user}.`)
     }
 

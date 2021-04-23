@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(presomax)
     } else {
 
-        let member = db.fetch(`bank_${message.author.id}`)
+        let member = db.fetch(`banco_${message.author.id}`)
 
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
@@ -46,10 +46,10 @@ exports.run = async (client, message, args) => {
         }
 
         if (args[0] === 'all') {
-            let money = db.get(`bank_${message.author.id}`)
+            let money = db.get(`banco_${message.author.id}`)
             if (money === null) money = '0'
 
-            if (!db.get(`bank_${message.author.id}`)) money = '0'
+            if (!db.get(`banco_${message.author.id}`)) money = '0'
 
             if (money == '0') {
                 const nota = new Discord.MessageEmbed()
@@ -58,8 +58,8 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply(nota)
             }
 
-            db.add(`money_${message.author.id}`, money)
-            db.subtract(`bank_${message.author.id}`, money)
+            db.add(`mpoints_${message.author.id}`, money)
+            db.subtract(`banco_${message.author.id}`, money)
 
             const nota = new Discord.MessageEmbed()
                 .setColor('GREEN')
@@ -75,8 +75,8 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(notnumber)
         }
 
-        db.add(`money_${message.author.id}`, args[0])
-        db.subtract(`bank_${message.author.id}`, args[0])
+        db.add(`mpoints_${message.author.id}`, args[0])
+        db.subtract(`banco_${message.author.id}`, args[0])
 
         const embed = new Discord.MessageEmbed()
             .setColor('#efff00')

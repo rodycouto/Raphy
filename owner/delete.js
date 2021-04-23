@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply('`' + prefix + 'del bank @user`')
         }
 
-        db.delete(`bank_${user.id}`)
+        db.delete(`banco_${user.id}`)
         return message.inlineReply(`O banco de ${user} foi deletado`)
     }
 
@@ -38,8 +38,8 @@ exports.run = async (client, message, args) => {
         if (!id) {
             return message.inlineReply('`' + prefix + 'del moneyid ID`')
         }
-        db.delete(`money_${id}`)
-        db.delete(`bank_${id}`)
+        db.delete(`mpoints_${id}`)
+        db.delete(`banco_${id}`)
         return message.inlineReply('Feito!')
     }
 
@@ -69,7 +69,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply('`' + prefix + 'del money @user`')
         }
 
-        db.delete(`money_${user.id}`)
+        db.delete(`mpoints_${user.id}`)
         return message.inlineReply(`O dinheiro da carteira de ${user} foi deletado.`)
     }
 

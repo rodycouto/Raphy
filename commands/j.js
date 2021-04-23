@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(noargs)
     }
 
-    let money = db.get(`money_${message.author.id}`)
+    let money = db.get(`mpoints_${message.author.id}`)
     if (money === null) money = 0
 
     if (!money) {
@@ -54,12 +54,12 @@ exports.run = async (client, message, args) => {
 
 
         if (result === 'win') {
-            db.subtract(`money_${message.author.id}`, 10)
+            db.subtract(`mpoints_${message.author.id}`, 10)
             return message.inlineReply(win)
         }
 
         if (result === 'lose') {
-            db.add(`money_${message.author.id}`, 10)
+            db.add(`mpoints_${message.author.id}`, 10)
             return message.inlineReply(lose)
         }
 
@@ -85,12 +85,12 @@ exports.run = async (client, message, args) => {
             .setDescription('Você ✋ x ✋ Maya\nNinguém ganhou nada que pena')
 
         if (result === 'win') {
-            db.subtract(`money_${message.author.id}`, 10)
+            db.subtract(`mpoints_${message.author.id}`, 10)
             return message.inlineReply(win)
         }
 
         if (result === 'lose') {
-            db.add(`money_${message.author.id}`, 10)
+            db.add(`mpoints_${message.author.id}`, 10)
             return message.inlineReply(lose)
         }
 
@@ -116,12 +116,12 @@ exports.run = async (client, message, args) => {
             .setDescription('Você ✌️ x ✌️ Maya\nNinguém ganhou nada que pena')
 
         if (result === 'win') {
-            db.subtract(`money_${message.author.id}`, 10)
+            db.subtract(`mpoints_${message.author.id}`, 10)
             return message.inlineReply(win)
         }
 
         if (result === 'lose') {
-            db.add(`money_${message.author.id}`, 10)
+            db.add(`mpoints_${message.author.id}`, 10)
             return message.inlineReply(lose)
         }
 

@@ -34,7 +34,6 @@ client.on("message", async (message) => {
         }
     }
     xp(message)
-    xpguild(message)
 
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         if (db.get(`nolink_${message.guild.id}`)) {
@@ -88,33 +87,16 @@ client.on("message", async (message) => {
             let lvl = db.get(`level_${message.author.id}`) || db.set(`level_${message.author.id}`, 1)
             if (level > lvl) {
                 let newLevel = db.set(`level_${message.author.id}`, level)
-                let xpchannel = db.get(`xpchannel_${message.guild.id}`)
-                if (xpchannel === null) { return }
-                if (!db.get(`xpchannel_${message.guild.id}`)) { return }
-                const newlevel = new Discord.MessageEmbed()
+                var newlevel = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel} no ranking global!`)
-                message.author.send(newlevel).catch(err => { return })
-            }
-        }
-    }
-
-    function xpguild(message) {
-        if (message) {
-            let xp1 = db.add(`xp1_${message.guild.id}_${message.author.id}`, 2)
-            let level1 = Math.floor(0.5 * Math.sqrt(xp1))
-            let lvl1 = db.get(`level1_${message.guild.id}_${message.author.id}`) || db.set(`level1_${message.guild.id}_${message.author.id}`, 1)
-            if (level1 > lvl1) {
-                let newlevel1 = db.set(`level1_${message.guild.id}_${message.author.id}`, level1)
-                let xp1channel = db.get(`xpchannel_${message.guild.id}`)
-                if (xp1channel === null) { return }
-                if (!db.get(`xpchannel_${message.guild.id}`)) { return }
-                if (client.channels.cache.get(xp1channel)) {
-                    const newlevel1 = new Discord.MessageEmbed()
+                if (client.channels.cache.get(xpchannel)) {
+                    var newlevel = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setDescription(`:tada: ${message.author}, você subiu para o level ${newlevel1} no servidor!`)
-                    client.channels.cache.get(xp1channel).send(newlevel1)
+                        .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel}!`)
+                    client.channels.cache.get(xpchannel).send(newlevel)
                 }
+                message.author.send(newlevel).catch(err => { return })
             }
         }
     }
@@ -125,7 +107,6 @@ client.on("message", async (message) => {
             return message.channel.send(':x: **COMANDOS BLOQUEADOS** | Apenas administradores podem usar meus comandos neste canal.').then(msg => msg.delete({ timeout: 4000 })).catch(err => { return })
         }
     }
-
 
     if (message.content.startsWith(`${prefix}check`)) { message.react("✅") }
     if (message.content.startsWith(`${prefix}inline`)) { return message.inlineReply("✅ Inline Reply funcionando corretamente") }
@@ -275,8 +256,7 @@ client.on("ready", () => {
 })
 
 client.on("message", async (message) => {
-    var prefix = db.get(`prefix_${message.guild.id}`)
-    if (prefix === null) { prefix = "-" }
+    if (db.get(`prefix_${message.guild.id}`) === null) { prefix = "-" }
     if (message.author.bot) return
     if (message.channel.type == "dm") return
     if (!message.content.startsWith('<')) return

@@ -72,7 +72,7 @@ exports.run = async (client, message, args) => {
 
             if (peixes = args[1] || peixes > args[1]) {
                 db.subtract(`peixes_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * 3)
+                db.add(`mpoints_${message.author.id}`, args[1] * 3)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
@@ -91,7 +91,7 @@ exports.run = async (client, message, args) => {
 
             if (ossos = args[1] || ossos > args[1]) {
                 db.subtract(`ossos_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * 2)
+                db.add(`mpoints_${message.author.id}`, args[1] * 2)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
@@ -110,7 +110,7 @@ exports.run = async (client, message, args) => {
 
             if (camarao = args[1] || camarao > args[1]) {
                 db.subtract(`camarao_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * 4)
+                db.add(`mpoints_${message.author.id}`, args[1] * 4)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
@@ -129,7 +129,7 @@ exports.run = async (client, message, args) => {
 
             if (minerio = args[1] || minerio > args[1]) {
                 db.subtract(`minerio_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * 4)
+                db.add(`mpoints_${message.author.id}`, args[1] * 4)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
@@ -150,7 +150,7 @@ exports.run = async (client, message, args) => {
 
             if (diamond = args[1] || diamond > args[1]) {
                 db.subtract(`diamond_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * amoutrand)
+                db.add(`mpoints_${message.author.id}`, args[1] * amoutrand)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
@@ -169,7 +169,7 @@ exports.run = async (client, message, args) => {
 
             if (madeira = args[1] || madeira > args[1]) {
                 db.subtract(`madeira_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * 5)
+                db.add(`mpoints_${message.author.id}`, args[1] * 5)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')
@@ -188,7 +188,7 @@ exports.run = async (client, message, args) => {
 
             if (apple = args[1] || apple > args[1]) {
                 db.subtract(`apple_${message.author.id}`, args[1])
-                db.add(`money_${message.author.id}`, args[1] * 2)
+                db.add(`mpoints_${message.author.id}`, args[1] * 2)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('✅ Venda aprovada')

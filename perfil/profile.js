@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     let user = message.mentions.members.first() || message.member
 
-    let money = await db.get(`money_${user.id}`) + db.get(`bank_${user.id}`)
+    let money = await db.get(`mpoints_${user.id}`) + db.get(`banco_${user.id}`)
     if (money === null) money = 0
 
     let family = await `⠀\n1. <@${db.get(`family1_${user.id}`)}>`

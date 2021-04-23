@@ -7,10 +7,10 @@ exports.run = async (client, message, args) => {
 
   if (!args[0] === user) user === message.author
 
-  let bal = await db.get(`money_${user.id}`)
+  let bal = await db.get(`mpoints_${user.id}`)
   if (bal === null) bal = 0
 
-  let bank = db.get(`bank_${user.id}`)
+  let bank = db.get(`banco_${user.id}`)
   if (bank === null) bank = 0
 
   var list = [

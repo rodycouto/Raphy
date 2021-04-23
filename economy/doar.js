@@ -21,10 +21,10 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(presomax)
     } else {
 
-        let money = db.get(`money_${message.author.id}`)
+        let money = db.get(`mpoints_${message.author.id}`)
         let user = message.mentions.members.first()
 
-        if (!db.get(`money_${message.author.id}`)) money = '0'
+        if (!db.get(`mpoints_${message.author.id}`)) money = '0'
         if (money === null) money = '0'
         if (!args[0]) { return message.inlineReply('Não sabe usar o comando doar?\n' + '`' + prefix + 'help doar`') }
         if (!args[1]) { return message.inlineReply('Não sabe usar o comando doar?\n' + '`' + prefix + 'help doar`') }
@@ -57,8 +57,8 @@ exports.run = async (client, message, args) => {
                     if (reaction.emoji.name === '✅') { // Sim
                         msg.delete().catch(err => { return })
 
-                        db.add(`money_${message.mentions.members.first().id}`, money)
-                        db.subtract(`money_${message.author.id}`, money)
+                        db.add(`mpoints_${message.mentions.members.first().id}`, money)
+                        db.subtract(`mpoints_${message.author.id}`, money)
                         return message.channel.send(`✅ Transação efetuada com sucesso!\nQuantia: ${money}<:StarPoint:766794021128765469>MPoints`).catch(err => { return })
                     }
 
@@ -86,8 +86,8 @@ exports.run = async (client, message, args) => {
                 if (reaction.emoji.name === '✅') { // Sim
                     msg.delete().catch(err => { return })
 
-                    db.add(`money_${message.mentions.members.first().id}`, args[1])
-                    db.subtract(`money_${message.author.id}`, args[1])
+                    db.add(`mpoints_${message.mentions.members.first().id}`, args[1])
+                    db.subtract(`mpoints_${message.author.id}`, args[1])
                     return message.channel.send(`✅ Transação efetuada com sucesso!\nQuantia: ${args[1]}<:StarPoint:766794021128765469>MPoints`).catch(err => { return })
                 }
 

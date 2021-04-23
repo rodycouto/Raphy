@@ -33,14 +33,14 @@ exports.run = async (client, message, args) => {
             if (result === "win") {
                 let amount = (Math.floor(Math.random() * 200) + 1)
                 let amountxp = (Math.floor(Math.random() * 200) + 1)
-                db.add(`money_${message.author.id}`, amount)
+                db.add(`mpoints_${message.author.id}`, amount)
                 db.add(`xp_${message.author.id}`, amountxp)
                 db.set(`slut_${message.author.id}`, Date.now())
                 message.inlineReply(`Você se prostituiu e obteve ${amount} <:StarPoint:766794021128765469>MPoints e ${amountxp} XP`)
             } else if (result === "lose") {
                 let amount = (Math.floor(Math.random() * 100) + 1)
                 let amountxp = (Math.floor(Math.random() * 200) + 1)
-                db.subtract(`money_${message.author.id}`, amount)
+                db.subtract(`mpoints_${message.author.id}`, amount)
                 db.add(`xp_${message.author.id}`, amountxp)
                 db.set(`slut_${message.author.id}`, Date.now())
                 message.inlineReply(`Você se prostituiu e perdeu ${amount} <:StarPoint:766794021128765469>MPoints, porém ganhou ${amountxp} XP`)

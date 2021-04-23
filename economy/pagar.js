@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
         let bot = message.mentions.bot
         let nomoney = 'Dinheiro insuficiente.'
 
-        let money = db.get(`money_${message.author.id}`)
+        let money = db.get(`mpoints_${message.author.id}`)
         if (money === null) money = '0'
 
         let prefix = db.get(`prefix_${message.guild.id}`)
@@ -65,8 +65,8 @@ exports.run = async (client, message, args) => {
 
                 if (reaction.emoji.name === '✅') { // Sim
                     msg.delete().catch(err => { return })
-                    db.add(`money_${message.mentions.members.first().id}`, args[1])
-                    db.subtract(`money_${message.author.id}`, args[1])
+                    db.add(`mpoints_${message.mentions.members.first().id}`, args[1])
+                    db.subtract(`mpoints_${message.author.id}`, args[1])
 
                     var embed = new Discord.MessageEmbed()
                         .setColor('#efff00')

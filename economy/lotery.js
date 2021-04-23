@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(`Você pode jogar novamente em ${time.minutes}m e ${time.seconds}s`)
         } else {
             var amount = Math.floor(Math.random() * 1000) + 1
-            db.add(`money_${message.author.id}`, amount)
+            db.add(`mpoints_${message.author.id}`, amount)
             db.set(`lotery_${message.author.id}`, Date.now())
 
             await message.inlineReply(`Você jogou e ganhou ${amount} <:StarPoint:766794021128765469>MPoints.`)

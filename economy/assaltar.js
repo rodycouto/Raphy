@@ -66,10 +66,10 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(`Você não pode assaltar você mesmo.`)
         }
 
-        var usermoney = db.get(`money_${user.id}`)
+        var usermoney = db.get(`mpoints_${user.id}`)
         if (usermoney == null) usermoney = 0
 
-        var autormoney = db.get(`money_${message.author.id}`)
+        var autormoney = db.get(`mpoints_${message.author.id}`)
         if (autormoney == null) autormoney = 0
 
         if (usermoney === 0 || usermoney < 0) {
@@ -96,7 +96,7 @@ exports.run = async (client, message, args) => {
                 var luck = ['win', 'lose']
                 var result = luck[Math.floor(Math.random() * luck.length)]
 
-                var authormoney = db.get(`money_${message.author.id}`)
+                var authormoney = db.get(`mpoints_${message.author.id}`)
 
                 if (result == 'lose') {
                     var amount = Math.floor(Math.random() * authormoney) + 1
@@ -105,41 +105,41 @@ exports.run = async (client, message, args) => {
                         .setTitle("🔫 O assalto falhou!!")
                         .setDescription(`${user} reagiu mais rápido que você e te assaltou!\n \nVocê perdeu ${amount}<:StarPoint:766794021128765469>`)
                     message.inlineReply(embed1)
-                    db.subtract(`money_${message.author.id}`, amount)
-                    db.add(`money_${user.id}`, amount)
+                    db.subtract(`mpoints_${message.author.id}`, amount)
+                    db.add(`mpoints_${user.id}`, amount)
                     db.set(`assaltotime_${message.author.id}`, Date.now())
                 } else if (result == 'win') {
                     let moneyEmbed = new Discord.MessageEmbed()
                         .setColor("GREEN")
                         .setTitle(`🔫 Você assaltou ${user.user.username} com sucesso!`)
-                        .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`money_${user.id}`)}<:StarPoint:766794021128765469>`)
+                        .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>`)
 
                     message.inlineReply(moneyEmbed)
-                    db.add(`money_${message.author.id}`, usermoney)
-                    db.subtract(`money_${user.id}`, usermoney)
+                    db.add(`mpoints_${message.author.id}`, usermoney)
+                    db.subtract(`mpoints_${user.id}`, usermoney)
                     db.set(`assaltotime_${message.author.id}`, Date.now())
                 }
             }
 
-            var usermoney = db.get(`money_${user.id}`)
+            var usermoney = db.get(`mpoints_${user.id}`)
             if (gunuser === null) {
                 let moneyEmbed = new Discord.MessageEmbed()
                     .setColor("GREEN")
                     .setTitle(`🔫 Você assaltou ${user.user.username} com sucesso!`)
-                    .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`money_${user.id}`)}<:StarPoint:766794021128765469>`)
+                    .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>`)
 
                 message.inlineReply(moneyEmbed)
-                db.subtract(`money_${user.id}`, usermoney)
-                db.add(`money_${message.author.id}`, usermoney)
+                db.subtract(`mpoints_${user.id}`, usermoney)
+                db.add(`mpoints_${message.author.id}`, usermoney)
                 db.set(`assaltotime_${message.author.id}`, Date.now())
             } else if (!db.get(`arma_${user.id}`)) {
                 let moneyEmbed = new Discord.MessageEmbed()
                     .setColor("GREEN")
                     .setTitle(`🔫 Você assaltou ${user.user.username} com sucesso!`)
-                    .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`money_${user.id}`)}<:StarPoint:766794021128765469>`)
+                    .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>`)
 
-                db.add(`money_${message.author.id}`, usermoney)
-                db.subtract(`money_${user.id}`, usermoney)
+                db.add(`mpoints_${message.author.id}`, usermoney)
+                db.subtract(`mpoints_${user.id}`, usermoney)
                 db.set(`assaltotime_${message.author.id}`, Date.now())
                 message.inlineReply(moneyEmbed)
             }

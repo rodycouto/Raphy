@@ -103,7 +103,7 @@ exports.run = async (client, message, args) => {
 
                 if (reaction.emoji.name === '✅') { // Check
                     msg.delete()
-                    var money = db.get(`money_${user.id}`)
+                    var money = db.get(`mpoints_${user.id}`)
 
                     var nomoney = new Discord.MessageEmbed()
                         .setColor('#FF0000')
@@ -121,8 +121,8 @@ exports.run = async (client, message, args) => {
                         return message.inlineReply(nomoney)
                     }
 
-                    db.subtract(`money_${user.id}`, args[1])
-                    db.add(`money_${message.author.id}`, args[1])
+                    db.subtract(`mpoints_${user.id}`, args[1])
+                    db.add(`mpoints_${message.author.id}`, args[1])
 
                     var embed2 = new Discord.MessageEmbed()
                         .setColor('GREEN')

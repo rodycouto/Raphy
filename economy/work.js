@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
         } else {
             let amount = 33
             let amountxp = 150
-            db.add(`money_${message.author.id}`, amount)
+            db.add(`mpoints_${message.author.id}`, amount)
             db.add(`xp_${message.author.id}`, amountxp)
             db.set(`worked_${message.author.id}`, Date.now())
 

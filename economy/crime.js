@@ -108,7 +108,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 100) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -122,7 +122,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 100) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -155,7 +155,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 300) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -169,7 +169,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 300) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -202,7 +202,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 500) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -216,7 +216,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 500) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -249,7 +249,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 400) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -263,7 +263,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 400) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -296,7 +296,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 600) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -309,7 +309,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 600) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -342,7 +342,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 700) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -356,7 +356,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 7000) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -389,7 +389,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 700) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -403,7 +403,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 700) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -436,7 +436,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 800) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -450,7 +450,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 800) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -483,7 +483,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 500) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -497,7 +497,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 500) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()
@@ -530,7 +530,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
 
                                             if (result === "win") {
                                                 let amount = (Math.floor(Math.random() * 5000) + 1)
-                                                db.add(`money_${message.author.id}`, amount)
+                                                db.add(`mpoints_${message.author.id}`, amount)
                                                 db.set(`procurado_${message.author.id}`, Date.now())
 
                                                 var win = new Discord.MessageEmbed()
@@ -544,7 +544,7 @@ return message.inlineReply('Comando fechado para reajuste nos valores.')
                                                 return message.inlineReply(embedcrime).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugindo)).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(fugiu))
                                             } else if (result === "lose") {
                                                 let amount = (Math.floor(Math.random() * 5000) + 1)
-                                                db.subtract(`money_${message.author.id}`, amount)
+                                                db.subtract(`mpoints_${message.author.id}`, amount)
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 var lose = new Discord.MessageEmbed()

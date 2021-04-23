@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
                     var din = Math.floor(Math.random() * 200) + 1
 
                     if (result === "win") {
-                        db.add(`money_${message.author.id}`, din)
+                        db.add(`mpoints_${message.author.id}`, din)
                         db.set(`cutime_${message.author.id}`, Date.now())
 
                         var embed = new Discord.MessageEmbed()
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
                     }
 
                     if (result === "lose") {
-                        db.subtract(`money_${message.author.id}`, din)
+                        db.subtract(`mpoints_${message.author.id}`, din)
                         db.set(`cutime_${message.author.id}`, Date.now())
 
                         var embed = new Discord.MessageEmbed()

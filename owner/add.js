@@ -37,7 +37,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(`**${args[2]}** não é um número.`)
         }
 
-        db.add(`bank_${user.id}`, amount)
+        db.add(`banco_${user.id}`, amount)
         return message.inlineReply(`O dinheiro foi adicionado no banco de ${user}`)
     }
 
@@ -91,7 +91,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(`**${args[2]}** não é um número.`)
         }
 
-        db.add(`money_${user.id}`, amount)
+        db.add(`mpoints_${user.id}`, amount)
         return message.inlineReply(`Dinheiro adicionado a conta de ${user}.`)
     }
 

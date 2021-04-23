@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(presomax)
     } else {
 
-        let money = db.get(`money_${message.author.id}`)
+        let money = db.get(`mpoints_${message.author.id}`)
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
@@ -31,8 +31,8 @@ exports.run = async (client, message, args) => {
         }
 
         if (['all', 'tudo'].includes(args[0])) {
-            let money = db.get(`money_${message.author.id}`)
-            if (!db.get(`money_${message.author.id}`)) money = '0'
+            let money = db.get(`mpoints_${message.author.id}`)
+            if (!db.get(`mpoints_${message.author.id}`)) money = '0'
 
             if (money === null) {
                 var nota = new Discord.MessageEmbed()
@@ -56,8 +56,8 @@ exports.run = async (client, message, args) => {
             }
 
             if (money > 0) {
-                db.add(`bank_${message.author.id}`, money)
-                db.subtract(`money_${message.author.id}`, money)
+                db.add(`banco_${message.author.id}`, money)
+                db.subtract(`mpoints_${message.author.id}`, money)
 
                 var nota = new Discord.MessageEmbed()
                     .setColor('GREEN')
@@ -94,8 +94,8 @@ exports.run = async (client, message, args) => {
                 .setTitle('Diga um valor maior que 0')
             return message.inlineReply(nota)
         }
-        db.add(`bank_${message.author.id}`, args[0])
-        db.subtract(`money_${message.author.id}`, args[0])
+        db.add(`banco_${message.author.id}`, args[0])
+        db.subtract(`mpoints_${message.author.id}`, args[0])
 
         var embed = new Discord.MessageEmbed()
             .setColor('#efff00')
