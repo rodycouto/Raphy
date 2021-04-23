@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     var newhelp = new Discord.MessageEmbed()
       .setColor('#CD853F')
       .setTitle('⭐ Centralzinha de Ajuda da Maya ⭐')
-      .setDescription('Use `' + `${prefix}help categoria` + '` para a pastas de comandos')
+      .setDescription('Use `' + `${prefix}help categoria` + '` para as pastas de comandos')
       .addField('Acesso rápido', `:tools: [Lista de Comandos](${linkgithub})\n☎️ [Suporte](${linksupport})\n🧩 [Meu servidor](${linkservidor})\n:heart: [Me adicione](${invitebot})`)
       .addField('Me ajude a ficar online', `<a:MoneyWings:834899137991540797> [Doar R$1,00](${mercadopago})`)
       .setFooter(`${prefix}gif | ${prefix}ideiamaya`)

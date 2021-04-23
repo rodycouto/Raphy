@@ -22,37 +22,21 @@ exports.run = async (client, message, args) => {
         .addFields(
             {
                 name: 'Informações Técinas',
-                value: (`🌐 Servidores: ${client.guilds.cache.size}\n💬 Canais: ${client.channels.cache.size}\n🫂 Usuários: ${client.users.cache.size}\n⏳ Ping Atual: ${Math.round(client.ws.ping)}ms\n🕛 Criada em: 15/03/2021\n💡 Idealizada por: Rody#4191 \n:gear: Criada por: Rody#4191\n🖌️ Design: yma?#5175\n🖊️ Coop: Gowther#9233\n📡 Host: DisCloud\n🇩 Discord.js Version: 12.3.1\n🇯 Linguagem: 100% JavaScript\n💠 Maya Version: 2.1.1\n⌨️ 359 Comandos (287 Liberados)`)
+                value: (`🌐 Servidores: ${client.guilds.cache.size}\n💬 Canais: ${client.channels.cache.size}\n🫂 Usuários: ${client.users.cache.size}\n⏳ Ping Atual: ${Math.round(client.ws.ping)}ms\n🕛 Criada em: 15/03/2021\n💡 Idealizada por: Rody#4191 \n:gear: Criada por: Rody#4191\n🖌️ Design: yma?#5175\n🖊️ Start Cooper: Gowther#9233\n📡 Host: DisCloud\n🇩 Discord.js Version: 12.5.3\n🇯 Linguagem: 100% JavaScript`)
             }
         )
 
     var Thanks = new Discord.MessageEmbed()
-        .setColor('BLUE')
+        .setColor('GREEN')
         .setThumbnail(client.user.displayAvatarURL())
-        .setTitle(':hearts:Eu só digo OBRIGADA a todos que deram suas ideias!:hearts:')
+        .setTitle(':hearts: OBRIGADA a todos que me ajuda a crescer! :hearts:')
+        .setURL('https://github.com/rodycouto/MayaCommands/blob/main/README.md#-maya-assistence')
         .addFields(
             {
-                name: ':gear: Developers :gear:',
-                value: '`Rody#4191` & `Gowther#9233`'
-            },
-            {
-                name: ':tools: Coop :tools:',
-                value: '`Gowther#9233`'
-            },
-            {
-                name: '🖌️ Designers 🖌️',
-                value: '`Rody#4191` | `Gowther#9233` | `Yma#5175`'
-            },
-            {
-                name: ':handshake: Colaboradores :handshake:',
-                value: "𝑅𝑈 𝑀𝑖𝑛𝑒?#2790 | Comandos de Administração\nLucas - Luquisquiss#4643 | `-frase`\nJoão da Cilada#7041 | `-love`\nGiacometti#4849 | `-feet`\nCoiny#9056 | Ideias no Painel Interativo\nCALORIES#2822 | Music System Helper"
-            },
-            {
-                name: ':star2:Especiais:star2:',
-                value: 'MakolPedro#8508 | +30 Bugs Reportados'
-            },
+                name: 'Listinha de pessoas que me ajuda',
+                value: '[Clique aqui pra ver a listinha](https://github.com/rodycouto/MayaCommands/blob/main/README.md#-maya-assistence)'
+            }
         )
-        .setImage('https://imgur.com/MkQo0Lh.gif')
 
     var support = new Discord.MessageEmbed()
         .setColor('BLUE')
