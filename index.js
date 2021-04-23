@@ -47,7 +47,7 @@ client.on("message", async (message) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         if (db.get(`nolink_${message.guild.id}`)) {
             if (is_url(message.content) === true) {
-                message.delete()
+                message.delete().catch(err => { return })
                 message.channel.send(`${message.author}, você não pode enviar links nesse servidor.`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { return })
             }
         }
@@ -82,7 +82,7 @@ client.on("message", async (message) => {
     var command = args.shift().toLowerCase()
 
     if (db.get(`blacklist_${message.author.id}`)) {
-        message.delete()
+        message.delete().catch(err => { return })
         return message.channel.send(`${message.author}, você está na blacklist e não tem acesso a nenhum dos meus comandos.`).then(msg => msg.delete({ timeout: 6000 })).catch(err => { return })
     }
 
@@ -111,7 +111,7 @@ client.on("message", async (message) => {
 
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         if (db.get(`blockchannel_${message.channel.id}`)) {
-            message.delete()
+            message.delete().catch(err => { return })
             return message.channel.send(':x: **COMANDOS BLOQUEADOS** | Apenas administradores podem usar meus comandos neste canal.').then(msg => msg.delete({ timeout: 4000 })).catch(err => { return })
         }
     }

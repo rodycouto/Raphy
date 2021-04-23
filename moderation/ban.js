@@ -126,7 +126,7 @@ exports.run = async (client, message, args) => {
       if (message.author.id !== user.id) return
 
       if (reaction.emoji.name === '✅') { // Sim
-        msg.delete()
+        msg.delete().catch(err => { return })
 
         var banned = new Discord.MessageEmbed()
           .setColor('GREEN')
@@ -138,7 +138,7 @@ exports.run = async (client, message, args) => {
         return client.channels.cache.get(logchannel).send(banEmbed)
       }
       if (reaction.emoji.name === '❌') { // Não
-        msg.delete()
+        msg.delete().catch(err => { return })
         var cancel = new Discord.MessageEmbed()
           .setColor('GREY')
           .setTitle('Comando cancelado.')

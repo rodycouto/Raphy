@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
       if (message.mentions.users.first().id !== user.id) return
 
       if (reaction.emoji.name === '🔁') {
-        msg.delete()
+        msg.delete().catch(err => { return })
         return message.inlineReply(embed2)
       }
     })

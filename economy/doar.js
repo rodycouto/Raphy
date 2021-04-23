@@ -63,7 +63,7 @@ exports.run = async (client, message, args) => {
                     }
 
                     if (reaction.emoji.name === '❌') { // Não
-                        msg.delete()
+                        msg.delete().catch(err => { return })
                         msg.channel.send(`Transação cancelada.`)
                     }
                 })
@@ -92,7 +92,7 @@ exports.run = async (client, message, args) => {
                 }
 
                 if (reaction.emoji.name === '❌') { // Não
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     msg.channel.send(`Transação cancelada.`)
                 }
             })

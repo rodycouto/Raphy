@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
                 msg.edit(naruto)
             }
             if (reaction.emoji.name === '❌') {
-                msg.delete()
+                msg.delete().catch(err => { return })
             }
         })
     })

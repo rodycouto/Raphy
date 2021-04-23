@@ -3,7 +3,7 @@ const db = require("quick.db")
 // REGISTRO DO SERVIDOR DOWN OF THE NIGHT
 
 exports.run = async (client, message, args) => {
-    message.delete()
+    message.delete().catch(err => { return })
 
     if (message.guild.id !== "753988242570739772") { return }
 

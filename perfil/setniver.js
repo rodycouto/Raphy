@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
                 if (message.author.id !== user.id) return
 
                 if (reaction.emoji.name === '✅') {
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     db.delete(`aniversario_${message.author.id}`)
                     var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
                 }
 
                 if (reaction.emoji.name === '❌') {
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     return message.inlineReply('Comando cancelado.')
                 }
             })
@@ -144,7 +144,7 @@ exports.run = async (client, message, args) => {
             if (message.author.id !== user.id) return
 
             if (reaction.emoji.name === '✅') {
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`aniversario_${message.author.id}`, niver)
                 var ok = new Discord.MessageEmbed()
                     .setColor('GREEN')
@@ -154,7 +154,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (reaction.emoji.name === '❌') {
-                msg.delete()
+                msg.delete().catch(err => { return })
                 return message.inlineReply('Comando cancelado.')
             }
         })

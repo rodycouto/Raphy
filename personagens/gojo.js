@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
                 msg.edit(gojo)
             }
             if (reaction.emoji.name === '❌') {
-                msg.delete()
+                msg.delete().catch(err => { return })
             }
         })
     })

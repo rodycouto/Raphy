@@ -102,7 +102,7 @@ exports.run = async (client, message, args) => {
                 if (message.mentions.users.first().id !== user.id) return
 
                 if (reaction.emoji.name === '✅') { // Check
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var money = db.get(`mpoints_${user.id}`)
 
                     var nomoney = new Discord.MessageEmbed()
@@ -132,7 +132,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(embed2)
                 }
                 if (reaction.emoji.name === '❌') { // Check
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     return message.inlineReply(`${user} recusou e não pagou o valor cobrado.`)
                 }
             })

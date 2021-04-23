@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
             if (message.author.id !== user.id) return
 
             if (reaction.emoji.name === '✅') { // Check
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`status_${message.author.id}`, status)
                 var embednewstatus = new Discord.MessageEmbed()
                     .setColor("GREEN")
@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
                 message.inlineReply(embednewstatus)
             }
             if (reaction.emoji.name === '❌') { // MPEmbed
-                msg.delete()
+                msg.delete().catch(err => { return })
                 var cancel = new Discord.MessageEmbed()
                     .setColor("GREEN")
                     .setTitle('Comando cancelado.')

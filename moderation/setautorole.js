@@ -65,22 +65,18 @@ exports.run = async (client, message, args) => {
                 if (message.author.id !== user.id) return
 
                 if (reaction.emoji.name === '✅') { // Sim
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     db.delete(`autorole_${message.guild.id}`)
-
-                    var desativandoo = new Discord.MessageEmbed()
-                        .setColor('BLUE')
-                        .setTitle('🔄 Desativando o Autorole System...')
 
                     var desativado = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setTitle('✅ Autorole System foi desativado com sucesso.')
 
-                    return message.channel.send(desativandoo).then(msg => msg.delete({ timeout: 3400 })).then(msg => msg.channel.send(desativado))
+                    return message.channel.send('<a:loading:834782920287846430> Desativando o Autorole System...').then(msg => msg.delete({ timeout: 3400 })).then(msg => msg.channel.send(desativado))
                 }
 
                 if (reaction.emoji.name === '❌') { // MPEmbed
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     return message.channel.send('Comando cancelado')
                 }
             })
@@ -104,7 +100,7 @@ exports.run = async (client, message, args) => {
 
     var sobcarg = new Discord.MessageEmbed()
         .setColor('#FF0000')
-        .setTitle('🔄 Um erro foi encontrado. Buscando solução...')
+        .setDescription('<a:loading:834782920287846430> Um erro foi encontrado. Buscando solução...')
 
     var iqual = new Discord.MessageEmbed()
         .setColor('#FF0000') // Red
@@ -125,7 +121,7 @@ exports.run = async (client, message, args) => {
         msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return
             if (reaction.emoji.name === '✅') { // Sim
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`autorole_${message.guild.id}`, role.id)
 
                 var redefine = new Discord.MessageEmbed()
@@ -134,13 +130,13 @@ exports.run = async (client, message, args) => {
 
                 var timing = new Discord.MessageEmbed()
                     .setColor('BLUE')
-                    .setDescription(`🔄 Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
+                    .setDescription(`<a:loading:834782920287846430> Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
 
-                return message.channel.send(timing).then(msg => msg.delete({ timeout: 6000 })).then(msg => msg.channel.send(redefine))
+                return message.channel.send(timing).then(msg => msg.delete({ timeout: 8000 })).then(msg => msg.channel.send(redefine))
             }
 
             if (reaction.emoji.name === '❌') { // MPEmbed
-                msg.delete()
+                msg.delete().catch(err => { return })
                 return message.channel.send('Comando cancelado')
             }
         })

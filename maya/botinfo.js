@@ -89,7 +89,7 @@ exports.run = async (client, message, args) => {
                 msg.edit(support)
             }
             if (reaction.emoji.name === '❌') { // Delete
-                msg.delete()
+                msg.delete().catch(err => { return })
             }
         })
     })

@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
             msg.awaitReactions((reaction, user) => {
                 if (message.author.id !== user.id) return
                 if (reaction.emoji.name === '✅') { // Sim
-                    msg.delete()
+                    msg.delete().catch(err => { return })
 
                     var winlose = ['win', 'lose']
                     var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
                 }
 
                 if (reaction.emoji.name === '❌') { // MPEmbed
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var cancel = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setTitle('Comando cancelado com sucesso')

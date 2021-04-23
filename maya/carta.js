@@ -72,7 +72,7 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply('✅ Carta enviada com sucesso.')
             }
             if (reaction.emoji.name === '❌') { // Não
-                msg.delete()
+                msg.delete().catch(err => { return })
                 return message.inlineReply("Envio cancelado.")
             }
         })

@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
-    message.delete()
+    message.delete().catch(err => { message.channel.send(err) })
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"

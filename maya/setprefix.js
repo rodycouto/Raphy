@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
             if (message.author.id !== user.id) return
 
             if (reaction.emoji.name === '✅') { // Sim
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`prefix_${message.guild.id}`, args[0])
                 var alterado = new Discord.MessageEmbed()
                     .setColor('GREEN')
@@ -63,7 +63,7 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply(alterado)
             }
             if (reaction.emoji.name === '❌') { // Não
-                msg.delete()
+                msg.delete().catch(err => { return })
                 message.inlineReply("Comando cancelado.")
             }
         })

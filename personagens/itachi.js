@@ -44,7 +44,7 @@ exports.run = async (client, message, args) => {
                 msg.edit(Itachi)
             }
             if (reaction.emoji.name === '❌') {
-                msg.delete()
+                msg.delete().catch(err => { return })
             }
         })
     })

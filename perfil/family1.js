@@ -66,7 +66,7 @@ exports.run = async (client, message, args) => {
 			let coletor = msg.createReactionCollector(reactions)
 
 			coletor.on('collect', cp => {
-				msg.delete()
+				msg.delete().catch(err => { return })
 
 				db.set(`family1_${message.author.id}`, member.id)
 				db.set(`family1_${member.id}`, message.author.id)

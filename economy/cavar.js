@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
 
             var canaloficial = message.channel.id === db.get(`minechannel_${message.guild.id}`)
             if (!canaloficial) {
-                message.delete()
+                message.delete().catch(err => { return })
                 return message.inlineReply(`Este não é o canal de mineração. A mina é aqui: ${client.channels.cache.get(canal)}`)
             }
 

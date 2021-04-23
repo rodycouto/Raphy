@@ -74,7 +74,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(embed)
                 }
                 if (reaction.emoji.name === '❌') { // Não
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     message.inlineReply("Pagamento cancelado.")
                 }
             })

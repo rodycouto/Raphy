@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
-  message.delete()
+  message.delete().catch(err => { return })
 
   var Random = new Discord.MessageEmbed()
     .setColor('#FF0000')

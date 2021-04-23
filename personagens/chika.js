@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
                 msg.edit(chika)
             }
             if (reaction.emoji.name === '❌') {
-                msg.delete()
+                msg.delete().catch(err => { return })
             }
         })
     })

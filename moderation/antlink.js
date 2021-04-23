@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
                 if (message.author.id !== user.id) return
 
                 if (reaction.emoji.name === '✅') { // Sim
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     db.set(`nolink_${message.guild.id}`, "ON")
                     var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
@@ -58,7 +58,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(ok)
                 }
                 if (reaction.emoji.name === '❌') { // Não
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     message.inlineReply("Comando cancelado.")
                 }
             })
@@ -82,7 +82,7 @@ exports.run = async (client, message, args) => {
                 if (message.author.id !== user.id) return
 
                 if (reaction.emoji.name === '✅') { // Sim
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     db.delete(`nolink_${message.guild.id}`)
                     var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
@@ -90,7 +90,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(ok)
                 }
                 if (reaction.emoji.name === '❌') { // Não
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     message.inlineReply("Comando cancelado.")
                 }
             })

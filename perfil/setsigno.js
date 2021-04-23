@@ -39,73 +39,73 @@ exports.run = async (client, message, args) => {
             if (message.author.id !== user.id) return
             
             if (reaction.emoji.name === '♈') { // Áries
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♈ Áries")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♉') { // Touro
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♉ Touro")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♊') { // Gêmeos
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♊ Gêmeos")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♋') { // Câncer
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♋ Câncer")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♌') { // Leão
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♌ Leão")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♍') { // Virgem
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♍ Virgem")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♎') { // Libra
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♎ Libra")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♏') { // Escorpião
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♏ Escorpião")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♐') { // Sagitário
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♐ Sagitário")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♑') { // Capricórnio
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♑ Capricórnio")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♒') { // Aquário
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♒ Aquário")
                 return message.channel.send(sucess)
             }
 
             if (reaction.emoji.name === '♓') { // Peixes
-                msg.delete()
+                msg.delete().catch(err => { return })
                 db.set(`signo_${message.author.id}`, "♓ Peixes")
                 return message.channel.send(sucess)
             }

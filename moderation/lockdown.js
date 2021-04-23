@@ -56,7 +56,7 @@ exports.run = async (client, message, args) => {
                 if (message.author.id !== user.id) return
 
                 if (reaction.emoji.name === '✅') { // Sim
-                    msg.delete()
+                    msg.delete().catch(err => { return })
 
                     channels.forEach(channel => {
                         channel.updateOverwrite(message.guild.roles.everyone, {
@@ -76,7 +76,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(ok).then(m => m.inlineReply(info))
                 }
                 if (reaction.emoji.name === '❌') { // Não
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setDescription('Comando cancelado')

@@ -62,7 +62,7 @@ exports.run = async (client, message, args) => {
                             if (message.author.id !== user.id) return
 
                             if (reaction.emoji.name === '🥷') { // Sim
-                                msg.delete()
+                                msg.delete().catch(err => { return })
 
                                 var embedcrime = new Discord.MessageEmbed()
                                     .setColor('#FF0000')
@@ -87,7 +87,7 @@ exports.run = async (client, message, args) => {
                                         if (message.author.id !== user.id) return
 
                                         if (reaction.emoji.name === '🏠') { // 1
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'win', 'win', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -134,7 +134,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🏦') { // 2
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'win', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -181,7 +181,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🏛️') { // 3
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'lose', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -228,7 +228,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🏣') { // 4
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', `win`, 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -275,7 +275,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '📨') { // 5
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', `win`, 'fugiu', 'fugiu', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -321,7 +321,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '💍') { // 6
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'lose', 'win', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -368,7 +368,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🏢') { // 7
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'lose', 'win', 'fugiu', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -415,7 +415,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🏭') { // 8
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'fugiu']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -462,7 +462,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🏩') { // 9
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'fugiu', 'win']
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]
@@ -509,7 +509,7 @@ exports.run = async (client, message, args) => {
                                             }
                                         }
                                         if (reaction.emoji.name === '🪙') { // 10
-                                            msg.delete()
+                                            msg.delete().catch(err => { return })
 
                                             var winlose = ['win', 'lose', 'fugiu', 'win', 'lose', 'lose', 'lose', 'lose', 'lose',]
                                             var result = winlose[Math.floor(Math.random() * winlose.length)]

@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
       if (message.author.id !== user.id) return
 
       if (reaction.emoji.name === '☝️') { // Sim
-        msg.delete()
+        msg.delete().catch(err => { return })
 
         var game = 'Brawlhalla'
         var link1 = 'https://store.steampowered.com/app/291550/Brawlhalla/'
@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(GameEmbed)
       }
       if (reaction.emoji.name === '✌️') { // Não
-        msg.delete()
+        msg.delete().catch(err => { return })
 
         var game = 'Brawlhalla'
         var link1 = 'https://store.steampowered.com/app/291550/Brawlhalla/'

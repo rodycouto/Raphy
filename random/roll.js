@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
                 if (message.author.id !== user.id) return
 
                 if (reaction.emoji.name === '🟧') { // 1
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var numb = ['1', '2', '3', '4', '5', '6']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
                 }
                 if (reaction.emoji.name === '🟦') { // 2
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
                 }
                 if (reaction.emoji.name === '🟥') { // 3
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
                 }
                 if (reaction.emoji.name === '🟫') { // 4
-                    msg.delete()
+                    msg.delete().catch(err => { return })
                     var numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
@@ -62,8 +62,8 @@ exports.run = async (client, message, args) => {
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
                 }
                 if (reaction.emoji.name === '❌') { // Não
-                    msg.delete()
-                    message.delete()
+                    msg.delete().catch(err => { return })
+                    message.delete().catch(err => { return })
                     return msg.channel.send("Comando cancelado.").then(msg => msg.delete({ timeout: 3000 })).catch(err => { return })
                 }
             })

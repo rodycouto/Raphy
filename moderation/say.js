@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
-  message.delete()
+  message.delete().catch(err => { return })
 
   var rody = message.author.id === ("451619591320371213")
   if (rody) {
