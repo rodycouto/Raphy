@@ -134,29 +134,32 @@ exports.run = async (client, message, args) => {
                     }
                 }
 
-                var luck1 = ['win', 'lose']
-                let result1 = luck1[Math.floor(Math.random() * luck1.length)]
+                if (!gunuser) {
 
-                let AssaltEmbed = new Discord.MessageEmbed()
-                    .setColor("GREEN")
-                    .setTitle(`🔫 Você assaltou ${user.user.username} com sucesso!`)
-                    .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>MPoints`)
+                    var luck1 = ['win', 'lose']
+                    let result1 = luck1[Math.floor(Math.random() * luck1.length)]
 
-                var PresoEmbed = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setTitle('🚨 Preso!')
-                    .setDescription(`Havia policía por perto e você foi preso sem direito a fiança!`)
+                    let AssaltEmbed = new Discord.MessageEmbed()
+                        .setColor("GREEN")
+                        .setTitle(`🔫 Você assaltou ${user.user.username} com sucesso!`)
+                        .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>MPoints`)
 
-                if (result1 === 'win') {
-                    db.add(`mpoints_${message.author.id}`, usermoney)
-                    db.subtract(`mpoints_${user.id}`, usermoney)
-                    db.set(`assaltotime_${message.author.id}`, Date.now())
-                    return message.inlineReply(AssaltEmbed)
-                }
+                    var PresoEmbed = new Discord.MessageEmbed()
+                        .setColor('#FF0000')
+                        .setTitle('🚨 Preso!')
+                        .setDescription(`Havia policía por perto e você foi preso sem direito a fiança!`)
 
-                if (result1 === 'lose') {
-                    db.set(`preso_${message.author.id}`, Date.now())
-                    return message.inlineReply(PresoEmbed)
+                    if (result1 === 'win') {
+                        db.add(`mpoints_${message.author.id}`, usermoney)
+                        db.subtract(`mpoints_${user.id}`, usermoney)
+                        db.set(`assaltotime_${message.author.id}`, Date.now())
+                        return message.inlineReply(AssaltEmbed)
+                    }
+
+                    if (result1 === 'lose') {
+                        db.set(`preso_${message.author.id}`, Date.now())
+                        return message.inlineReply(PresoEmbed)
+                    }
                 }
             }
         }
