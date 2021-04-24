@@ -2,11 +2,12 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
+    var permss = new Discord.MessageEmbed()
+        .setColor('#FF0000')
+        .setTitle('Permissão Necessária: Manusear Roles (cargos)')
+
     let perms = message.member.hasPermission("MANAGE_ROLES")
     if (!perms) {
-        var permss = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Permissão Necessária: Manusear Roles (cargos)')
         return message.inlineReply(permss)
     }
 

@@ -48,6 +48,12 @@ exports.run = async (client, message, args) => {
     var estrela = '<:starM:832974891635572787>'
     var noestrela = '<:nostar:832972978009538591>'
 
+    var star1 = db.get(`estrela1_${user.id}`)
+    var star2 = db.get(`estrela2_${user.id}`)
+    var star3 = db.get(`estrela3_${user.id}`)
+    var star4 = db.get(`estrela4_${user.id}`)
+    var star5 = db.get(`estrela5_${user.id}`)
+
     if (user.id === '821471191578574888') {
         var perfil = new Discord.MessageEmbed()
             .setDescription(`📃 **Perfil Pessoal de ${user.user.username}** ${estrela}${estrela}${estrela}${estrela}${estrela}`)
@@ -82,9 +88,8 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(perfil)
     }
 
-    var perfil = new Discord.MessageEmbed()
+    var perfilembed = new Discord.MessageEmbed()
         .setColor('#BF3BFC')
-        .setDescription(`📃 **Perfil de ${user.user.username}** ${noestrela}${noestrela}${noestrela}${noestrela}${noestrela}`)
         .addFields(
             {
                 name: '👤 Pessoal',
@@ -113,7 +118,15 @@ exports.run = async (client, message, args) => {
         )
         .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
         .setFooter(`${prefix}help perfil`)
-    await message.inlineReply(perfil)
+
+    if (!star1) { perfilembed.setDescription(`📃 **Perfil de ${user.user.username}** ${noestrela}${noestrela}${noestrela}${noestrela}${noestrela}`) }
+    if (star1) { perfilembed.setDescription(`📃 **Perfil de ${user.user.username}** ${estrela}${noestrela}${noestrela}${noestrela}${noestrela}`) }
+    if (star2) { perfilembed.setDescription(`📃 **Perfil de ${user.user.username}** ${estrela}${estrela}${noestrela}${noestrela}${noestrela}`) }
+    if (star3) { perfilembed.setDescription(`📃 **Perfil de ${user.user.username}** ${estrela}${estrela}${estrela}${noestrela}${noestrela}`) }
+    if (star4) { perfilembed.setDescription(`📃 **Perfil de ${user.user.username}** ${estrela}${estrela}${estrela}${estrela}${noestrela}`) }
+    if (star5) { perfilembed.setDescription(`📃 **Perfil de ${user.user.username}** ${estrela}${estrela}${estrela}${estrela}${estrela}`) }
+
+    await message.inlineReply(perfilembed)
 
     if (['help', 'ajuda', 'comandos'].includes(args[0])) {
         return message.inlineReply('Quase pronto')

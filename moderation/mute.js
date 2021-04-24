@@ -132,7 +132,7 @@ exports.run = async (client, message, args) => {
       setTimeout(function () {
          message.inlineReply(soberol)
       }, 6000)
-      return message.inlineReply(sobcarg)
+      return message.inlineReply(sobcarg).then(msg => msg.delete({ timeout: 5700 }))
    }
 
    if (member.id === message.author.id) {

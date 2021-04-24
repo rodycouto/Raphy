@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
-            .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
+            .setDescription(`Liberdade em: ${time.minutes}m e ${time.seconds}s`)
 
         return message.inlineReply(presomax)
     } else {
@@ -100,7 +100,7 @@ exports.run = async (client, message, args) => {
 
             if (money === null) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro para comprar este item.`) }
             if (!args[1]) { return message.inlineReply('Quantos tickets você quer comprar? `' + prefix + 'buy tickets quantidade`') }
-            if (isNaN(!args[1])) { return message.inlineReply(`${args[1]} não é um número.`) }
+            if (isNaN(args[1])) { return message.inlineReply(`${args[1]} não é um número.`) }
             if (money < 0) { return message.inlineReply(`❌ ${message.author}, você está com divida.`) }
             if (money === 0) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro.`) }
             if (money < args[1] * 10) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
@@ -148,6 +148,7 @@ exports.run = async (client, message, args) => {
 
             if (money === null) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro para comprar este item.`) }
             if (!args[1]) { return message.inlineReply('Quantas águas você quer comprar? `' + prefix + 'buy águas quantidade`') }
+            if (isNaN(args[1])) { return message.inlineReply('`' + prefix + 'buy águas quantidade`') }
             if (money === 0) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro.`) }
             if (money < 0) { return message.inlineReply(`❌ ${message.author}, você está com divida.`) }
             if (money < args[1]) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
@@ -232,6 +233,7 @@ exports.run = async (client, message, args) => {
 
             if (money === null) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro para comprar este item.`) }
             if (!args[1]) { return message.inlineReply('Quantas iscas você quer comprar? `' + prefix + 'buy iscas quantidade`') }
+            if (isNaN(args[1])) { return message.inlineReply(args[1] + ', não é um número, ok?`' + prefix + 'buy iscas quantidade`') }
             if (money < args[1]) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro suficiente para comprar este item.`) }
             if (money === 0) { return message.inlineReply(`❌ ${message.author}, você não tem dinheiro.`) }
             if (money < 0) { return message.inlineReply(`❌ ${message.author}, você está com divida.`) }
@@ -287,12 +289,117 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(buycarta)
         }
 
-        if (['Estrelas', 'Estrela', 'Star', 'estrela', 'stars', 'estrelas'].includes(args[0])) {
+        if (['Escudo', 'escudo', 'shield'].includes(args[0])) {
             return message.inlineReply('Este item ainda não está a venda.')
         }
 
-        if (['Escudo', 'escudo', 'shield'].includes(args[0])) {
-            return message.inlineReply('Este item ainda não está a venda.')
+        if (['estrela1', 'Estrela1'].includes(args[0].toLowerCase())) {
+
+            if (db.get(`estrela1_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
+            if (money < 500000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+
+            if (money = 500000 || money > 500000) {
+                db.subtract(`mpoints_${message.author.id}`, 500000)
+                db.add(`banco_${client.user.id}`, 500000)
+                db.set(`estrela1_${message.author.id}`, "ON")
+
+                var buyStar1 = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle('✅ Compra aprovada')
+                    .setDescription(`${message.author}, você comprou <:starM:832974891635572787>` + '`Estrela 1`')
+                return message.inlineReply(buyStar1)
+            }
+        }
+
+        if (['estrela2', 'Estrela2'].includes(args[0].toLowerCase())) {
+
+            if (!db.get(`estrela1_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 1 para comprar a Estrela 2.`) }
+            if (db.get(`estrela2_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
+            if (money < 1000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+
+            if (money = 1000000 || money > 1000000) {
+                db.subtract(`mpoints_${message.author.id}`, 1000000)
+                db.add(`banco_${client.user.id}`, 1000000)
+                db.set(`estrela2_${message.author.id}`, "ON")
+
+                var buyStar1 = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle('✅ Compra aprovada')
+                    .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 2`')
+                return message.inlineReply(buyStar1)
+            }
+        }
+
+        if (['estrela3', 'Estrela3'].includes(args[0].toLowerCase())) {
+
+            if (!db.get(`estrela2_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 2 para comprar a Estrela 3.`) }
+            if (db.get(`estrela3_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
+            if (money < 2000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+
+            if (money = 2000000 || money > 2000000) {
+                db.subtract(`mpoints_${message.author.id}`, 2000000)
+                db.add(`banco_${client.user.id}`, 2000000)
+                db.set(`estrela3_${message.author.id}`, "ON")
+
+                var buyStar1 = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle('✅ Compra aprovada')
+                    .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 3`')
+                return message.inlineReply(buyStar1)
+            }
+        }
+
+        if (['estrela4', 'Estrela4'].includes(args[0].toLowerCase())) {
+
+            if (!db.get(`estrela3_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 3 para comprar a Estrela 4.`) }
+            if (db.get(`estrela4_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
+            if (money < 4000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+
+            if (money = 4000000 || money > 4000000) {
+                db.subtract(`mpoints_${message.author.id}`, 4000000)
+                db.add(`banco_${client.user.id}`, 4000000)
+                db.set(`estrela4_${message.author.id}`, "ON")
+
+                var buyStar1 = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle('✅ Compra aprovada')
+                    .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 4`')
+                return message.inlineReply(buyStar1)
+            }
+        }
+
+        if (['estrela5', 'Estrela5'].includes(args[0].toLowerCase())) {
+
+            if (!db.get(`estrela4_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 4 para comprar a Estrela 5.`) }
+            if (db.get(`estrela5_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
+            if (money < 10000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+
+            if (money = 10000000 || money > 10000000) {
+                db.subtract(`mpoints_${message.author.id}`, 10000000)
+                db.add(`banco_${client.user.id}`, 10000000)
+                db.set(`estrela5_${message.author.id}`, "ON")
+
+                var buyStar1 = new Discord.MessageEmbed()
+                    .setColor('GREEN')
+                    .setTitle('✅ Compra aprovada')
+                    .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 5`')
+                return message.inlineReply(buyStar1)
+            }
         } else {
             return message.inlineReply(`Eu não achei nenhum item com o nome **${args.join(" ")}** na minha loja, tente digitar um único nome, tipo "vara" ou "água".`)
         }
