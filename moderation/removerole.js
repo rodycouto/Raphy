@@ -3,8 +3,8 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission("MANAGE_ROLES")) { return message.inlineReply(':x: Permissão Necessária: Manusear Roles (cargos)') }
-    if (!message.guild.me.hasPermission("MANAGE_ROLES")) { return message.inlineReply(':x: Eu preciso da permissão "Manusear Cargos" para utilizar esta função.') }
+    if (!message.member.hasPermission("MANAGE_ROLES")) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Manusear Roles (cargos)') }
+    if (!message.guild.me.hasPermission("MANAGE_ROLES")) { return message.inlineReply('<:xis:835943511932665926> Eu preciso da permissão "Manusear Cargos" para utilizar esta função.') }
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 
     if (!user) { return message.inlineReply('`' + prefix + 'removerole @user @cargo`') }
     if (!role) { return message.inlineReply('`' + prefix + 'removerole @user @cargo`') }
-    if (!user.roles.cache.has(role.id)) { return message.inlineReply(`:x: ${user.user.username} não possui este cargo.`) }
+    if (!user.roles.cache.has(role.id)) { return message.inlineReply(`<:xis:835943511932665926> ${user.user.username} não possui este cargo.`) }
 
     if (!role.editable) {
         var soberol = new Discord.MessageEmbed()
@@ -37,7 +37,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(sobcarg).then(msg => msg.delete({ timeout: 5800 }))
     }
 
-    user.roles.remove(role).catch(err => { if (err) { return message.inlineReply(`:x: Não tenho poder suficiente para adicionar o cargo ${role}`) } })
+    user.roles.remove(role).catch(err => { if (err) { return message.inlineReply(`<:xis:835943511932665926> Não tenho poder suficiente para adicionar o cargo ${role}`) } })
 
     var sucess = new Discord.MessageEmbed()
         .setColor('GREEN')

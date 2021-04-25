@@ -31,7 +31,6 @@ exports.run = async (client, message, args) => {
     if (fichas === null) { fichas = "0" }
     if (!db.get(`fichas_${user.id}`)) { fichas = "0" }
 
-
     let camarao = await db.get(`camarao_${user.id}`)
     if (camarao === null) { camarao = "0" }
     if (!db.get(`camarao_${user.id}`)) { camarao = "0" }

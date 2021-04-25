@@ -7,17 +7,17 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
-    let timeout1 = 6140000
+    let timeout1 = 9140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
-
+  
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
-
+  
         var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
-            .setDescription('`Liberdade em: ' + `${time.minutes}` + 'm e ' + `${time.seconds}` + 's`')
-
+            .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
+  
         return message.inlineReply(presomax)
     } else {
 
@@ -48,13 +48,13 @@ exports.run = async (client, message, args) => {
                 .setFooter('A Maya não se responsabiliza por dinheiro perdido.')
 
             if (['all', 'tudo', 'ALL', 'All', 'Tudo', 'TUDO'].includes(args[0])) {
-                if (args[1]) { return message.inlineReply(':x: Nada além do "all", coisas a mais atrapalha meu processamento.') }
-                if (fichas === null) { return message.inlineReply(':x: Você não tem fichas para jogar.') }
-                if (fichas === 0) { return message.inlineReply(':x: Você não tem fichas para jogar.') }
-                if (fichas < 0) { return message.inlineReply(':x: Você não tem fichas para jogar.') }
+                if (args[1]) { return message.inlineReply('<:xis:835943511932665926> Nada além do "all", coisas a mais atrapalha meu processamento.') }
+                if (fichas === null) { return message.inlineReply('<:xis:835943511932665926> Você não tem fichas para jogar.') }
+                if (fichas === 0) { return message.inlineReply('<:xis:835943511932665926> Você não tem fichas para jogar.') }
+                if (fichas < 0) { return message.inlineReply('<:xis:835943511932665926> Você não tem fichas para jogar.') }
                 if (money === null) { money = '0' }
-                if (money === '0') { return message.inlineReply(':x: Você não tem dinheiro para jogar.') }
-                if (money < '0') { return message.inlineReply(':x: Você quer jogar na roleta estando negativado?.') }
+                if (money === '0') { return message.inlineReply('<:xis:835943511932665926> Você não tem dinheiro para jogar.') }
+                if (money < '0') { return message.inlineReply('<:xis:835943511932665926> Você quer jogar na roleta estando negativado?.') }
 
                 db.set(`roletatimeout_${message.author.id}`, Date.now())
                 db.subtract(`fichas_${message.author.id}`, 1)
@@ -118,13 +118,13 @@ exports.run = async (client, message, args) => {
 
             if (!args[0]) { return message.inlineReply(roletaembed) }
             if (['help', 'ajuda'].includes(args[0])) { return message.inlineReply(roletaembed) }
-            if (fichas === null) { return message.inlineReply(':x: Você não tem fichas para jogar.') }
-            if (fichas === 0) { return message.inlineReply(':x: Você não tem fichas para jogar.') }
-            if (fichas < 0) { return message.inlineReply(':x: Você não tem fichas para jogar.') }
-            if (isNaN(args[0])) { return message.inlineReply(`:x:  **${args.join(" ")}** não é um número.\n${formato}`) }
+            if (fichas === null) { return message.inlineReply('<:xis:835943511932665926> Você não tem fichas para jogar.') }
+            if (fichas === 0) { return message.inlineReply('<:xis:835943511932665926> Você não tem fichas para jogar.') }
+            if (fichas < 0) { return message.inlineReply('<:xis:835943511932665926> Você não tem fichas para jogar.') }
+            if (isNaN(args[0])) { return message.inlineReply(`<:xis:835943511932665926>  **${args.join(" ")}** não é um número.\n${formato}`) }
             if (money === null) { money = '0' }
-            if (money === '0') { return message.inlineReply(':x: Você não tem dinheiro para jogar.') }
-            if (money < valor) { return message.inlineReply(':x: Você não possui todo esse dinheiro na carteira.') }
+            if (money === '0') { return message.inlineReply('<:xis:835943511932665926> Você não tem dinheiro para jogar.') }
+            if (money < valor) { return message.inlineReply('<:xis:835943511932665926> Você não possui todo esse dinheiro na carteira.') }
             if (valor < '0' || valor === '0') { return message.inlineReply('❓ Informe uma quantia maior que 0.') }
             if (args[1]) { return message.inlineReply(formato) }
 

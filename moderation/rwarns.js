@@ -8,10 +8,10 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    if (!args[0]) { return message.inlineReply('`' + prefix + 'resetwarns @user`') }
+    if (!args[0]) { return message.inlineReply('`' + prefix + 'rwarns @user`') }
 
     let user = message.mentions.members.first()
-    if (!user) { return message.inlineReply('`' + prefix + 'resetwarns @user`') }
+    if (!user) { return message.inlineReply('`' + prefix + 'rwarns @user`') }
 
     let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
     if (warnings === null) { return message.inlineReply(`<:xis:835943511932665926> ${user.user.username} não tem nenhum warn.`) }

@@ -20,12 +20,11 @@ exports.run = async (client, message, args) => {
     .setColor('BLUE')
     .setDescription(`${texto}`)
     .setImage(rand)
-    .setFooter('Auto delete em 1 minuto.')
 
   await message.inlineReply(embed).then(msg => {
     msg.react('🔄').catch(err => { return }) // 1º Embed
     msg.react('❌').catch(err => { return })
-    msg.delete({ timeout: 60000 }).catch(err => { return })
+    setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 30000)
 
     msg.awaitReactions((reaction, user) => {
       if (message.author.id !== user.id) return;
@@ -37,7 +36,6 @@ exports.run = async (client, message, args) => {
           .setColor('BLUE')
           .setDescription(`${texto}`)
           .setImage(list[Math.floor(Math.random() * list.length)])
-          .setFooter('Auto delete em 1 minuto.')
         msg.edit(embed)
       }
       if (reaction.emoji.name === '❌') {

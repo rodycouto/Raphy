@@ -3,8 +3,8 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission("BAN_MEMBERS")) { return message.inlineReply(':x: Permissão Necessária: Banir Membros') }
-    if (!message.guild.me.hasPermission("BAN_MEMBERS")) { return message.inlineReply(':x: Eu preciso da permissão: "Banir Membros" para executar este comando.') }
+    if (!message.member.hasPermission("BAN_MEMBERS")) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Banir Membros') }
+    if (!message.guild.me.hasPermission("BAN_MEMBERS")) { return message.inlineReply('<:xis:835943511932665926> Eu preciso da permissão: "Banir Membros" para executar este comando.') }
 
     message.guild.fetchBans().then(banned => {
         let list = banned.map(user => user.tag).join('\n')

@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
     if (usermoney == null) usermoney = 0
     if (autormoney == null) autormoney = 0
 
-    let timeout1 = 6140000
+    let timeout1 = 9140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
         var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
-            .setDescription(`Liberdade em: ${time.minutes}m e ${time.seconds}s`)
+            .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
         return message.inlineReply(presomax)
     } else {
@@ -49,9 +49,9 @@ exports.run = async (client, message, args) => {
 
                 if (!user) { return message.inlineReply(formato) }
                 if (user.id === '821471191578574888') { return message.inlineReply('❓ Você realmente quer me roubar?') }
-                if (user.id === message.author.id) { return message.inlineReply(`:x: Você não pode roubar você mesmo.`) }
-                if (usermoney === 0) { return message.inlineReply(`:x: ${user.user.username} não possui dinheiro.`) }
-                if (usermoney < 0) { return message.inlineReply(`:x: ${user.user.username} está negativado.`) }
+                if (user.id === message.author.id) { return message.inlineReply(`<:xis:835943511932665926> Você não pode roubar você mesmo.`) }
+                if (usermoney === 0) { return message.inlineReply(`<:xis:835943511932665926> ${user.user.username} não possui dinheiro.`) }
+                if (usermoney < 0) { return message.inlineReply(`<:xis:835943511932665926> ${user.user.username} está negativado.`) }
 
                 var luck = ['win', 'lose']
                 var result = luck[Math.floor(Math.random() * luck.length)]

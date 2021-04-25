@@ -9,10 +9,10 @@ exports.run = async (client, message, args) => {
     let user = message.mentions.members.first()
     let role = message.mentions.roles.first()
 
-    if (!message.member.hasPermission("MANAGE_ROLES")) { return message.inlineReply(':x: Permissão Necessária: Manusear Roles (cargos)') }
+    if (!message.member.hasPermission("MANAGE_ROLES")) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Manusear Roles (cargos)') }
     if (!message.guild.me.hasPermission("MANAGE_ROLES")) { return message.inlineReply('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.') }
     if (!user) { return message.inlineReply(('`' + prefix + 'addrole @user @cargo`')) }
-    if (message.author.id === user.id) { return message.inlineReply(":x: Você não pode adicionar cargos para você mesmo.") }
+    if (message.author.id === user.id) { return message.inlineReply("<:xis:835943511932665926> Você não pode adicionar cargos para você mesmo.") }
     if (!role) { return message.inlineReply(('`' + prefix + 'addrole @user @cargo`')) }
     if (user.roles.cache.has(role.id)) { return message.inlineReply(`${user.user.username} já possui este cargo.`) }
 
@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
         .setColor('GREEN')
         .setDescription(`${user.user.username} recebeu o cargo ${role} com sucesso!`)
 
-    user.roles.add(role).catch(err => { if (err) { return message.inlineReply(`:x: Não tenho poder suficiente para adicionar o cargo ${role}`) } })
+    user.roles.add(role).catch(err => { if (err) { return message.inlineReply(`<:xis:835943511932665926> Não tenho poder suficiente para adicionar o cargo ${role}`) } })
 
     return message.channel.send(sucess)
 }

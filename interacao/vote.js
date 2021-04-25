@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     var content = args.join(' ')
 
-    if (content.length > 600) { return message.inlineReply(':x: O conteúdo a ser votado não pode passar de **600 caracteres.**') }
+    if (content.length > 600) { return message.inlineReply('<:xis:835943511932665926> O conteúdo a ser votado não pode passar de **600 caracteres.**') }
 
     var embed = new Discord.MessageEmbed()
         .setColor('BLUE')

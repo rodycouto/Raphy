@@ -26,8 +26,8 @@ exports.run = async (client, message, args) => {
       .setTitle('Parece que ocorreu um erro no meu sistema de busca')
       .setDescription('`Nenhuma cidade/estado foi encontrado`')
 
-    if (!city) { return message.inlineReply(':x: Formato incorreto! | `' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`') }
-    if (err || result === undefined || result.length === 0) { return message.inlineReply(':x: Nenhuma cidade/estado foi encontrado, verifique a ortografia.') }
+    if (!city) { return message.inlineReply('<:xis:835943511932665926> Formato incorreto! | `' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`') }
+    if (err || result === undefined || result.length === 0) { return message.inlineReply('<:xis:835943511932665926> Nenhuma cidade/estado foi encontrado, verifique a ortografia.') }
 
     let current = result[0].current
     let location = result[0].location

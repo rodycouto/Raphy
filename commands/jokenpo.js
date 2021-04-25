@@ -19,9 +19,9 @@ exports.run = async (client, message, args) => {
 
     if (!args[0]) { return message.inlineReply(noargs) }
     if (money === null) money = 0
-    if (!money) { return message.inlineReply(':x: Você precisa ter pelo menos 10<:StarPoint:766794021128765469>MPoints na carteira') }
-    if (money < 10) { return message.inlineReply(':x: Você precisa ter pelo menos 10<:StarPoint:766794021128765469>MPoints na carteira') }
-    if (!Options.includes(args[0])) { return message.inlineReply(':x: Opção Incorreta!\n`' + prefix + 'j <pedra> <papel> <tesoura>`') }
+    if (!money) { return message.inlineReply('<:xis:835943511932665926> Você precisa ter pelo menos 10<:StarPoint:766794021128765469>MPoints na carteira') }
+    if (money < 10) { return message.inlineReply('<:xis:835943511932665926> Você precisa ter pelo menos 10<:StarPoint:766794021128765469>MPoints na carteira') }
+    if (!Options.includes(args[0])) { return message.inlineReply('<:xis:835943511932665926> Opção Incorreta!\n`' + prefix + 'j <pedra> <papel> <tesoura>`') }
 
     if (['pedra', 'rock'].includes(args[0])) {
 

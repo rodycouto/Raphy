@@ -19,6 +19,16 @@ client.on("message", async (message) => {
     if (message.author.bot) return // no bots
     if (message.channel.type == "dm") {
 
+        if (message.content.toLowerCase() === "desativar avisos de level up") {
+            db.set(`semavisos_${message.author.id}`, "ON")
+            return message.author.send('<a:loading:834782920287846430> Desativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você não receberá mais mensagens de level up! ~~ Se quiser recebe-las novamente, diga "Ativar avisos de level up"'))
+        }
+
+        if (message.content.toLowerCase() === "ativar avisos de level up") {
+            db.delete(`semavisos_${message.author.id}`)
+            return message.author.send('<a:loading:834782920287846430> Ativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você ativou as mensagens de level up! ~~ Se quiser desativa-las novamente, diga "Desativar avisos de level up"'))
+        }
+
         var dmEmbed = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('💬 Nova mensagem no privado')
@@ -95,7 +105,8 @@ client.on("message", async (message) => {
                 var newlevel1 = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel} no ranking global! Bônus: 500 <:StarPoint:766794021128765469>MPoints`)
-                message.author.send(newlevel1).catch(err => { return })
+                    .setFooter('Para desativar estas mensagens, diga "Desativar avisos de level up"')
+                if (!db.get(`semavisos_${message.author.id}`)) { message.author.send(newlevel1).catch(err => { return }) }
                 let xpchannel = db.get(`xpchannel_${message.guild.id}`)
                 if (xpchannel === null) { return }
                 if (xpchannel) {
@@ -111,7 +122,7 @@ client.on("message", async (message) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         if (db.get(`blockchannel_${message.channel.id}`)) {
             message.delete().catch(err => { return })
-            return message.channel.send(':x: **COMANDOS BLOQUEADOS** | Apenas administradores podem usar meus comandos neste canal.').then(msg => msg.delete({ timeout: 4000 })).catch(err => { return })
+            return message.channel.send('<:xis:835943511932665926> **COMANDOS BLOQUEADOS** | Apenas administradores podem usar meus comandos neste canal.').then(msg => msg.delete({ timeout: 4000 })).catch(err => { return })
         }
     }
 

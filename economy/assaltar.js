@@ -27,15 +27,16 @@ exports.run = async (client, message, args) => {
     if (usermoney == null) usermoney = 0
     if (autormoney == null) autormoney = 0
 
-    let timeout1 = 6140000
+    let timeout1 = 9140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
+
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
 
         var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
-            .setDescription(`Liberdade em: ${time.minutes}m e ${time.seconds}s`)
+            .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
         return message.inlineReply(presomax)
     } else {
@@ -56,13 +57,13 @@ exports.run = async (client, message, args) => {
                 return message.inlineReply(`🚨 A policía está em sua busca, tente novamente em ${time.minutes}m e ${time.seconds}s.`)
             } else {
 
-                if (arma === null) { return message.inlineReply(`:x: ${message.author}, é necessário que você tenha uma **🔫 Arma** para utilizar este comando.`) }
-                if (!db.get(`arma_${message.author.id}`)) { return message.inlineReply(`:x: ${message.author}, é necessário que você tenha uma **🔫 Arma** para utilizar este comando.`) }
+                if (arma === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, é necessário que você tenha uma **🔫 Arma** para utilizar este comando.`) }
+                if (!db.get(`arma_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, é necessário que você tenha uma **🔫 Arma** para utilizar este comando.`) }
                 if (args[1]) { return message.inlineReply(formato) }
-                if (user.id == '821471191578574888') { return message.inlineReply(':x: Você não pode me assaltar, que coisa feia!') }
-                if (user.id == message.author.id) { return message.inlineReply(`:x: Você não pode assaltar você mesmo.`) }
-                if (usermoney === 0) { return message.inlineReply(`:x: ${user} não possui dinheiro algúm.`) }
-                if (usermoney < 0) { return message.inlineReply(`:x: ${user} está individado, tenha coração!`) }
+                if (user.id == '821471191578574888') { return message.inlineReply('<:xis:835943511932665926> Você não pode me assaltar, que coisa feia!') }
+                if (user.id == message.author.id) { return message.inlineReply(`<:xis:835943511932665926> Você não pode assaltar você mesmo.`) }
+                if (usermoney === 0) { return message.inlineReply(`<:xis:835943511932665926> ${user} não possui dinheiro algúm.`) }
+                if (usermoney < 0) { return message.inlineReply(`<:xis:835943511932665926> ${user} está individado, tenha coração!`) }
 
                 if (gunuser) {
 

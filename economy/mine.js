@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(`Espere mais ${time.seconds}s`)
     } else {
 
-        let timeout1 = 6140000
+        let timeout1 = 9140000
         let author1 = await db.fetch(`pego_${message.author.id}`)
 
         if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
@@ -22,10 +22,11 @@ exports.run = async (client, message, args) => {
             var presomax = new Discord.MessageEmbed()
                 .setColor('#FF0000')
                 .setTitle('🚨 Você está em prisão máxima!')
-                .setDescription(`Liberdade em: ${time.minutes}m e ${time.seconds}s`)
+                .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
             return message.inlineReply(presomax)
         } else {
+            
             let prefix = db.get(`prefix_${message.guild.id}`)
             if (prefix === null) { prefix = "-" }
 
@@ -227,7 +228,7 @@ exports.run = async (client, message, args) => {
                         .setDescription(`Com a mineração, você obteve 🪨 ${minerios} minerios.`)
                     return message.inlineReply(pescaembed)
                 }
-            } else { return message.inlineReply(`:x: ${message.author}, você não tem águas suficiente.`) }
+            } else { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem águas suficiente.`) }
         }
     }
 }

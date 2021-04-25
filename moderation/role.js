@@ -3,7 +3,7 @@ const db = require("quick.db")
 
 exports.run = async (client, message, args) => {
 
-  if (!message.member.hasPermission("ADMINISTRATOR")) { return message.channel.send(`:x: Permissão Requerida: Administrador`) }
+  if (!message.member.hasPermission("ADMINISTRATOR")) { return message.channel.send(`<:xis:835943511932665926> Permissão Requerida: Administrador`) }
   if (!message.guild.me.hasPermission("MANAGE_ROLES")) { return message.inlineReply('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.') }
 
   let prefix = db.get(`prefix_${message.guild.id}`)
@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     .addField('Delete um cargo', '`' + prefix + 'role delete Nome do Cargo`')
     .addField('Veja informações', '`' + prefix + 'role info @cargo`')
 
-  var formato = ':x: Siga o formato correto! `' + prefix + 'role create/delete Nome Do Cargo`'
+  var formato = '<:xis:835943511932665926> Siga o formato correto! `' + prefix + 'role create/delete Nome Do Cargo`'
 
   if (!args[0]) { return message.inlineReply(embed) }
 
@@ -25,11 +25,12 @@ exports.run = async (client, message, args) => {
 
   if (['info', 'informações'].includes(args[0])) {
 
+    return message.inlineReply('Sessão em reforma.')
+    
     const roleName = message.guild.roles.cache.find(r => (r.name === args.toString()) || (r.id === args.toString())) || `<@&${role.id}>`
     const perms = new Discord.Permissions(roleName.permissions.bitfield).toArray()
     let NumMembersRole = message.guild.roles.cache.get(role.id).members
 
-    return message.inlineReply('Sessão em reforma.')
     if (!roleName) {return message.inlineReply('`' + prefix + 'role info @role`')}
 
     const embed = new Discord.MessageEmbed()
@@ -86,7 +87,7 @@ exports.run = async (client, message, args) => {
 
         if (reaction.emoji.name === '❌') { // Não
           msg.delete().catch(err => { return })
-          return message.inlineReply(':x: Comando cancelado.')
+          return message.inlineReply('<:xis:835943511932665926> Comando cancelado.')
         }
       })
     })
@@ -138,7 +139,7 @@ exports.run = async (client, message, args) => {
 
         if (reaction.emoji.name === '❌') { // Não
           msg.delete().catch(err => { return })
-          return message.inlineReply(':x: Comando cancelado.')
+          return message.inlineReply('<:xis:835943511932665926> Comando cancelado.')
         }
       })
     })

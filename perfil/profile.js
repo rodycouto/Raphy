@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
     if (status === null) status = `${user.user.username} não conhece o comando ${prefix}setstatus.`
 
     let signo = await `⠀\n${db.get(`signo_${user.id}`)}`
-    if (signo === `⠀\nnull`) { signo = "⠀\n:x: Sem signo definido" }
+    if (signo === `⠀\nnull`) { signo = "⠀\n<:xis:835943511932665926> Sem signo definido" }
 
     let niver = await `⠀\n🎉 ${db.get(`aniversario_${user.id}`)}`
     if (niver === `⠀\n🎉 null`) { niver = "⠀\n:tada: Sem aniversário definido" }

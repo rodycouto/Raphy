@@ -33,8 +33,8 @@ exports.run = async (client, message, args) => {
 		return message.inlineReply(block)
 	}
 
-	if (db.get(`marry_${message.author.id}`)) { return message.inlineReply(":x: Você já está em um relacionamento sério, o que você quer por aqui?") }
-	if (db.get(`marry_${member.id}`)) { return message.inlineReply(`:x: ${member} está em um relacionamento.`) }
+	if (db.get(`marry_${message.author.id}`)) { return message.inlineReply("<:xis:835943511932665926> Você já está em um relacionamento sério, o que você quer por aqui?") }
+	if (db.get(`marry_${member.id}`)) { return message.inlineReply(`<:xis:835943511932665926> ${member} está em um relacionamento.`) }
 	if (!member) { return message.inlineReply(':question: Por favor mencione alguém para se casar.') }
 	if (member.id === '821471191578574888') { return message.inlineReply('É... Não sei se meu pai me deixaria casar contigo. Acho melhor a gente ser apenas amigos. :)') }
 

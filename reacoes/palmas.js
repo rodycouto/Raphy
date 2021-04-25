@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
     await message.inlineReply(embed).then(msg => {
       msg.react('🔄').catch(err => { return }) // 1º Embed
       msg.react('❌').catch(err => { return })
-      msg.delete({ timeout: 60000 }).catch(err => { return })
+      setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 30000)
   
       msg.awaitReactions((reaction, user) => {
         if (message.author.id !== user.id) return;

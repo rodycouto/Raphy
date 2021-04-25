@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
-    let timeout1 = 6140000
+    let timeout1 = 9140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
 
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         var presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
-            .setDescription(`Liberdade em: ${time.minutes}m e ${time.seconds}s`)
+            .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
         return message.inlineReply(presomax)
     } else {
@@ -295,11 +295,11 @@ exports.run = async (client, message, args) => {
 
         if (['estrela1', 'Estrela1'].includes(args[0].toLowerCase())) {
 
-            if (db.get(`estrela1_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
-            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
-            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
-            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
-            if (money < 500000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+            if (db.get(`estrela1_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você está com divida.`) }
+            if (money < 500000) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
 
             if (money = 500000 || money > 500000) {
                 db.subtract(`mpoints_${message.author.id}`, 500000)
@@ -316,12 +316,12 @@ exports.run = async (client, message, args) => {
 
         if (['estrela2', 'Estrela2'].includes(args[0].toLowerCase())) {
 
-            if (!db.get(`estrela1_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 1 para comprar a Estrela 2.`) }
-            if (db.get(`estrela2_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
-            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
-            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
-            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
-            if (money < 1000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+            if (!db.get(`estrela1_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você precisa da Estrela 1 para comprar a Estrela 2.`) }
+            if (db.get(`estrela2_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você está com divida.`) }
+            if (money < 1000000) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
 
             if (money = 1000000 || money > 1000000) {
                 db.subtract(`mpoints_${message.author.id}`, 1000000)
@@ -334,16 +334,16 @@ exports.run = async (client, message, args) => {
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 2`')
                 return message.inlineReply(buyStar1)
             }
-        } 
+        }
 
         if (['estrela3', 'Estrela3'].includes(args[0].toLowerCase())) {
 
-            if (!db.get(`estrela2_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 2 para comprar a Estrela 3.`) }
-            if (db.get(`estrela3_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
-            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
-            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
-            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
-            if (money < 2000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+            if (!db.get(`estrela2_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você precisa da Estrela 2 para comprar a Estrela 3.`) }
+            if (db.get(`estrela3_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você está com divida.`) }
+            if (money < 2000000) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
 
             if (money = 2000000 || money > 2000000) {
                 db.subtract(`mpoints_${message.author.id}`, 2000000)
@@ -356,16 +356,16 @@ exports.run = async (client, message, args) => {
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 3`')
                 return message.inlineReply(buyStar1)
             }
-        } 
+        }
 
         if (['estrela4', 'Estrela4'].includes(args[0].toLowerCase())) {
 
-            if (!db.get(`estrela3_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 3 para comprar a Estrela 4.`) }
-            if (db.get(`estrela4_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
-            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
-            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
-            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
-            if (money < 4000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+            if (!db.get(`estrela3_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você precisa da Estrela 3 para comprar a Estrela 4.`) }
+            if (db.get(`estrela4_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você está com divida.`) }
+            if (money < 4000000) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
 
             if (money = 4000000 || money > 4000000) {
                 db.subtract(`mpoints_${message.author.id}`, 4000000)
@@ -378,16 +378,16 @@ exports.run = async (client, message, args) => {
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 4`')
                 return message.inlineReply(buyStar1)
             }
-        } 
+        }
 
         if (['estrela5', 'Estrela5'].includes(args[0].toLowerCase())) {
 
-            if (!db.get(`estrela4_${message.author.id}`)) { return message.inlineReply(`:x: Você precisa da Estrela 4 para comprar a Estrela 5.`) }
-            if (db.get(`estrela5_${message.author.id}`)) { return message.inlineReply(`:x: Você já possui este item.`) }
-            if (money === null) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro para comprar este item.`) }
-            if (money === 0) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro.`) }
-            if (money < 0) { return message.inlineReply(`:x: ${message.author}, você está com divida.`) }
-            if (money < 10000000) { return message.inlineReply(`:x: ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
+            if (!db.get(`estrela4_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você precisa da Estrela 4 para comprar a Estrela 5.`) }
+            if (db.get(`estrela5_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> Você já possui este item.`) }
+            if (money === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro para comprar este item.`) }
+            if (money === 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro.`) }
+            if (money < 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você está com divida.`) }
+            if (money < 10000000) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem dinheiro suficiente para comprar esta permissão.`) }
 
             if (money = 10000000 || money > 10000000) {
                 db.subtract(`mpoints_${message.author.id}`, 10000000)

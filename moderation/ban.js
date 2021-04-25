@@ -3,12 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-  if (!message.member.hasPermission('BAN_MEMBERS')) {
-    var permss = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Permissão Necessária: Banir Membros')
-    return message.inlineReply(permss)
-  }
+  if (!message.member.hasPermission('BAN_MEMBERS')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Banir Membros') }
 
   if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
     var adm = new Discord.MessageEmbed()
