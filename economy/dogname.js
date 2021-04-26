@@ -19,7 +19,8 @@ exports.run = async (client, message, args) => {
 
     if (!args[0]) { return message.inlineReply(args0) }
     if (args[1]) { return message.inlineReply('<:xis:835943511932665926> O nome tem que ser único. Nada de dois nomes ou mais.') }
-    if (args[0].length > 12) { return message.inlineReply('<:xis:835943511932665926> O nome do seu cachorrinho/a não ter mais de 12 caracteres.') }
+    if (!isNaN(args[0].content)) { return message.inlineReply('<:xis:835943511932665926> O nome do seu cachorrinho/a não pode ter números no nome.') }
+    if (args[0].length > 12) { return message.inlineReply('<:xis:835943511932665926> O nome do seu cachorrinho/a não pode ter mais de 12 caracteres.') }
     if (args[0].length < 3) { return message.inlineReply('<:xis:835943511932665926> O nome do seu cachorrinho/a não pode menos de 3 caracteres.') }
 
     const confirm = new Discord.MessageEmbed()
@@ -40,7 +41,7 @@ exports.run = async (client, message, args) => {
             if (reaction.emoji.name === '✅') { // Sim
                 msg.delete().catch(err => { return })
                 db.set(`dogname_${message.author.id}`, args[0])
-                return message.inlineReply('<a:loading:834782920287846430> Validando nome no banco de dados').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })).then(msg => msg.channel.send(`✅ ${message.author}, o nome do seu cachorro/a agora é **${args[0]}**`))
+                return message.inlineReply('<a:carregando:835294939096940575> Validando nome no banco de dados').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })).then(msg => msg.channel.send(`✅ ${message.author}, o nome do seu cachorro/a agora é **${args[0]}**`))
             }
 
             if (reaction.emoji.name === '❌') { // Não
