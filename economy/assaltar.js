@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
 
                     var assaltando = new Discord.MessageEmbed()
                         .setColor('BLUE')
-                        .setDescription(`<a:loading:834782920287846430> ${message.author} está assaltando ${user}`)
+                        .setDescription(`<a:carregando:835294939096940575> ${message.author} está assaltando ${user}`)
 
                     var LoseEmbed = new Discord.MessageEmbed()
                         .setColor('#FF0000')

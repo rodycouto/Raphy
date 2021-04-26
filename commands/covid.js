@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
                     value: '`' + prefix + 'covid BR/AR/USA/FR...`'
                 }
             )
-        return message.inlineReply('<a:loading:834782920287846430> Loading...').then(msg => msg.delete({ timeout: 4000 })).then(msg => message.inlineReply(noerl))
+        return message.inlineReply('<a:carregando:835294939096940575> Loading...').then(msg => msg.delete({ timeout: 4000 })).then(msg => message.inlineReply(noerl))
     }
 
     var embed = new Discord.MessageEmbed()

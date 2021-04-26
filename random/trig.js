@@ -7,5 +7,5 @@ exports.run = async (client, message, args) => {
     let avatar = user.displayAvatarURL({ dynamic: false, format: 'png' })
     let image = await canvacord.Canvas.trigger(avatar)
     let attachment = new Discord.MessageAttachment(image, "triggered.gif")
-    message.inlineReply("<a:loading:834782920287846430> Carregando...").then(m => m.delete({ timeout: 5000 })).then(msg => message.inlineReply(attachment))
+    message.inlineReply("<a:carregando:835294939096940575> Carregando...").then(m => m.delete({ timeout: 5000 })).then(msg => message.inlineReply(attachment))
 }

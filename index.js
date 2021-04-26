@@ -22,13 +22,13 @@ client.on("message", async (message) => {
         if (message.content.toLowerCase() === "desativar avisos de level up") {
             if (db.get(`semavisos_${message.author.id}`)) { return message.author.send('O sistema de mensagens de level up no privado já esta desativado.') }
             db.set(`semavisos_${message.author.id}`, "ON")
-            return message.author.send('<a:loading:834782920287846430> Desativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você não receberá mais mensagens de level up! ~~ Se quiser recebe-las novamente, diga "Ativar avisos de level up"'))
+            return message.author.send('<a:carregando:835294939096940575> Desativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você não receberá mais mensagens de level up! ~~ Se quiser recebe-las novamente, diga "Ativar avisos de level up"'))
         }
 
         if (message.content.toLowerCase() === "ativar avisos de level up") {
             if (!db.get(`semavisos_${message.author.id}`)) { return message.author.send('O sistema de mensagens de level up no privado já esta ativado.') }
             db.delete(`semavisos_${message.author.id}`)
-            return message.author.send('<a:loading:834782920287846430> Ativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você ativou as mensagens de level up! ~~ Se quiser desativa-las novamente, diga "Desativar avisos de level up"'))
+            return message.author.send('<a:carregando:835294939096940575> Ativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você ativou as mensagens de level up! ~~ Se quiser desativa-las novamente, diga "Desativar avisos de level up"'))
         }
 
         var dmEmbed = new Discord.MessageEmbed()

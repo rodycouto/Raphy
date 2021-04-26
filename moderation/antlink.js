@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
                         .setColor('GREEN')
                         .setTitle('Sistema Ant-Link ativado com sucesso!')
                     setTimeout(function () { message.channel.send(ok) }, 3700)
-                    return message.inlineReply('<a:loading:834782920287846430> Ativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
+                    return message.inlineReply('<a:carregando:835294939096940575> Ativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
                 }
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })
@@ -65,7 +65,7 @@ exports.run = async (client, message, args) => {
                         .setColor('GREEN')
                         .setTitle('Sistema Ant-Link desativado com sucesso!')
                     setTimeout(function () { message.channel.send(ok) }, 3700)
-                    return message.inlineReply('<a:loading:834782920287846430> Desativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
+                    return message.inlineReply('<a:carregando:835294939096940575> Desativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
                 }
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })

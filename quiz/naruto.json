@@ -11,7 +11,9 @@
     "question": "Quem deu o seu Sharingan ao Itachi?",
     "answers": [
       "Shisui Uchiha",
-      "shishui"
+      "shisui",
+      "Shisui",
+      "Uchiha Shisui"
     ]
   },
   {
@@ -23,10 +25,17 @@
     ]
   },
   {
-    "question": "Quais são os dois filhos da Kaguya??",
+    "question": "Quais são os dois filhos da Kaguya?",
     "answers": [
       "Haruma e Hagoromo",
       "hagoromo e haruma"
+    ]
+  },
+  {
+    "question": "Quem usou o ''Edo Tensei'' na 4º Guerra Ninja?",
+    "answers": [
+      "Kabuto",
+      "kabuto"
     ]
   },
   {
@@ -78,15 +87,24 @@
     ]
   },
   {
-    "question": "Sarutobi Azuma foi morto por quem na temporada Shippuuden?",
+    "question": "Sarutobi Asuma foi morto por quem na temporada Shippuuden?",
     "answers": [
-      "Deidara"
+      "Hidan"
     ]
   },
   {
     "question": "Quem lutou e derrotou o Sasori?",
     "answers": [
-      "Sakura e Chiyo-baa"
+      "Sakura e Chiyo-baa",
+      "Sakura e chiyo"
+    ]
+  },
+  {
+    "question": "Quem foi o primeiro(a) a se tornar Chunin da turma escolar de Naruto?",
+    "answers": [
+      "Shikamaro Nara",
+      "shikamaro",
+      "Shikamaro"
     ]
   },
   {

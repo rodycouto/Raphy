@@ -72,7 +72,7 @@ exports.run = async (client, message, args) => {
                         .setColor('GREEN')
                         .setTitle('✅ Autorole System foi desativado com sucesso.')
 
-                    return message.channel.send('<a:loading:834782920287846430> Desativando o Autorole System...').then(msg => msg.delete({ timeout: 3400 })).then(msg => msg.channel.send(desativado))
+                    return message.channel.send('<a:carregando:835294939096940575> Desativando o Autorole System...').then(msg => msg.delete({ timeout: 3400 })).then(msg => msg.channel.send(desativado))
                 }
 
                 if (reaction.emoji.name === '❌') { // MPEmbed
@@ -100,7 +100,7 @@ exports.run = async (client, message, args) => {
 
     var sobcarg = new Discord.MessageEmbed()
         .setColor('#FF0000')
-        .setDescription('<a:loading:834782920287846430> Um erro foi encontrado. Buscando solução...')
+        .setDescription('<a:carregando:835294939096940575> Um erro foi encontrado. Buscando solução...')
 
     var iqual = new Discord.MessageEmbed()
         .setColor('#FF0000') // Red
@@ -130,7 +130,7 @@ exports.run = async (client, message, args) => {
 
                 var timing = new Discord.MessageEmbed()
                     .setColor('BLUE')
-                    .setDescription(`<a:loading:834782920287846430> Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
+                    .setDescription(`<a:carregando:835294939096940575> Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
 
                 return message.channel.send(timing).then(msg => msg.delete({ timeout: 8000 })).then(msg => msg.channel.send(redefine))
             }

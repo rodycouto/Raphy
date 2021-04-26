@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
 
         var sobcarg = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setDescription('<a:loading:834782920287846430> Um erro foi encontrado. Buscando solução...')
+            .setDescription('<a:carregando:835294939096940575> Um erro foi encontrado. Buscando solução...')
 
         setTimeout(function () {
             message.inlineReply(soberol)
