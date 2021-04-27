@@ -19,25 +19,13 @@ client.on("message", async (message) => {
     if (message.author.bot) return // no bots
     if (message.channel.type == "dm") {
 
-        if (message.content.toLowerCase() === "desativar avisos de level up") {
-            if (db.get(`semavisos_${message.author.id}`)) { return message.author.send('O sistema de mensagens de level up no privado já esta desativado.') }
-            db.set(`semavisos_${message.author.id}`, "ON")
-            return message.author.send('<a:carregando:836101628083437608> Desativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('<a:Check:836347816036663309> Você não receberá mais mensagens de level up! ~~ Se quiser recebe-las novamente, diga "Ativar avisos de level up"'))
-        }
-
-        if (message.content.toLowerCase() === "ativar avisos de level up") {
-            if (!db.get(`semavisos_${message.author.id}`)) { return message.author.send('O sistema de mensagens de level up no privado já esta ativado.') }
-            db.delete(`semavisos_${message.author.id}`)
-            return message.author.send('<a:carregando:836101628083437608> Ativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('<a:Check:836347816036663309> Você ativou as mensagens de level up! ~~ Se quiser desativa-las novamente, diga "Desativar avisos de level up"'))
-        }
-
-        var dmEmbed = new Discord.MessageEmbed()
+        const dmEmbed = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('💬 Nova mensagem no privado')
             .setDescription(`**Usuário:** ${message.author.tag}\n:id: ${message.author.id}\n \n` + '**Conteúdo** ```' + `${message.content}` + '```')
             .setTimestamp()
 
-        var canal = client.channels.cache.get('831154821204803634')
+        const canal = client.channels.cache.get('831154821204803634')
         if (!canal) {
             return
         } else {
@@ -48,6 +36,8 @@ client.on("message", async (message) => {
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
+
+    let PrivadoDesativado = db.get(`privadooff_${message.author.id}`)
 
     if (message.content.startsWith('<')) {
         if (message.content.endsWith('>'))
@@ -75,12 +65,12 @@ client.on("message", async (message) => {
 
     if (message.mentions.members.first()) {
         if (db.get(`afk_${message.mentions.members.first().id}+${message.mentions.members.first().id}`)) { // AFK Sistema Global
-            var off = new Discord.MessageEmbed()
+            const off = new Discord.MessageEmbed()
                 .setColor('#B98823')
                 .setDescription('```fix\n' + `${db.get(`afk_${message.mentions.members.first().id}+${message.mentions.members.first().id}`)}` + '```')
             message.inlineReply(`🔇 ${message.mentions.members.first().user.username} está offline.`, off).then(msg => msg.delete({ timeout: 8000 })).catch(err => { return })
         } else if (db.get(`afk_${message.mentions.members.first().id}+${message.guild.id}`)) { // AFK Sistema Servidor
-            var off = new Discord.MessageEmbed()
+            const off = new Discord.MessageEmbed()
                 .setColor('#B98823')
                 .setDescription('```fix\n' + `${db.get(`afk_${message.mentions.members.first().id}+${message.guild.id}`)}` + '```')
             message.inlineReply(`🔇 ${message.mentions.members.first().user.username} está offline.`, off).then(msg => msg.delete({ timeout: 8000 })).catch(err => { return })
@@ -88,8 +78,8 @@ client.on("message", async (message) => {
     }
 
     if (!message.content.startsWith(prefix)) return
-    var args = message.content.slice(prefix.length).trim().split(/ +/g)
-    var command = args.shift().toLowerCase()
+    const args = message.content.slice(prefix.length).trim().split(/ +/g)
+    const command = args.shift().toLowerCase()
 
     if (db.get(`blacklist_${message.author.id}`)) {
         message.delete().catch(err => { return })
@@ -104,17 +94,12 @@ client.on("message", async (message) => {
             if (level > lvl) {
                 let newLevel = db.set(`level_${message.author.id}`, level)
                 db.add(`mpoints_${message.author.id}`, 500)
-                var newlevel1 = new Discord.MessageEmbed()
-                    .setColor('GREEN')
-                    .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel} no ranking global! Bônus: 500 <:StarPoint:766794021128765469>MPoints`)
-                    .setFooter('Para desativar estas mensagens, diga "Desativar avisos de level up"')
-                if (!db.get(`semavisos_${message.author.id}`)) { message.author.send(newlevel1).catch(err => { return }) }
                 let xpchannel = db.get(`xpchannel_${message.guild.id}`)
                 if (xpchannel === null) { return }
                 if (xpchannel) {
-                    var newlevel = new Discord.MessageEmbed()
+                    const newlevel = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel}!`)
+                        .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel}! Bônus: 500 <:StarPoint:766794021128765469>MPoints`)
                     client.channels.cache.get(xpchannel).send(newlevel)
                 }
             }
@@ -233,12 +218,12 @@ client.on("message", async (message) => {
 }) // Fim do Client.on('Message')
 
 client.on("guildMemberRemove", (member) => {
-    var canal = db.get(`leavechannel_${member.guild.id}`)
+    const canal = db.get(`leavechannel_${member.guild.id}`)
     if (canal === null) { return }
 
     if (!client.channels.cache.get(canal)) { return }
 
-    var msgleave = db.get(`msgleave_${member.guild.id}`)
+    const msgleave = db.get(`msgleave_${member.guild.id}`)
     if (msgleave === null) { msgleave = 'saiu do servidor.' }
 
     if (canal) {
@@ -247,25 +232,25 @@ client.on("guildMemberRemove", (member) => {
 })
 
 client.on("guildMemberAdd", (member) => {
-    var canal = db.get(`welcomechannel_${member.guild.id}`)
+    const canal = db.get(`welcomechannel_${member.guild.id}`)
     if (canal === null) { return }
 
     if (!client.channels.cache.get(canal)) { return }
 
-    var msgwelcome = db.get(`msgwelcome_${member.guild.id}`)
+    const msgwelcome = db.get(`msgwelcome_${member.guild.id}`)
     if (msgwelcome === null) { msgwelcome = 'entrou no servidor.' }
 
     if (canal) {
         return client.channels.cache.get(canal).send(`📢 ${member} ${msgwelcome}`)
     }
 
-    var role = db.get(`autorole_${member.guild.id}`)
+    const role = db.get(`autorole_${member.guild.id}`)
     if (role === null) { return }
     return member.roles.add(role)
 })
 
 client.on("guildMemberAdd", (member) => {
-    var role = db.get(`autorole_${member.guild.id}`)
+    const role = db.get(`autorole_${member.guild.id}`)
     if (role === null) { return }
     return member.roles.add(role)
 })
@@ -278,21 +263,21 @@ client.on("ready", () => {
 
 client.on('guildCreate', guild => {
     let channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-    var helpgit = 'https://github.com/rodycouto/MayaCommands/blob/main/README.md'
+    const helpgit = 'https://github.com/rodycouto/MayaCommands/blob/main/README.md'
 
-    var newguild = new Discord.MessageEmbed()
+    const newguild = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Meu prefixo padrão é `-`')
         .setDescription(`:tools: [Lista de comandos](${helpgit}) | Comece com -config`)
     channel.send('**Oooopa, chegueeei!**', newguild)
 
-    var NewGuildEmbed = new Discord.MessageEmbed()
+    const NewGuildEmbed = new Discord.MessageEmbed()
         .setColor('GREEN')
         .setTitle('💬 Novo servidor')
         .setDescription(`**Servidor:** ${guild.name}\n:id: ${guild.id}\n**Membros:** ${guild.memberCount}\n🌐 **Shard** ${client.guilds.cache.size}`)
         .setTimestamp()
 
-    var canal = client.channels.cache.get('831663336776400957')
+    const canal = client.channels.cache.get('831663336776400957')
     if (!canal) {
         return
     } else {
@@ -301,13 +286,13 @@ client.on('guildCreate', guild => {
 })
 
 client.on('guildDelete', guild => {
-    var NewGuildEmbed = new Discord.MessageEmbed()
+    const NewGuildEmbed = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle('💬 Um servidor me removeu')
         .setDescription(`**Servidor:** ${guild.name}\n:id: ${guild.id}\n🌐 **Shard** ${client.guilds.cache.size}`)
         .setTimestamp()
 
-    var canal = client.channels.cache.get('831663336776400957')
+    const canal = client.channels.cache.get('831663336776400957')
     if (!canal) {
         return
     } else {
@@ -316,7 +301,7 @@ client.on('guildDelete', guild => {
 })
 
 client.once("ready", () => {
-    var envi = client.channels.cache.get('830964037461344296')
+    const envi = client.channels.cache.get('830964037461344296')
     console.log(`Loguei com sucesso!`)
 
     if (!envi) {
