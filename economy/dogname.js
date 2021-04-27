@@ -6,9 +6,9 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    let cachorro = db.get(`cachorro_${message.author.id}`)
-    if (cachorro === null) { '<:xis:835943511932665926> Você ainda não resgatou o Brown!' }
-    if (!db.get(`cachorro_${message.author.id}`)) { '<:xis:835943511932665926> Você ainda não resgatou o Brown!' }
+    let medalha = db.get(`medalha_${message.author.id}`)
+    if (medalha === null) { '<:xis:835943511932665926> Você ainda não obteve sua melhada!' }
+    if (!db.get(`medalha_${message.author.id}`)) { '<:xis:835943511932665926> Você ainda não obteve sua melhada!' }
 
     const args0 = new Discord.MessageEmbed()
         .setColor('BLUE')
