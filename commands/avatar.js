@@ -7,7 +7,6 @@ exports.run = async (client, message, args) => {
   let avatar = user.avatarURL({ dynamic: true, format: "png", size: 1024 })
   let linkavatar = user.displayAvatarURL()
 
-
   const embed = new Discord.MessageEmbed()
     .setColor(`BLUE`)
     .setDescription(`[Baixar](${linkavatar}) avatar de ${user}`)
@@ -32,7 +31,6 @@ exports.run = async (client, message, args) => {
         message.delete().catch(err => { return })
         msg.delete().catch(err => { return })
       }
-
     })
   })
 }
