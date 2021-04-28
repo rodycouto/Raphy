@@ -17,11 +17,10 @@ exports.run = async (client, message, args) => {
     let bola = db.get(`bola_${message.author.id}`)
     let floresta2 = db.get(`floresta2_${message.author.id}`)
     let remedio = db.get(`remedio_${message.author.id}`)
-    let PrivadoDesativado = db.get(`privadooff_${message.author.id}`)
 
     const Cammum1 = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('🌲 Floresta Cammun')
+        .setTitle('🌲 Floresta Cammun #1')
         .setDescription('A Floresta Cammum é famosa no Reino Heslow, como um ponto turisco famoso, muitas pessoas viajam de muito longe, apenas para visita-la e isto trás grandes riquezas para o Reino.\n \n     Em um certo dia após uma grande chuva, a Princesa Kaya estava brincando com seu cachorro Brown *(Ele recebeu este nome por causa da sua cor marrom.)* próximo a Floresta, quando ouviu um grito. Alguém gritou;\n \n- *Soccoro, alguém me ajude!!*\n \n     A Princesa para de correr imediatamente e olha para dentro da Floresta Cammun. A princípio, Kaya pensou ter escutado alguém gritando aleatóriamente, pois isso era comúm no Reino após um dia de grande chuva. Ela dá de ombros e volta a correr atrás de Brown tentando pegar uma bolinha de sua boca. Novamente, ela ouve o mesmo grito;\n \n- *Soccoro, alguém me ajude!!*\n \n     Ela tem certeza do grito, não é algo de sua cabeça. Pensa Kaya; \n \n- *É um homem gritando, a voz é rouca e grave, não é a voz do Papai...*\n \n     ')
 
     const Cammum2 = new Discord.MessageEmbed()
@@ -30,27 +29,28 @@ exports.run = async (client, message, args) => {
         .addField('Comando', '`' + prefix + 'buscar`')
         .setFooter(`Boa sorte Soldado ${message.author.username}!`)
 
-    const CammumContinue1 = new Discord.MessageEmbed()
+    const CammumDog = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('🌲 Floresta Cammun #2')
         .setDescription('Após andar vários dias dentro da Floresta Cammum, você finalmente encontrou o Cachorro Brown, da Princesa Kaya. A princípio, ele quase fugiu, pois estava muito assustado. Mas depois de 5 ossos, ele ficou calmo e te seguiu obedientemente. Depois de quase 2 horas andando, você encontra um homem velho, sentado no pé de uma árvore ofegante, você se aproxima calmamente e pergunta quem é ele. Ele responde cansado e ofegante;\n \n*- Todos me conhecem como o Velho Welter, mas por favor... Encontre meus remédios... Eu os perdi... Enquanto eu fugia...*\n \n Ache os remédios do Velho Welter, para continuar a história...')
+
+    const CammumComRemedios = new Discord.MessageEmbed()
+        .setColor('BLUE')
+        .setTitle('🌲 Floresta Cammun #3')
+        .setDescription('Após andar vários dias dentro da Floresta Cammum, você finalmente encontrou o Cachorro Brown, da Princesa Kaya. A princípio, ele quase fugiu, pois estava muito assustado. Mas depois de 5 ossos, ele ficou calmo e te seguiu obedientemente. Depois de quase 2 horas andando, você encontra um homem velho, sentado no pé de uma árvore ofegante, você se aproxima calmamente e pergunta quem é ele. Ele responde cansado e ofegante;\n \n*- Todos me conhecem como o Velho Welter, mas por favor... Encontre meus remédios... Eu os perdi... Enquanto eu fugia...*\n \n Após uma busca aos arredores, você encontra os remédios do Velho Welter. Mas durante a busca, uma coisa não saia da sua cabeça... *Do que ele fugia? De quem?*\n \nDe volta a árvore, onde Welter estava sentado, você entrega os remédios a ele, o Velho o toma sem pressa. Engole a seco, como se precisa-se daquilo para viver... Ele ainda cansado, se levante, coloca as mãos tremulas em seus ombros, olha nos seus olhos e diz ofegante;\n \n*- O que espera? Vamos fugir deste lugar! Não quero passar mais nenhum segundo aqui, não me resta muito tempo mes...*\n \nEle trava. O cachorro Brown está latindo descontroladamente. Welter está olhando fixamente para cima de você, imóvel.\n \nQuando você se vira, você não acredita em seus olhos... É um leão branco, não um leão branco que todos conhecem, mas um de 6 metros de altura, um humano caberia dentro de sua juba sem esforço algum.')
+
+    // const CammumFinal = new Discord.MessageEmbed()
+    // .setColor('BLUE')
+    // .setTitle('🌲 Floresta Cammun #4 Final')
+    // .setDescription('')
 
     if (['cammum', 'história'].includes(args[0].toLowerCase())) { return message.inlineReply(Cammum1).then(msg => msg.channel.send(Cammum2)) }
 
     if (['continue', 'continua'].includes(args[0].toLowerCase())) {
         if (!dog) { return message.inlineReply('<:xis:835943511932665926> Você ainda não achou o Brown!') }
-        if (dog === null) { return message.inlineReply('<:xis:835943511932665926> Você ainda não achou o Brown!') }
-        if (PrivadoDesativado) { return message.inlineReply('<:xis:835943511932665926> Ative as mensagens privadas para continuar a história. `' + prefix + 'privado`') }
+        if (dog && !remedio) { return message.inlineReply(CammumDog) }
+        if (dog && remedio && !bola) { return message.inlineReply('Você ainda não achou a bolinha do Brown.', CammumComRemedios) }
+        if (dog && bola && remedio) { return message.inlineReply(CammumComRemedios).then(msg => msg.channel.send("Parte final está sendo escrita!")) }
 
-        if (PrivadoDesativado === null) {
-            message.channel.send('<a:Check:836347816036663309> Eu mandei a história no seu privado, se você não recebeu, ative as mensagens diretas poxa...\n \nCOMANDO EM REFORMA #112451')
-            message.author.send(CammumContinue1).catch(err => { return })
-
-            if (remedio === null) { return message.author.send('Encontre os remédios do Velho Welter para continuar a história...').catch(err => { return }) }
-            if (bola === null) { return message.author.send('<:xis:835943511932665926> Encontre a bolinha do Brown para continuar a história...!').catch(err => { return }) }
-            if (remedio) { return message.author.send('Escrevendo a história...') }
-        }
-    } else {
-        return message.inlineReply('Hey, usa `' + prefix + 'floresta` pra ver os comandos da Floresta.')
-    }
+    } else { return message.inlineReply('Hey, use `' + prefix + 'floresta` pra ver os comandos da Floresta.') }
 }

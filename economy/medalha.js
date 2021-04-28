@@ -14,6 +14,7 @@ exports.run = async (client, message, args) => {
     let brown = db.get(`cachorro_${message.author.id}`)
     let bola = db.get(`bola_${message.author.id}`)
     let medalha = db.get(`medalha_${message.author.id}`)
+    let remedio = db.get(`remedio_${message.author.id}`)
 
     const embed = new Discord.MessageEmbed()
         .setColor('BLUE')
@@ -38,10 +39,12 @@ exports.run = async (client, message, args) => {
 
     if (brown === null) { return message.channel.send('<:xis:835943511932665926> Você ainda não resgatou o Brown!') }
     if (!db.get(`cachorro_${message.author.id}`)) { return message.channel.send('<:xis:835943511932665926> Você ainda não resgatou o Brown!') }
+    if (remedio === null) { return message.channel.send('<:xis:835943511932665926> Você ainda não achou os remédios do Velho Walker!') }
+    if (!db.get(`remedio_${message.author.id}`)) { return message.channel.send('<:xis:835943511932665926> Você ainda não achou os remédios do Velho Walker!') }
     if (bola === null) { return message.channel.send('<:xis:835943511932665926> Brown está triste porque você não achou a bolinha dele. Volte para a Floresta Cammum e ache a bolinha.') }
     if (!db.get(`bola_${message.author.id}`)) { return message.channel.send('<:xis:835943511932665926> Brown está triste porque você não achou a bolinha dele. Volte para a Floresta Cammum e ache a bolinha.') }
     if (medalha) { return message.channel.send('<:xis:835943511932665926> Você já adquiriu sua medalha!') }
-    if (!floresta2) { return message.channel.send('<:xis:835943511932665926> Você tem que ler a história e salvar o Velho Welter!') }
+    if (!floresta2) { return message.channel.send('<:xis:835943511932665926> Leia a história #4 Final e ache seu código!') }
 
     if (args[0]) { return message.channel.send(embed) }
     if (args[1]) { return message.channel.send(CódigoErradoEmbed) }
