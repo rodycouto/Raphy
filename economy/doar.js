@@ -126,9 +126,10 @@ exports.run = async (client, message, args) => {
                 if (money === '0') { return message.inlineReply('<:xis:835943511932665926> Você não pode fazer doações sem dinheiro.') }
                 if (money < args[2]) { return message.inlineReply('<:xis:835943511932665926> Você não tem todo esse dinheiro para doar.') }
                 if (isNaN(args[2])) { return message.inlineReply(`<:xis:835943511932665926> **${args[2]}** não é um número.`) }
-                db.add(`cachemoney2_${message.author.id}`, money)
-                db.subtract(`mpoints_${message.author.id}`, money)
-                let cachemoney2 = db.get(`cachemoney_${message.author.id}`)
+                if (args[3]) {return message.inlineReply(`<:xis:835943511932665926> **${args[3]}** não é um argumento válido, apenas retire.`)}
+                db.add(`cachemoney2_${message.author.id}`, args[2])
+                db.subtract(`mpoints_${message.author.id}`, args[2])
+                let cachemoney2 = db.get(`cachemoney2_${message.author.id}`)
 
                 let confirm2 = new Discord.MessageEmbed() // Doar quantia
                     .setColor('BLUE')
