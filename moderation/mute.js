@@ -198,6 +198,7 @@ exports.run = async (client, message, args) => {
             }
             if (reaction.emoji.name === '❌') { // Não
                msg.delete().catch(err => { return })
+               return message.inlineReply(`Mute cancelado.`)
             }
          })
       })
@@ -293,6 +294,7 @@ exports.run = async (client, message, args) => {
             }
             if (reaction.emoji.name === '❌') {
                msg.delete().catch(err => { return })
+               return message.inlineReply(`Mute cancelado.`)
             }
          })
       })
@@ -333,6 +335,7 @@ exports.run = async (client, message, args) => {
             }
             if (reaction.emoji.name === '❌') {
                msg.delete().catch(err => { return })
+               return message.inlineReply(`Mute cancelado.`)
             }
          })
       })

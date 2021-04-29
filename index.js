@@ -283,7 +283,7 @@ client.on('guildDelete', guild => {
 })
 
 client.once("ready", () => {
-    let envi = client.channels.cache.get('837145820767322153')
+    let envi = client.channels.cache.get('837408099781836849')
     console.log(`Loguei com sucesso!`)
     if (!envi) { return } else if (envi) { return envi.send(`Cheguei ( ͡° ͜ʖ ͡°)`) }
 })
