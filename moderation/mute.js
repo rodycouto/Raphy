@@ -7,61 +7,27 @@ exports.run = async (client, message, args) => {
    let prefix = db.get(`prefix_${message.guild.id}`)
    if (prefix === null) prefix = "-"
 
-   if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-      let adm = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
-      return message.inlineReply(adm)
-   }
+   if (!message.member.hasPermission("MANAGE_ROLES")) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Gerenciar Roles (cargos)') }
+   if (!message.guild.me.hasPermission("MANAGE_ROLES")) { return message.inlineReply('<:xis:835943511932665926> Eu preciso da permissão "Gerenciar Cargos" para executar este comando.') }
 
-   if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-      let adm = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
-      return message.inlineReply(adm)
-   }
+   const nolog = new Discord.MessageEmbed()
+      .setColor('#8B0000')
+      .setTitle('<:xis:835943511932665926> Não há Canal Log registrado.')
+      .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
 
-   let perms = message.member.hasPermission("MANAGE_ROLES")
-   if (!perms) {
-      let permss = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Permissão Necessária: Gerenciar Roles (cargos)')
-      return message.inlineReply(permss)
-   }
+   const LogExcluido = new Discord.MessageEmbed()
+      .setColor('#8B0000')
+      .setTitle('<:xis:835943511932665926> Parece que o canal log foi excluido.')
+      .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
 
    let logchannel = db.get(`logchannel_${message.guild.id}`)
-   if (logchannel === null) {
-      let prefix = db.get(`prefix_${message.guild.id}`)
-      if (prefix === null) prefix = "-"
-
-      let nolog = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Não há Canal Log registrado.')
-         .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
-      return message.inlineReply(nolog)
-   }
-
-   if (!client.channels.cache.get(logchannel)) {
-      let prefix = db.get(`prefix_${message.guild.id}`)
-      if (prefix === null) prefix = "-"
-
-      let nolog = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Parece que o canal log foi excluido.')
-         .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
-      return message.inlineReply(nolog)
-   }
+   if (logchannel === null) { return message.inlineReply(nolog) }
+   if (!client.channels.cache.get(logchannel)) { return message.inlineReply(LogExcluido) }
 
    let role = message.guild.roles.cache.find(role => role.name === 'Muted')
    if (!role) {
       try {
-
-         let muterole = await message.guild.roles.create({
-            data: {
-               name: 'Muted',
-               permissions: []
-            }
-         })
+         let muterole = await message.guild.roles.create({ data: { name: 'Muted', permissions: [] } })
          message.guild.channels.cache.filter(c => c.type === 'text').forEach(async (channel, id) => {
             await channel.createOverwrite(muterole, {
                SEND_MESSAGES: false,
@@ -71,6 +37,7 @@ exports.run = async (client, message, args) => {
                MANAGE_ROLES: false
             })
          })
+
          message.guild.channels.cache.filter(c => c.type === 'voice').forEach(async (channel, id) => {
             await channel.createOverwrite(muterole, {
                SPEAK: false,
@@ -78,36 +45,46 @@ exports.run = async (client, message, args) => {
                MANAGE_ROLES: false
             })
          })
-      } catch (error) {
-         console.log(error)
-      }
+      } catch (error) { message.channel.send(error) }
       try {
-
-         let criando = new Discord.MessageEmbed()
-            .setColor('BLUE')
-            .setDescription('<a:carregando:836101628083437608> Criando e configurando cargo, espere...')
-
-         let roleembedcreate = new Discord.MessageEmbed()
-            .setColor('BLUE')
-            .setDescription(`<a:carregando:836101628083437608> Buscando erros...`)
-
-         let criado = new Discord.MessageEmbed()
-            .setColor('GREEN')
-            .setTitle('Cargo criado e configurado com sucesso!')
-
-         message.inlineReply(criando).then(msg => msg.delete({ timeout: 8000 })).catch(err => { return }).then(msg => message.inlineReply(roleembedcreate)).then(msg => msg.delete({ timeout: 4000 })).catch(err => { return }).then(msg => message.inlineReply(criado))
-      } catch (error) {
-         console.log(error)
-      }
+         message.inlineReply('<a:carregando:836101628083437608> Criando e configurando cargo, espere...').then(msg => msg.delete({ timeout: 8000 })).catch(err => { return }).then(msg => message.inlineReply(`<a:carregando:836101628083437608> Buscando erros...`)).then(msg => msg.delete({ timeout: 4000 })).catch(err => { return }).then(msg => message.inlineReply('<a:Check:836347816036663309> Cargo criado e configurado com sucesso!'))
+      } catch (error) { message.channel.send(error) }
    }
    if (!role) return
+
+   if (['info', 'help', 'ajuda'].includes(args[0])) {
+      let embeddetail = new Discord.MessageEmbed()
+         .setColor("BLUE")
+         .setTitle('Comando Mute - Detalhes')
+         .addFields(
+            {
+               name: '🔄 Atualize o Mute System',
+               value: '1 - `-role delete @Muted` Delete o cargo.\n2 - `-mute` Ativa a configuração do cargo Mute.'
+            },
+            {
+               name: '🆕 Novos canais de texto/voz',
+               value: 'O Discord ainda não permite a auto atualização de roles.\nSempre que você criar um canal de texto/voz, atualize o mute da Naya para perfeito funcionamento.'
+            },
+            {
+               name: '📑 Canal Log',
+               value: 'Neste canal, mandarei todos os detalhes do mute. Você pode deixar este canal público ou privado alterando as permissões dele.\nClaro, não vá me privar dele, né?.'
+            },
+            {
+               name: '⬆️ Naya Role',
+               value: 'É extremamente importe que o meu cargo, "Naya" esteja acima de todas as outras roles, para que eu possa efetuar meus comandos com maestria.'
+            }
+         )
+         .setTimestamp()
+
+      return message.inlineReply(embeddetail)
+   }
 
    let member = message.mentions.members.first()
    args[0] = member
    if (!args[0]) {
       let nomember = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Por favor, mencione o usuário.')
+         .setColor('#8B0000')
+         .setTitle('<:xis:835943511932665926> Por favor, mencione o usuário.')
          .setDescription('`' + prefix + 'mute @user 10s/m/h Razão`')
       return message.inlineReply(nomember)
    }
@@ -131,7 +108,7 @@ exports.run = async (client, message, args) => {
          )
 
       let sobcarg = new Discord.MessageEmbed()
-         .setColor('#FF0000')
+         .setColor('#8B0000')
          .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
       setTimeout(function () {
@@ -144,49 +121,42 @@ exports.run = async (client, message, args) => {
       let muteproprio = new Discord.MessageEmbed()
          .setColor('BLUE')
          .setTitle('Tem certeza que deseja mutar você mesmo?')
+         .setFooter('Cancelamento em 30 segundos.')
 
       return message.inlineReply(muteproprio).then(msg => {
-         msg.react('✅') // Check
-         msg.react('❌') // X
+         msg.react('✅').catch(err => { return }) // Check
+         msg.react('❌').catch(err => { return }) // X
+         setTimeout(function () { msg.delete().catch(err => { return }) }, 30000)
 
          msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return
 
             let troll = new Discord.MessageEmbed()
                .setColor('GREEN')
-               .setTitle('Se você tem cargo para usar este comando, você não pode mutar você mesmo. 😗')
+               .setTitle('Se você tem cargo para usar este comando, você não pode mutar você mesmo 😗')
 
             if (reaction.emoji.name === '✅') { // home
                msg.delete().catch(err => { return })
                return message.inlineReply(troll)
             }
-            if (reaction.emoji.name === '❌') { 
+            if (reaction.emoji.name === '❌') {
                msg.delete().catch(err => { return })
             }
          })
       })
    }
 
-   if (member.id === message.guild.owner.id) {
-      let dono = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Mutar o dono do servidor não é uma opção.')
-      return message.inlineReply(dono)
-   }
-
-   if (member.hasPermission('ADMINISTRATOR')) {
-      let unbannable = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Esta pessoa tem permissões importantes ou tem um cargo maior que o meu.')
-      return message.inlineReply(unbannable)
-   }
+   if (member.id === message.guild.owner.id) { return message.inlineReply('<:xis:835943511932665926> Mutar o dono do servidor não é uma opção.') }
+   if (member.id === '837147659898191902') { return message.inlineReply('<:zeroT:832643202439708682> iiiii quer mutar, vê se pode.') }
+   if (member.hasPermission('ADMINISTRATOR')) { return message.inlineReply('<:xis:835943511932665926> Este pessoa é um administrador. Eu não posso continuar o mute.') }
+   if (member.roles.highest.comparePositionTo(message.member.roles.highest) > -1) { return message.inlineReply(`<:xis:835943511932665926> Você não pode mutar alguém com o mesmo cargo ou um cargo maior que o seu.`) }
 
    let time = args[1]
    if (!time) {
       let notime = new Discord.MessageEmbed()
-         .setColor('#FF0000')
+         .setColor('#8B0000')
          .setTitle('Siga o padrão do comando!')
-         .setDescription('Você não disse o tempo do mute. Deseja o `' + prefix + 'muteinfo' + '`?')
+         .setDescription('Você não disse o tempo do mute. Deseja o `' + prefix + 'mute info' + '`?')
 
       let embeddetail = new Discord.MessageEmbed()
          .setColor("BLUE")
@@ -231,10 +201,10 @@ exports.run = async (client, message, args) => {
             }
          })
       })
-   } else if (time.length > 4) {
+   } else if (time.length > 3) {
       let limitover = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('O tempo não pode passar de 4 digitos.')
+         .setColor('#8B0000')
+         .setTitle('O tempo não pode passar de 3 digitos.')
       return message.inlineReply(limitover)
    }
 
@@ -242,8 +212,8 @@ exports.run = async (client, message, args) => {
    if (!reason) reason = `Razão não especificada por ${message.author.username}.`
 
    let muteembed = new Discord.MessageEmbed()
-      .setAuthor(`Sistema de Mute - ${member.guild.name}`)
       .setColor('#8B0000')
+      .setAuthor(`Sistema de Mute - ${member.guild.name}`)
       .addFields(
          {
             name: 'Usuário',
@@ -293,10 +263,12 @@ exports.run = async (client, message, args) => {
       let unbannable = new Discord.MessageEmbed()
          .setColor('BLUE')
          .setTitle(`Esta pessoa já está mutada. Deseja mutar ${member.user.username} novamente?`)
+         .setFooter('Cancelamento em 30 segundos.')
 
       message.inlineReply(unbannable).then(msg => {
-         msg.react('✅') // Check
-         msg.react('❌') // X
+         msg.react('✅').catch(err => { return }) // Check
+         msg.react('❌').catch(err => { return }) // X
+         setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 30000)
 
          msg.awaitReactions((reaction, user) => {
             let logchannel = db.get(`logchannel_${member.guild.id}`)
@@ -307,7 +279,7 @@ exports.run = async (client, message, args) => {
                member.roles.remove(role).then(x => x.roles.add(role))
                if (member.voice.channel) { member.voice.kick() }
                setTimeout(function () {
-                  member.roles.remove(role) //Ação Desmute
+                  member.roles.remove(role)
                   client.channels.cache.get(logchannel).send(unmuteembed)
                }, ms(time))
 
@@ -316,14 +288,10 @@ exports.run = async (client, message, args) => {
                   .setTitle(`${member.user.username} foi remutado com sucesso.`)
                   .setDescription(`Mais informações em ${client.channels.cache.get(logchannel).name}`)
 
-               setTimeout(function () {
-                  client.channels.cache.get(logchannel).send(muteembed).catch(err => {
-                     message.inlineReply(err)
-                  })
-               }, 3500)
+               client.channels.cache.get(logchannel).send(muteembed).catch(err => { message.inlineReply(err) })
                return message.inlineReply(rela)
             }
-            if (reaction.emoji.name === '❌') { 
+            if (reaction.emoji.name === '❌') {
                msg.delete().catch(err => { return })
             }
          })
@@ -333,12 +301,14 @@ exports.run = async (client, message, args) => {
    let muteq = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`Mutar ${member.user} por ${time}?`)
+      .setFooter('Cancelamento em 30 segundos.')
 
    if (!member.roles.cache.has(role.id)) {
       let logchannel = db.get(`logchannel_${member.guild.id}`)
       await message.inlineReply(muteq).then(msg => {
-         msg.react('✅') // Check
-         msg.react('❌') // X
+         msg.react('✅').catch(err => { return }) // Check
+         msg.react('❌').catch(err => { return }) // X
+         setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 30000)
 
          msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return
@@ -361,7 +331,7 @@ exports.run = async (client, message, args) => {
                message.inlineReply(rela)
                client.channels.cache.get(logchannel).send(muteembed)
             }
-            if (reaction.emoji.name === '❌') { 
+            if (reaction.emoji.name === '❌') {
                msg.delete().catch(err => { return })
             }
          })
