@@ -43,6 +43,7 @@ exports.run = async (client, message, args) => {
   message.channel.send(`<a:Check:836347816036663309> Sorteio criado no canal ${channel}.`)
 
   setTimeout(() => {
+    if (!m.reactions.cache.get("🎉")) { return channel.send('<:xis:835943511932665926> Sorteio cancelado. A reação "🎉" foi removida ou a mensagem foi deletada.') }
     if (m.reactions.cache.get("🎉").count <= 1) { return channel.send('<:xis:835943511932665926> Sorteio cancelado por falta de participantes.') }
 
     let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random()
