@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
             let time = ms(timeout1 - (Date.now() - author1))
       
             let presomax = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('🚨 Você está em prisão máxima!')
                 .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
       
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
             let canal = db.get(`pescachannel_${message.guild.id}`)
             if (canal === null) {
                 let nocanal = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('Canal de pesca não definido')
                     .setDescription('Peça para algúm administrador digitar o comando para habilitar o Canal de Pesca')
                     .addField('Comando de Ativação', '`' + prefix + 'setpescachannel #Canal`')
@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
 
             if (!db.get(`pescachannel_${message.guild.id}`)) {
                 let notcanal = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('Canal de pesca excluido.')
                     .setDescription('Parece que o Canal de Pesca foi desativado ou excluido.')
                     .addField('Comando de Ativação', '`' + prefix + 'setpescachannel #Canal`')
@@ -199,7 +199,7 @@ exports.run = async (client, message, args) => {
                 }
             } else {
                 let novara = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você não tem iscas suficiente.`)
                 return message.inlineReply(novara)

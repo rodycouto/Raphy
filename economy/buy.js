@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         const presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -129,7 +129,7 @@ exports.run = async (client, message, args) => {
             if (acima > 50) {
                 db.subtract(`fichas_${message.author.id}`, args[1])
                 const nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('LIMITE DE FICHAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **50 fichas**.`)
                 return message.inlineReply(nota)
@@ -158,7 +158,7 @@ exports.run = async (client, message, args) => {
             if (acima > 70) {
                 db.subtract(`agua_${message.author.id}`, args[1])
                 const nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('LIMITE DE ÁGUAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **70 copos d'água**.`)
                 return message.inlineReply(nota)
@@ -243,7 +243,7 @@ exports.run = async (client, message, args) => {
             if (acima > 50) {
                 db.subtract(`iscas_${message.author.id}`, args[1])
                 const nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('LIMITE DE ISCAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **50 iscas**.`)
                 return message.inlineReply(nota)
@@ -274,7 +274,7 @@ exports.run = async (client, message, args) => {
             if (acima > 80) {
                 db.subtract(`comida_${message.author.id}`, args[1])
                 const nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('LIMITE DE COMIDA ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **80 comidas**.`)
                 return message.inlineReply(nota)
@@ -303,7 +303,7 @@ exports.run = async (client, message, args) => {
             if (acima > 20) {
                 db.subtract(`cartas_${message.author.id}`, args[1])
                 const limit = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('LIMITE DE CARTAS ATINGIDO!')
                     .setDescription(`${message.author}, você não pode passar de **20 cartas**.`)
                 return message.inlineReply(limit)

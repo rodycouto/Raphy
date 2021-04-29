@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
-    if (!args[0]) { return message.inlineReply(new Discord.MessageEmbed().setColor('#FF0000').setTitle('🔗 Sistema Ant-link').setDescription('O meu sistema detecta links que membros enviam no servidor e eu deleto avisando o membro que não pode enviar links.').addField('Comando', '`' + prefix + 'antlink on`\n' + '`' + prefix + 'antlink off`').addField('⚠️ Atenção', 'Com o sistema antlink ativado, não será possível enviar GIFS.').setFooter('Administradores tem passe livre neste comando.')) }
+    if (!args[0]) { return message.inlineReply(new Discord.MessageEmbed().setColor('#8B0000').setTitle('🔗 Sistema Ant-link').setDescription('O meu sistema detecta links que membros enviam no servidor e eu deleto avisando o membro que não pode enviar links.').addField('Comando', '`' + prefix + 'antlink on`\n' + '`' + prefix + 'antlink off`').addField('⚠️ Atenção', 'Com o sistema antlink ativado, não será possível enviar GIFS.').setFooter('Administradores tem passe livre neste comando.')) }
 
     if (args[0] === 'on') {
         if (nolink) { return message.inlineReply('<a:Check:836347816036663309> O sistema ant-link já está ativado.') }

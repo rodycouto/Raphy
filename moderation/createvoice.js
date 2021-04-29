@@ -5,14 +5,14 @@ exports.run = async (client, message, args) => {
 
     if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
         let adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Eu preciso da permissão "Gerenciar Canais" para utilizar esta função.')
         return message.inlineReply(adm)
     }
 
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
         let perms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: Gerenciar Canais')
         return message.inlineReply(perms)
     }
@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Use o formato correto')
             .setDescription('`' + prefix + 'createvoice NomeDoCanal`')
         return message.inlineReply(noargs)

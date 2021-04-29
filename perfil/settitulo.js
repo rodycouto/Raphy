@@ -16,12 +16,12 @@ exports.run = async (client, message, args) => {
         .setDescription('Escolha um título para seu perfil. Se auto nomeie e mostre a todos o quão grandioso/a você é!\n' + 'Exemplo: `' + prefix + 'settitulo Rei do Discord`')
 
     let embed1 = new Discord.MessageEmbed()
-        .setColor('#FF0000') // RED 
+        .setColor('#8B0000') // RED 
         .setTitle('Siga o formato correto')
         .setDescription('Exemplo: `' + prefix + 'settitulo Rei do Discord`')
 
     let iqualstats = new Discord.MessageEmbed()
-        .setColor('#ff0000')
+        .setColor('#8B0000')
         .setDescription('Esse já é seu título.')
 
     let confirm = new Discord.MessageEmbed()

@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
         let perms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: Gerenciar Canais, Gerenciar Mensagens')
         return message.inlineReply(perms)
     }
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000') // red
+            .setColor('#8B0000') // red
             .setTitle('`' + prefix + 'setxpchannel #Canalxp`')
         return message.inlineReply(noargs)
     }
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let semcanal = new Discord.MessageEmbed()
-            .setColor('#ff0000')
+            .setColor('#8B0000')
             .setTitle('O xpchannel não pode ser desativado. (Por enquanto)')
             .setDescription('Caso queira trocar de canal, use o comando \n`' + prefix + 'setxpchannel #Canalxp`')
 
@@ -37,7 +37,7 @@ exports.run = async (client, message, args) => {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
         let nochannel = new Discord.MessageEmbed()
-            .setColor('#FF0000') // red
+            .setColor('#8B0000') // red
             .setTitle('' + prefix + 'setxpchannel #Canalxp')
 
         return message.inlineReply(nochannel)
@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
     if (channel.id === atual) {
 
         let iqual = new Discord.MessageEmbed()
-            .setColor('#FF0000') // Red
+            .setColor('#8B0000') // Red
             .setTitle('Este canal já foi definido como Canal Xp!')
 
         return message.inlineReply(iqual)

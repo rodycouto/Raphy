@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         let presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
                 let time = ms(timeout - (Date.now() - daily))
 
                 let embedtime = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setDescription(`${message.author}, você já roubou alguém hoje, roube novamente em ${time.minutes}m e ${time.seconds}s.`)
                 return message.inlineReply(embedtime)
             } else {
@@ -59,7 +59,7 @@ exports.run = async (client, message, args) => {
                 let amount1 = Math.floor(Math.random() * usermoney) + 1
 
                 let LoseEmbed = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle("🚨 A polícia te pegou e você foi preso!")
                     .setDescription(`A fiança custou ${amount}<:StarPoint:766794021128765469>MPoints`)
 

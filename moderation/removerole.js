@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
             )
 
         let sobcarg = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
         setTimeout(function () {

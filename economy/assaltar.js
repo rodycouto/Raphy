@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         const presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -76,7 +76,7 @@ exports.run = async (client, message, args) => {
                         .setDescription(`<a:carregando:836101628083437608> ${message.author} está assaltando ${user}`)
 
                     const LoseEmbed = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setTitle("🔫 O assalto falhou!!")
                         .setDescription(`${user} reagiu mais rápido que você e te assaltou!\n \nVocê perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -86,12 +86,12 @@ exports.run = async (client, message, args) => {
                         .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>MPoints`)
 
                     const PresoEmbed = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setTitle('🚨 Preso!')
                         .setDescription(`${user} te rendeu e você foi preso sem direito a fiança!`)
 
                     const FeridoEmbed = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setTitle('🚑 Você levou um tiro!')
                         .setDescription(`${user} atirou em você! Você está ferido e precisa de tratamentos rápido!`)
                         .addField('🏥 Naya Hospital', `Debitamos ${tratamento}<:StarPoint:766794021128765469>MPoints de sua conta do banco para salvar sua vida.`)
@@ -146,7 +146,7 @@ exports.run = async (client, message, args) => {
                         .setDescription(`${message.author} assaltou todo o dinheiro de ${user} e obteve ${db.get(`mpoints_${user.id}`)}<:StarPoint:766794021128765469>MPoints`)
 
                     const PresoEmbed = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setTitle('🚨 Preso!')
                         .setDescription(`Havia policía por perto e você foi preso sem direito a fiança!`)
 

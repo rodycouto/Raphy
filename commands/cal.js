@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
         resp = math.evaluate(args.join(" "))
     } catch (e) {
         const noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Por favor, siga o formato correto')
             .setDescription('Adição: `10 + 10`\nDivisão: `10 / 10`\nSubtração: `10 - 10`\nMultiplicação: `10 * 10`')
         return message.inlineReply(noargs)

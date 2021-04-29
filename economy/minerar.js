@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
             let time = ms(timeout1 - (Date.now() - author1))
 
             let presomax = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('🚨 Você está em prisão máxima!')
                 .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
             let canal = db.get(`minechannel_${message.guild.id}`)
             if (canal === null) {
                 let nocanal = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('Canal de Mineração não definido')
                     .setDescription('Peça para algúm administrador digitar o comando para habilitar o Canal de Mineração')
                     .addField('Comando de Ativação', '`' + prefix + 'setminechannel #Canal`')
@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
 
             if (!db.get(`minechannel_${message.guild.id}`)) {
                 let notcanal = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('Canal de Mineração excluido.')
                     .setDescription('Parece que o Canal de Mineração foi desativado ou excluido.')
                     .addField('Comando de Ativação', '`' + prefix + 'setminechannel #Canal`')
@@ -58,7 +58,7 @@ exports.run = async (client, message, args) => {
             let picareta = db.get(`minechannel_${message.guild.id}`)
             if (picareta === null) {
                 let nopicareta = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você precisa de uma picareta. Compre uma na ${prefix}loja`)
                 return message.inlineReply(nopicareta)
@@ -66,7 +66,7 @@ exports.run = async (client, message, args) => {
 
             if (!db.get(`picareta_${message.author.id}`)) {
                 let nopicareta = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você precisa de uma picareta. Compre uma na ${prefix}loja`)
                 return message.inlineReply(nopicareta)
@@ -75,7 +75,7 @@ exports.run = async (client, message, args) => {
             let agua = db.get(`agua_${message.author.id}`)
             if (agua === null) {
                 let nopicareta = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você não possui copos de água. Compre alguns na ${prefix}loja`)
                 return message.inlineReply(nopicareta)
@@ -85,7 +85,7 @@ exports.run = async (client, message, args) => {
 
             if (agua == 0) {
                 let nopicareta = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você não possui copos de água. Compre alguns na ${prefix}loja`)
                 return message.inlineReply(nopicareta)
@@ -99,7 +99,7 @@ exports.run = async (client, message, args) => {
                 if (vezesmin === 0 || vezesmin < 0) {
                     db.delete(`picareta_${message.author.id}`)
                     let sempicareta = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setTitle('Que peeena')
                         .setDescription(`${message.author}, a sua picareta quebrou. Você precisa comprar outra.`)
                     return message.inlineReply(sempicareta)

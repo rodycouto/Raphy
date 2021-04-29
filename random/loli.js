@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 exports.run = async (client, message, args) => {
 
   let Random = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor('#8B0000')
     .setImage('https://imgur.com/RcrfOc3.gif')
 
   setTimeout(function () { message.delete() }, 5000)

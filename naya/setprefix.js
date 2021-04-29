@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('ADMINISTRATOR')) {
         let permss = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: ADMINISTRADOR')
         return message.inlineReply(permss)
     }
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let format = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'setprefix NovoPrefixo`\n \nExemplo: `' + prefix + 'setprefix !`')
         return message.inlineReply(format)
@@ -25,21 +25,21 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
     if (args[0] === prefix) {
         let atual = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Este já é meu prefixo atual.')
         return message.inlineReply(atual)
     }
 
     if (args[1]) {
         let space = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('O prefixo não pode ter espaços.')
         return message.inlineReply(space)
     }
 
     if (args[0].length > 2) {
         let caracter = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('O prefixo não pode ter mais de 2 caracteres.')
         return message.inlineReply(caracter)
     }

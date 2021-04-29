@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
             let time = ms(timeout1 - (Date.now() - author1))
 
             const presomax = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('🚨 Você está em prisão máxima!')
                 .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
             let canal = client.channels.cache.get(db.get(`buscachannel_${message.guild.id}`))
             if (canal === null) {
                 const nocanal = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('Canal de busca não definido')
                     .setDescription('Peça para algúm administrador digitar o comando para habilitar o Canal de Busca')
                     .addField('Comando de Ativação', '`' + prefix + 'setbuscachannel #Canal`')
@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
 
             if (!canal) {
                 const notcanal = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle('Canal de Busca excluido.')
                     .setDescription('Parece que o Canal de Busca foi desativado ou excluido.')
                     .addField('Comando de Ativação', '`' + prefix + 'setbuscachannel #Canal`')
@@ -282,7 +282,7 @@ exports.run = async (client, message, args) => {
 
             } else {
                 const NoFood = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setDescription(`<: xis: 835943511932665926 > ${message.author}, você não tem comida para buscar o Brown.`)
                 return message.inlineReply(NoFood)
             }

@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
     
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
         let perms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: Gerenciar Canais')
         return message.inlineReply(perms)
     }
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000') // red
+            .setColor('#8B0000') // red
             .setTitle('Por favor, siga o formato correto')
             .setDescription('Com este comando, você selecionará um canal para todos do servidor mandarem ideias para votação.')
             .addFields(
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
         let canal = db.get(`ideiachannel_${message.guild.id}`)
         if (canal === null) {
             let semcanal = new Discord.MessageEmbed()
-                .setColor('#ff0000')
+                .setColor('#8B0000')
                 .setTitle('O Ideia System já está desativado.')
 
             return message.inlineReply(semcanal)
@@ -49,7 +49,7 @@ exports.run = async (client, message, args) => {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
         let nochannel = new Discord.MessageEmbed()
-            .setColor('#FF0000') // red
+            .setColor('#8B0000') // red
             .setTitle('Siga o formato correto')
             .setDescription('' + prefix + 'setideiachannel #Canallogs')
 
@@ -60,7 +60,7 @@ exports.run = async (client, message, args) => {
     if (channel.id === atual) {
 
         let iqual = new Discord.MessageEmbed()
-            .setColor('#FF0000') // Red
+            .setColor('#8B0000') // Red
             .setTitle('Este canal já foi definido como Ideia Channel!')
 
         return message.inlineReply(iqual)

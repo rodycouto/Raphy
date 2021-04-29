@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let nouser = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Erroooou')
             .setDescription('`' + prefix + 'cutucar @user`')
         return message.reply(nouser)

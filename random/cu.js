@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
                         db.set(`cutime_${message.author.id}`, Date.now())
 
                         let embed = new Discord.MessageEmbed()
-                            .setColor('#FF0000')
+                            .setColor('#8B0000')
                             .setTitle('O cliente não gostou!')
                             .setDescription(`${message.author}, o cliente anônimo não gostou dos seus serviços e seu prejuizo foi de ${din}<:StarPoint:766794021128765469>MPoints`)
                         return message.inlineReply(embed)

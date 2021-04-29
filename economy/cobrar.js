@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         let presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let correto = new Discord.MessageEmbed()
-            .setColor('#ff0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'cobrar @user Valor`')
 
@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
 
         if (isNaN(args[1])) {
             let notnumber = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('❌ Valor não reconhecido')
                 .setDescription('O valor que você digitou não é um número.')
             return message.inlineReply(notnumber)
@@ -90,7 +90,7 @@ exports.run = async (client, message, args) => {
                     let money = db.get(`mpoints_${user.id}`)
 
                     let nomoney = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setDescription('Você não tem todo esse dinheiro na carteira.')
 
                     if (money === null) { return message.inlineReply(nomoney) }

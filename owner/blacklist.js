@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     }
 
     let embed = new Discord.MessageEmbed()
-        .setColor("#FF0000")
+        .setColor("#8B0000")
         .setTitle("Blacklist Naya blocksystem")
     lb.forEach(d => {
         embed.addField(`${d.user.tag}`, `ID: ${d.user.id}`)

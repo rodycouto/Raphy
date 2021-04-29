@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
         .setFooter('Se você desvendou o enigma do código, não repasse para ninguém.')
 
     const CódigoErradoEmbed = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('<:xis:835943511932665926> Código errado!')
         .setDescription('Você não sabe os seus códigos pessoais? Leia com atenção a história. `' + prefix + 'floresta continue`')
 

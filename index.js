@@ -273,7 +273,7 @@ client.on('guildCreate', guild => {
 
 client.on('guildDelete', guild => {
     const NewGuildEmbed = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('💬 Um servidor me removeu')
         .setDescription(`**Servidor:** ${guild.name}\n:id: ${guild.id}\n🌐 **Shard** ${client.guilds.cache.size}`)
         .setTimestamp()

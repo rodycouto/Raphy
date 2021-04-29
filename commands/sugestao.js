@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
     )
 
   const nochannel1 = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor('#8B0000')
     .setTitle('Parece que o canal de ideias/sugestões foi excluido.')
     .setDescription('`' + prefix + 'setideiachannel #canal`')
 
@@ -35,11 +35,11 @@ exports.run = async (client, message, args) => {
     .addField('Comando', '`' + prefix + 'ideia Sua ideia em diante`')
 
   const mais300 = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor('#8B0000')
     .setTitle('Sua ideia/sugestão não pode passar de 300 caracteres')
 
   const menos300 = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor('#8B0000')
     .setTitle('Sua ideia/sugestão é curta demais, escreva mais do que 10 caracteres')
 
   const canal = db.get(`ideiachannel_${message.guild.id}`)

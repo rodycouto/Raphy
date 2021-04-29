@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         let presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
                             .setDescription('<a:Check:836347816036663309> Você fugiu da detenção com sucesso.')
 
                         let lose = new Discord.MessageEmbed()
-                            .setColor('#FF0000')
+                            .setColor('#8B0000')
                             .setTitle('🚨 Você foi pego!')
                             .setDescription(`${message.author} foi pego tentando escapar. Prisão máxima!`)
 

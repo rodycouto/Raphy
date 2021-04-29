@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let nouser = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'nota @user`')
         return message.inlineReply(nouser)

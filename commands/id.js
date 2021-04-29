@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         const no = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Comando não reconhecido.')
             .setDescription('Neste comando, é preciso marcar alguém ou mandar apenas o comando sem conteúdo algúm.')
             .addFields(

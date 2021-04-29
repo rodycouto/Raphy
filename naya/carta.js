@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
         .setFooter('A pessoa que receber a carta, recebe +5 Reputação')
 
     let FormatoCorreto = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Siga o formato correto')
         .setDescription('`' + prefix + 'carta @user A sua mensagem em diante`')
 
@@ -62,7 +62,7 @@ exports.run = async (client, message, args) => {
                 message.mentions.members.first().send("A Naya não se responsabiliza pelo conteúdo presente nesta carta.\nVocê recebeu mais 5 reputação.", embedlove).catch(err => {
                     if (err) {
                         let errorembed = new Discord.MessageEmbed()
-                            .setColor('#FF0000')
+                            .setColor('#8B0000')
                             .setTitle('Ocorreu um erro no envio da carta')
                             .setDescription(`Caso você não saiba resolver este erro, entre em contato com o **${prefix}support** ou entre no meu servidor atráves do **${prefix}help**`)
                             .addField('Erro', err)

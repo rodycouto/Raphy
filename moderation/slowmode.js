@@ -42,14 +42,14 @@ exports.run = async (client, message, args) => {
 
   if (isNaN(args[0])) {
     let number = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('`' + args[0] + '` não é um número.')
     return message.inlineReply(number)
   }
 
   if (args[0] < 1) {
     let number = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('O tempo mínimo é 1 segundo')
     return message.inlineReply(number)
   }

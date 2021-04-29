@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
 
   if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
     let adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Eu preciso da permissão "Banir Membros" para utilizar esta função.')
     return message.inlineReply(adm)
   }
@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     let nolog = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Não há Canal Log registrado.')
       .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
     return message.inlineReply(nolog)
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     let nolog1 = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Parece que o canal log foi excluido.')
       .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
     return message.inlineReply(nolog1)
@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     let nouser = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Siga o formato')
       .setDescription('`' + prefix + 'ban @user Razão`')
     return message.inlineReply(nouser)
@@ -56,21 +56,21 @@ exports.run = async (client, message, args) => {
 
   if (user.id === message.author.id) {
     let autoban = new Discord.MessageEmbed()
-      .setColor('#ff0000')
+      .setColor('#8B0000')
       .setTitle('Banir você mesmo não é uma opção.')
     return message.inlineReply(autoban)
   }
 
   if (user.id === message.guild.owner.id) {
     let banowner = new Discord.MessageEmbed()
-      .setColor('#ff0000')
+      .setColor('#8B0000')
       .setTitle('Banir o dono do servidor não é uma opção.')
     return message.inlineReply(banowner)
   }
 
   if (user.hasPermission('BAN_MEMBERS')) {
     let banperm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle(`${user.user.username} tem permissões importantes neste servidor, não posso banir.`)
     return message.inlineReply(banperm)
   }
@@ -80,7 +80,7 @@ exports.run = async (client, message, args) => {
 
   let banEmbed = new Discord.MessageEmbed()
     .setTitle(`Sistema de Banimento - ${message.guild.name}`)
-    .setColor('#FF0000')
+    .setColor('#8B0000')
     .addFields(
       {
         name: 'Usuário Banido',

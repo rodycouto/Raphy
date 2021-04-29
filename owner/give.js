@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
 
     if (['arma', 'gun'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give arma @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give arma @user`') }
 
         db.set(`arma_${user.id}`, "Arma")
         return message.channel.send(`Uma arma adicionada ao slot de ${user}`)
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
 
     if (['title', 'título', 'titulo'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give titulo @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give titulo @user`') }
 
         db.set(`title_${user.id}`, "ON")
         return message.channel.send(`A permissão de alterar título foi adicionada ao slot de ${user}`)
@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
 
     if (['picareta'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give picareta @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give picareta @user`') }
 
         db.set(`picareta_${user.id}`, "Picareta")
         db.add(`offpicareta_${user.id}`, 50)
@@ -49,7 +49,7 @@ exports.run = async (client, message, args) => {
 
     if (['remedio', 'remédio'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give remedio @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give remedio @user`') }
 
         db.set(`remedio_${user.id}`, "Remedio")
         return message.channel.send(`Remédio do Velho Welter foi adicionada ao slot de ${user}`)
@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
 
     if (['vara'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give vara @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give vara @user`') }
 
         db.set(`vara_${user.id}`, "Vara")
         return message.channel.send(`Uma vara de pesca adicionada ao slot de ${user}`)
@@ -65,7 +65,7 @@ exports.run = async (client, message, args) => {
 
     if (['faca'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give faca @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give faca @user`') }
 
         db.set(`faca_${user.id}`, "Faca")
         return message.channel.send(`Uma faca adicionada ao slot de ${user}`)
@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
 
     if (['cachorro', 'doguinho', 'dog'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give cachorro @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give cachorro @user`') }
 
         db.set(`cachorro_${user.id}`, "Cachorro Brown")
         return message.channel.send(`Cachorrinho Brown foi adicionado ao slot de ${user}`)
@@ -81,7 +81,7 @@ exports.run = async (client, message, args) => {
 
     if (['machado'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give machado @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give machado @user`') }
 
         db.set(`machado_${user.id}`, "Machado")
         return message.channel.send(`Um machado adicionada ao slot de ${user}`)
@@ -89,7 +89,7 @@ exports.run = async (client, message, args) => {
 
     if (['loli'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give loli @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give loli @user`') }
 
         db.set(`loli_${user.id}`, "Loli")
         return message.channel.send(`Uma loli adicionada ao slot de ${user}`)
@@ -97,7 +97,7 @@ exports.run = async (client, message, args) => {
 
     if (['fossil'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give fossil @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give fossil @user`') }
 
         db.set(`fossil_${user.id}`, "Fossil")
         return message.channel.send(`Um fossil adicionada ao slot de ${user}`)
@@ -105,7 +105,7 @@ exports.run = async (client, message, args) => {
 
     if (['mamute'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give mamute @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give mamute @user`') }
 
         db.set(`mamute_${user.id}`, "Mamute")
         return message.channel.send(`Um mamute adicionada ao slot de ${user}`)
@@ -113,7 +113,7 @@ exports.run = async (client, message, args) => {
 
     if (['lotery', 'loteria'].includes(args[0])) {
 
-        if (!user) { return message.channel.send('`' + prefix + 'give lotery @user') }
+        if (!user) { return message.channel.send('`' + prefix + 'give lotery @user`') }
         let loteria = db.get('loteria')
 
         db.add(`banco_${user.id}`, loteria)

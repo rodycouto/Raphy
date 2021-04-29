@@ -20,13 +20,13 @@ exports.run = async (client, message, args) => {
         .setFooter('A Naya não se responsabiliza pelo conteúdo enviado atráves deste sistema.')
 
     const nochanel = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('❌ Parece que o canal de report foi excluido.')
         .setDescription('`' + prefix + 'setreportchannel #canal`')
         .addField('Quer ajuda?', '`' + prefix + 'help report`')
 
     const noargs = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('❌ Por favor, siga o formato correto')
         .setDescription(`Use o comando abaixo para reportar algo a equipe da ${message.guild.name}.\n \n*O **@user** é opcional, use se quiser reportar algum membro.*`)
         .addField('Comando', '`' + prefix + 'report @user O motivo da sua denúncia`')

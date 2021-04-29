@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
             )
 
         let sobcarg = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
         setTimeout(function () {
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
 
     let sucess = new Discord.MessageEmbed()
         .setColor('GREEN')
-        .setDescription(`${user.user.username} recebeu o cargo ${role} com sucesso!`)
+        .setDescription(`<a:Check:836347816036663309> ${user.user.username} recebeu o cargo ${role} com sucesso!`)
 
     user.roles.add(role).catch(err => { if (err) { return message.inlineReply(`<:xis:835943511932665926> Não tenho poder suficiente para adicionar o cargo ${role}`) } })
 

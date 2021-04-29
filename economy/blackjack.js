@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
       let time = ms(timeout1 - (Date.now() - author1))
 
       const presomax = new Discord.MessageEmbed()
-          .setColor('#FF0000')
+          .setColor('#8B0000')
           .setTitle('🚨 Você está em prisão máxima!')
           .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -44,7 +44,7 @@ exports.run = async (client, message, args) => {
       if (prefix === null) prefix = '-'
 
       const nomumber = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Qual o valor que deseja apostar?')
         .setDescription('Dinheiro disponivel: ' + moneydb + '<:StarPoint:766794021128765469>')
         .setFooter(`${prefix}sacar`)
@@ -54,7 +54,7 @@ exports.run = async (client, message, args) => {
 
     if (moneydb === null) {
       const nomumber = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle("Você não tem dinheiro suficiente")
       message.inlineReply(nomumber)
       return

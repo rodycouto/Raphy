@@ -9,8 +9,8 @@ exports.run = async (client, message, args) => {
   if (prefix === null) prefix = "-"
 
   let logchannel = db.get(`logchannel_${message.guild.id}`)
-  if (logchannel === null) { return message.inlineReply(new Discord.MessageEmbed().setColor('#FF0000').setTitle('Não há Canal Log registrado.').setDescription('`' + prefix + 'setlogchannel #CanalLog`')) }
-  if (!client.channels.cache.get(logchannel)) { return message.inlineReply(new Discord.MessageEmbed().setColor('#FF0000').setTitle('Parece que o canal log foi excluido.').setDescription('`' + prefix + 'setlogchannel #CanalLog`')) }
+  if (logchannel === null) { return message.inlineReply(new Discord.MessageEmbed().setColor('#8B0000').setTitle('Não há Canal Log registrado.').setDescription('`' + prefix + 'setlogchannel #CanalLog`')) }
+  if (!client.channels.cache.get(logchannel)) { return message.inlineReply(new Discord.MessageEmbed().setColor('#8B0000').setTitle('Parece que o canal log foi excluido.').setDescription('`' + prefix + 'setlogchannel #CanalLog`')) }
 
   let user = message.mentions.members.first()
   if (!user) { return message.inlineReply('`' + prefix + 'warn @user Razão (opcional)`') }

@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
   await weather.find({ search: city, degreeType: degreetype }, function (err, result) {
 
     const noresult = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Parece que ocorreu um erro no meu sistema de busca')
       .setDescription('`Nenhuma cidade/estado foi encontrado`')
 

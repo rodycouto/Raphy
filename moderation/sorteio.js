@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
   if (prefix === null) prefix = "-"
 
   const format = new Discord.MessageEmbed()
-    .setColor('#FF0000')
+    .setColor('#8B0000')
     .setTitle('Siga o formato correto')
     .setDescription('`' + prefix + 'sorteio 1s/m/h #CanalDoSorteio Prêmio`')
     .addFields(

@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
 
   if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) {
     let adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Eu preciso da permissão "Gerenciar Nicknames (Nomes/Apelidos)" para utilizar esta função.')
     return message.inlineReply(adm)
   }
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
 
   if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
     let noperms = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Permissão Necessária: Gerenciar Nicknames (Nomes/Apelidos)')
     return message.inlineReply(noperms)
   }
@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
   let user = message.mentions.users.first()
   if (!user) {
     let format = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'setnick @user NovoNome`')
     return message.inlineReply(format)
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
   let nick = args.slice(1).join(" ")
   if (!nick) {
     let format = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'setnick @user NovoNome`')
     return message.inlineReply(format)
@@ -44,7 +44,7 @@ exports.run = async (client, message, args) => {
 
     if (err) {
       let erro = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Um erro foi encontrado')
         .setDescription('\n \n`' + err + '`')
         .addFields(
@@ -75,6 +75,6 @@ exports.run = async (client, message, args) => {
 
   let sucess = new Discord.MessageEmbed()
     .setColor('GREEN')
-    .setDescription(`O nickname de ${user.tag} foi alterado para ${nick}`)
+    .setDescription(`<a:Check:836347816036663309> O nickname de ${user.tag} foi alterado para ${nick}`)
   return message.inlineReply(sucess)
 }

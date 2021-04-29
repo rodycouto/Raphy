@@ -5,14 +5,14 @@ exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('KICK_MEMBERS')) {
         let permss = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: Expulsar Membros')
         return message.inlineReply(permss)
     }
 
     if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
         let adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Eu preciso da permissão "Kickar Membros" para utilizar esta função.')
         return message.inlineReply(adm)
     }
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let nochannel = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('O logchannel não foi definido.')
             .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
         return message.inlineReply(nochannel)
@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let logdel = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Parece que o logchannel foi deletado.')
             .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
         return message.inlineReply(logdel)
@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'kick @user Razão do kick (opcional)`')
         return message.inlineReply(noargs)
@@ -58,7 +58,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let noargs1 = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'kick @user Razão do kick (opcional)`')
         return message.inlineReply(noargs1)
@@ -73,21 +73,21 @@ exports.run = async (client, message, args) => {
 
     if (member.hasPermission(['ADMINISTRATOR'])) {
         let nokick = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle(member.user.username + ' é um administrador. Não posso continuar com a expulsão.')
         return message.inlineReply(nokick)
     }
 
     if (!member.kickable) {
         let nokick = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle(member.user.username + ' tem algum cargo maior que o meu')
         return message.inlineReply(nokick)
     }
 
     if (member.id === message.author.id) {
         let autokick = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Autokick não é uma opção')
         return message.inlineReply(autokick)
     }
@@ -129,7 +129,7 @@ exports.run = async (client, message, args) => {
 
                 member.kick().catch(err => {
                     let errorembed = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
+                        .setColor('#8B0000')
                         .setTitle('Um erro ocorreu na expulsão')
                         .setDescription('Error by console.log: \n \n' + err)
                         .addFields(

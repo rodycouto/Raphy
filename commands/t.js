@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     const lan = new Discord.MessageEmbed()
-        .setColor('#FF0000') // Red
+        .setColor('#8B0000') // Red
         .setTitle('Siga o formato correto')
         .setDescription('`' + prefix + 't en/pt/fr/lt A frase que deseja traduzir`')
 

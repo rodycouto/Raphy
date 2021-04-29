@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         let presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
 
         if (!args[0]) {
             const noamout = new Discord.MessageEmbed()
-                .setColor('#ff0000')
+                .setColor('#8B0000')
                 .setTitle('Siga o formato correto')
                 .setDescription('`' + prefix + 'sacar Valor`')
             return message.inlineReply(noamout)
@@ -33,14 +33,14 @@ exports.run = async (client, message, args) => {
 
         if (member < args[0]) {
             const not = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('Você não tem todo esse dinheiro no banco.')
             return message.inlineReply(not)
         }
 
         if (args[0] < 0) {
             const nota = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('Diga um valor maior que 0')
             return message.inlineReply(nota)
         }
@@ -53,7 +53,7 @@ exports.run = async (client, message, args) => {
 
             if (money == '0') {
                 const nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setDescription(`Você não tem nada para sacar no banco.`)
                 return message.inlineReply(nota)
             }
@@ -69,7 +69,7 @@ exports.run = async (client, message, args) => {
 
         if (isNaN(args[0])) {
             const notnumber = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('Valor não reconhecido')
                 .setDescription('O valor que você digitou não é um número.')
             return message.inlineReply(notnumber)

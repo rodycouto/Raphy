@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     let alert = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Utilize este comando somente em caso de EMERGÊNCIA!')
         .setDescription('Este comando tem um alto poder de impacto em todo o servidor. Quando ativado, o cargo *everyone* será bloqueado de falar em todos os canais de textos e conectar/falar em canais de voz.')
         .addFields(

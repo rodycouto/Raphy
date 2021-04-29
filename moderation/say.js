@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
 
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     let noperms = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Permissão Necessária: Gerenciar Mensagens')
     return message.inlineReply(noperms)
   }
@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     let format = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'say Alguma coisa`')
     return message.inlineReply(format)

@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
     if (!args[0]) { return message.inlineReply(noargs) }
 
     let erro = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Siga o formato correto')
         .setDescription('Exemplo: `' + prefix + 'setniver 15 / 03 / 2007`')
 

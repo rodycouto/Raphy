@@ -66,7 +66,7 @@ exports.run = async (client, message, args) => {
                 level,
                 xp,
             })
-        } 
+        }
 
         let embedxp = new Discord.MessageEmbed()
             .setColor("YELLOW")
@@ -82,5 +82,4 @@ exports.run = async (client, message, args) => {
     if (!['dinheiro', 'money', 'cash', 'mp', 'coin', 'moeda', 'xp', 'level', 'nivel'].includes(args[0])) {
         return message.inlineReply('Ranking não encontrado, digite `' + prefix + 'rank`')
     }
-
 }

@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
 
 	if (level < 10) {
 		let block = new Discord.MessageEmbed()
-			.setColor('#FF0000')
+			.setColor('#8B0000')
 			.setTitle('🚫  O casal precisa atingir o level 10')
 		return message.inlineReply(block)
 	}

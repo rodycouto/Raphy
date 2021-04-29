@@ -80,7 +80,7 @@ exports.run = async (client, message, args) => {
         )
 
       const sobcarg = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
       setTimeout(function () {
@@ -142,7 +142,7 @@ exports.run = async (client, message, args) => {
         )
 
       const sobcarg = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
       setTimeout(function () {
@@ -176,7 +176,7 @@ exports.run = async (client, message, args) => {
             }
           )
         const sobcarg = new Discord.MessageEmbed()
-          .setColor('#FF0000')
+          .setColor('#8B0000')
           .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
         setTimeout(function () {
@@ -219,7 +219,7 @@ exports.run = async (client, message, args) => {
       let link = 'https://celke.com.br/artigo/tabela-de-cores-html-nome-hexadecimal-rgb'
       let NovaCor = args.slice(3).join(" ").toUpperCase()
       if (NovaCor === "default") { NovaCor === "#99AAB5" }
-      if (!NovaCor) { return message.inlineReply(`Este comando necessita de um código HEX. É um código composto por letras e número, por exemplo: #FF0000 (Vermelho).\nVeja a [Tabela HEX](${link}) com centenas de cores.\n${FormatoColor}`) }
+      if (!NovaCor) { return message.inlineReply(`Este comando necessita de um código HEX. É um código composto por letras e número, por exemplo: #8B0000 (Vermelho).\nVeja a [Tabela HEX](${link}) com centenas de cores.\n${FormatoColor}`) }
       if (NovaCor > 16777215) { return message.inlineReply('<:xis:835943511932665926> Esse código HEX é muito grande! O limite é de 0 a 16777215.') }
       if (NovaCor <= 0) { return message.inlineReply('<:xis:835943511932665926> Esse código HEX é muito curto! O limite é de 0 a 16777215.') }
 
@@ -238,7 +238,7 @@ exports.run = async (client, message, args) => {
             }
           )
         const sobcarg = new Discord.MessageEmbed()
-          .setColor('#FF0000')
+          .setColor('#8B0000')
           .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
         setTimeout(function () {

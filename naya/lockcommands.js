@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     if (!message.member.hasPermission("ADMINISTRATOR")) {
 
         let noperm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: Administrador')
 
         return message.inlineReply(noperm)
@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 
     if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
         let adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
         return message.inlineReply(adm)
     }

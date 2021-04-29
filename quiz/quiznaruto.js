@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
             })
             .catch(collected => {
                 let timeover = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
+                    .setColor('#8B0000')
                     .setTitle(`Ninguém acertou!`)
                     .setDescription('Que pena, o tempo acabou e ninguém acertou.')
                 message.channel.send(timeover)

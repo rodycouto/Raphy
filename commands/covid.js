@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     } catch (error) {
 
         const noerl = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setDescription(`O argumento ***${args[0]}*** não existe ou os dados não foram publicados pela OMS (Organização Mundial da Saúde)`)
             .addFields(
                 {

@@ -6,14 +6,14 @@ exports.run = async (client, message, args) => {
 
   if (!message.member.permissions.has("MANAGE_MESSAGES")) {
     let perms = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Permissão Necessária: Gerenciar Mensagens')
     return message.channel.send(perms).then(message => message.delete({ timeout: 5000 })).catch(err => { return })
   }
 
   if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
     let adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
+      .setColor('#8B0000')
       .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
     return message.channel.send(adm)
   }

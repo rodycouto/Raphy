@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         const presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -65,7 +65,7 @@ exports.run = async (client, message, args) => {
                                 msg.delete().catch(err => { return })
 
                                 const embedcrime = new Discord.MessageEmbed()
-                                    .setColor('#FF0000')
+                                    .setColor('#8B0000')
                                     .setTitle('🔎 Qual lugar da cidade você deseja roubar? :mag:')
                                     .setDescription('🏠 Casa\n🏦 Mansão\n🏛️ Prefeitura\n🏣 Cartório\n📨 Correios\n💍 Joaleria\n🏢 Shopping\n🏭 Fabrica\n🏩 Motel\n🪙 Banco')
                                     .setFooter('Auto delete em 1 minuto.')
@@ -126,7 +126,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -173,7 +173,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -220,7 +220,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -267,7 +267,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -313,7 +313,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -360,7 +360,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -407,7 +407,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -454,7 +454,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -501,7 +501,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 
@@ -548,7 +548,7 @@ exports.run = async (client, message, args) => {
                                                 db.set(`preso_${message.author.id}`, Date.now())
 
                                                 const lose = new Discord.MessageEmbed()
-                                                    .setColor('#FF0000')
+                                                    .setColor('#8B0000')
                                                     .setTitle('🚨 Preso!')
                                                     .setDescription(`Você foi preso e perdeu ${amount}<:StarPoint:766794021128765469>MPoints`)
 

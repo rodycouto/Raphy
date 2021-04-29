@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('ADMINISTRATOR')) {
         let permss = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: ADMINISTRADOR')
         return message.inlineReply(permss)
     }
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         if (prefix === null) prefix = "-"
 
         let noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'deletarcomando NomeDoComando`')
             .addFields(
@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
         let data = database.find(x => x.name === commandName.toLowerCase())
         if (!data) {
             let noex = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('Este comando não existe no meu banco de dados.')
             return message.inlineReply(noex)
         }
@@ -58,7 +58,7 @@ exports.run = async (client, message, args) => {
     }
     else {
         let nof = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Comando não encontrado')
         return message.inlineReply(nof)
     }

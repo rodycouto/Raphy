@@ -5,14 +5,14 @@ exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('ADMINISTRATOR')) {
         let permss = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: ADMINISTRADOR')
         return message.inlineReply(permss)
     }
 
     if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
       let adm = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
       return message.channel.send(adm)
     }
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
     if (!args[0]) {
 
         let format = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🔗 Sistema Ant-link')
             .setDescription('O meu sistem detecta links que membros enviam no servidor e eu deleto avisando o membro que não pode enviar links.')
             .addField('Comando', '`' + prefix + 'setlink on`\n' + '`' + prefix + 'setlink off`')

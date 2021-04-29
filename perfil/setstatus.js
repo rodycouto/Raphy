@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     if (!args[0]) {
         let embed1 = new Discord.MessageEmbed()
-            .setColor('#FF0000') // RED 
+            .setColor('#8B0000') // RED 
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'setstatus Um peixinho nadando no mar azul`')
         return message.inlineReply(embed1)
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
     let stat = db.get(`status_${message.author.id}`)
     if (status === stat) {
         let iqualstats = new Discord.MessageEmbed()
-            .setColor('#ff0000')
+            .setColor('#8B0000')
             .setDescription('O seu status é igual ao do seu perfil.')
         return message.inlineReply(iqualstats)
     }

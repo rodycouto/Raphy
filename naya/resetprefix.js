@@ -9,14 +9,14 @@ exports.run = async (client, message, args) => {
     let perms = message.member.hasPermission("ADMINISTRATOR")
     if (!perms) {
         let noperms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão necessária: Administrador')
         return message.inlineReply(noperms)
     }
 
     if (prefix === "-") {
         let iqual = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('O meu prefixo definido já é o padrão.')
         return message.inlineReply(iqual)
     }

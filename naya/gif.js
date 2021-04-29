@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
         .setFooter('O Gif será enviado para o meu servidor, você pode encontra-lo no comando ' + prefix + 'help')
 
     let formato = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Por favor, siga o formato correto')
         .setDescription('`' + prefix + 'gif Naruto LinkDoImigur`\n' + '`' + prefix + 'gif Naruto https://imgur.com/D5KT1S`')
 

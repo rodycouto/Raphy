@@ -12,11 +12,11 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     let adm = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
 
     let permss = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Permissão Necessária: Gerenciar Roles (cargos)')
 
     let cargoatual = new Discord.MessageEmbed()
@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
 
         if (autorole === null) {
             let noauto = new Discord.MessageEmbed()
-                .setColor('#FF0000')
+                .setColor('#8B0000')
                 .setTitle('O Autorole System já está desativado.')
             return message.channel.send(noauto)
         }
@@ -79,7 +79,7 @@ exports.run = async (client, message, args) => {
     }
 
     let norole = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setTitle('Siga o formato correto')
         .setDescription('`' + prefix + 'setautorole @cargo`')
 
@@ -94,11 +94,11 @@ exports.run = async (client, message, args) => {
         )
 
     let sobcarg = new Discord.MessageEmbed()
-        .setColor('#FF0000')
+        .setColor('#8B0000')
         .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
     let iqual = new Discord.MessageEmbed()
-        .setColor('#FF0000') // Red
+        .setColor('#8B0000') // Red
         .setTitle('Este cargo já foi definido como Autorole!')
 
     let confirm = new Discord.MessageEmbed()

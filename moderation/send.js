@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('MANAGE_MESSAGES')) {
         let perms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Permissão Necessária: Gerenciar Mensagens')
         return message.inlineReply(perms)
     }
@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     args[0] = canal
     if (!canal) {
         let nocanal = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'send #canal Sua mensagem`')
         return message.inlineReply(nocanal)
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
 
     if (!args[1]) {
         let noargs = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'send #canal Sua mensagem`')
         return message.inlineReply(noargs)
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
     let mensagem = args.slice(1).join(" ")
     if (!mensagem) {
         let nomensagem = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'send #canal Sua mensagem`')
         return message.inlineReply(nomensagem)
