@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
         let time = ms(timeout1 - (Date.now() - author1))
 
         let presomax = new Discord.MessageEmbed()
-            .setColor('#FF0000')
+            .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
@@ -40,40 +40,73 @@ exports.run = async (client, message, args) => {
                 .addField('Comando', '`' + prefix + 'lance quantia`')
 
             const FormatoCorreto = '<:xis:835943511932665926> Siga o formato correto: `' + prefix + 'lance quantia`'
+            const FormatoCorretoAll = '<:xis:835943511932665926> Siga o formato correto: `' + prefix + 'lance all`'
 
-            if (!args[0]) { return message.inlineReply(embed) }
-            if (args[1]) { return message.inlineReply(FormatoCorreto) }
-            if (isNaN(args[0])) { return message.inlineReply(`${FormatoCorreto}\n**${args[0]}** não é um número.`) }
-            if (money < args[0]) { return message.inlineReply(`<:xis:835943511932665926> Você não tem ${args[0]} <:StarPoint:766794021128765469>MPoints na cateira.`) }
-            if (money === '0') { return message.inlineReply(`<:xis:835943511932665926> Você não tem dinheiro pra fazer lances no chat.`) }
-            db.add(`lancechache_${message.author.id}`, args[0])
-            db.subtract(`mpoints_${message.author.id}`, args[0])
-            let cache = db.get(`lancechache_${message.author.id}`)
-            db.set(`lancetimeout_${message.author.id}`, Date.now())
 
             const LanceEmbed = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setDescription(`<a:MoneyWings:834899137991540797> ${message.author} lançou ${args[0]} <:StarPoint:766794021128765469>MPoints no chat.`)
 
-            let m = await message.channel.send(LanceEmbed)
-            m.react("✅")
-            setTimeout(() => {
-                if (m.reactions.cache.get("✅").count <= 1) {
-                    db.add(`mpoints_${message.author.id}`, cache)
+            if (!args[0]) { return message.inlineReply(embed) }
+
+            if (['all', 'tudo'].includes(args[0].toLowerCase())) {
+                if (args[1]) { return message.inlineReply(FormatoCorretoAll) }
+                if (money <= '0') { return message.inlineReply(`<:xis:835943511932665926> Você não tem dinheiro pra fazer lances no chat.`) }
+                db.add(`lancechache_${message.author.id}`, money)
+                db.subtract(`mpoints_${message.author.id}`, money)
+                let cache = db.get(`lancechache_${message.author.id}`)
+                db.set(`lancetimeout_${message.author.id}`, Date.now())
+
+                let m = await message.channel.send(LanceEmbed)
+                m.react("✅")
+                setTimeout(() => {
+                    if (m.reactions.cache.get("✅").count <= 1) {
+                        db.add(`mpoints_${message.author.id}`, cache)
+                        db.delete(`lancechache_${message.author.id}`)
+                        return message.channel.send('<:xis:835943511932665926> Lance cancelado por falta de participantes.')
+                    }
+
+                    let winner = m.reactions.cache.get("✅").users.cache.filter((u) => !u.bot).random()
+
+                    let winembed = new Discord.MessageEmbed()
+                        .setColor('GREEN')
+                        .setDescription(`<a:MoneyWings:834899137991540797> ${winner} pegou o dinheiro lançado por ${message.author}.\n${cache} <:StarPoint:766794021128765469>MPoints`)
+
+                    db.add(`mpoints_${winner.id}`, cache)
                     db.delete(`lancechache_${message.author.id}`)
-                    return message.channel.send('<:xis:835943511932665926> Lance cancelado por falta de participantes.')
-                }
+                    return message.channel.send(winembed).catch(err => { return })
+                }, 60000)
+            } else {
 
-                let winner = m.reactions.cache.get("✅").users.cache.filter((u) => !u.bot).random()
+                if (args[1]) { return message.inlineReply(FormatoCorreto) }
+                if (isNaN(args[0])) { return message.inlineReply(`${FormatoCorreto}\n**${args[0]}** não é um número.`) }
+                if (money < args[0]) { return message.inlineReply(`<:xis:835943511932665926> Você não tem ${args[0]} <:StarPoint:766794021128765469>MPoints na cateira.`) }
+                if (money === '0') { return message.inlineReply(`<:xis:835943511932665926> Você não tem dinheiro pra fazer lances no chat.`) }
+                db.add(`lancechache_${message.author.id}`, args[0])
+                db.subtract(`mpoints_${message.author.id}`, args[0])
+                let cache = db.get(`lancechache_${message.author.id}`)
+                db.set(`lancetimeout_${message.author.id}`, Date.now())
 
-                let winembed = new Discord.MessageEmbed()
-                    .setColor('GREEN')
-                    .setDescription(`<a:MoneyWings:834899137991540797> ${winner} pegou o dinheiro lançado por ${message.author}.\n${args[0]} <:StarPoint:766794021128765469>MPoints`)
+                let m = await message.channel.send(LanceEmbed)
+                m.react("✅")
+                setTimeout(() => {
+                    if (m.reactions.cache.get("✅").count <= 1) {
+                        db.add(`mpoints_${message.author.id}`, cache)
+                        db.delete(`lancechache_${message.author.id}`)
+                        return message.channel.send('<:xis:835943511932665926> Lance cancelado por falta de participantes.')
+                    }
 
-                db.add(`mpoints_${winner.id}`, cache)
-                db.delete(`lancechache_${message.author.id}`)
-                return message.channel.send(winembed).catch(err => { return })
-            }, 60000)
+                    let winner = m.reactions.cache.get("✅").users.cache.filter((u) => !u.bot).random()
+
+                    let winembed = new Discord.MessageEmbed()
+                        .setColor('GREEN')
+                        .setDescription(`<a:MoneyWings:834899137991540797> ${winner} pegou o dinheiro lançado por ${message.author}.\n${args[0]} <:StarPoint:766794021128765469>MPoints`)
+
+                    db.add(`mpoints_${winner.id}`, cache)
+                    db.delete(`lancechache_${message.author.id}`)
+                    return message.channel.send(winembed).catch(err => { return })
+                }, 60000)
+            }
         }
     }
 }
