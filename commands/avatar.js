@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
       }
       if (message.author.id !== member.id) return
       if (reaction.emoji.name === '❌') {
-        message.delete().catch(err => { return })
+        message.delete().catch(err => { return message.channel.send(`<:xis:835943511932665926> ${member}, você desativou as mensagens privadas.`)})
         msg.delete().catch(err => { return })
       }
     })
