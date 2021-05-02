@@ -57,6 +57,12 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`As iscas de ${user} foram deletadas..`)
     }
 
+    if (['dailycommands'].includes(args[0])) {
+
+        db.delete('CommandCountDaily')
+        return message.channel.send(`Feito!`)
+    }
+
     if (['cartas', 'carta'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'del cartas @user`') }

@@ -189,6 +189,16 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} madeiras foram adicionadas ao slot de ${user}.`)
     }
 
+    if (['commandstotal', 'commands'].includes(args[0])) {
+        
+        let amount = args[1]
+        if (!amount) { return message.channel.send('`' + prefix + 'add commands Valor`') }
+        if (isNaN(amount)) { return message.channel.send(`**${args[1]}** não é um número.`) }
+
+        db.add('CommandCountGeneral', amount)
+        return message.channel.send(`Feito!`)
+    }
+
     if (['camarão', 'camarao'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add camarão @user Valor`') }
@@ -220,7 +230,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> foi adicionado a blacklist com sucesso!`)
     }
 
-    if (['whitelistid'].includes(args[0])) {    
+    if (['whitelistid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add whitelistid ID`') }

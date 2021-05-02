@@ -1,7 +1,13 @@
 const Discord = require('discord.js')
-const os = require('os')
+const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
+
+    let TotalCommands = db.get('CommandCountGeneral')
+    let DailyCommands = db.get('CommandCountDaily')
+
+    if (TotalCommands === null) TotalCommands = '0'
+    if (DailyCommands === null) DailyCommands = '0'
 
     let embed = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL())
@@ -22,7 +28,7 @@ exports.run = async (client, message, args) => {
         .addFields(
             {
                 name: 'Informações Técinas',
-                value: (`🌐 Servidores: ${client.guilds.cache.size}\n💬 Canais: ${client.channels.cache.size}\n🫂 Usuários: ${client.users.cache.size}\n⏳ Ping Atual: ${Math.round(client.ws.ping)}ms\n🕛 Criada em: 15/03/2021\n💡 Idealizada por: Rody#4191 \n:gear: Criada por: Rody#4191\n🖌️ Design: Rody#4191 | Sayu\n🖊️ Start Cooper: Gowther#9233\n📡 Host: DisCloud\n🇩 Discord.js Version: 12.5.3\n🇯 Linguagem: 100% JavaScript`)
+                value: (`🌐 Servidores: ${client.guilds.cache.size}\n💬 Canais: ${client.channels.cache.size}\n🫂 Usuários: ${client.users.cache.size}\n🛠️ Comandos usados: ${TotalCommands}\n🛠️ Comandos diário: ${DailyCommands}\n⏳ Ping Atual: ${Math.round(client.ws.ping)}ms\n🕛 Criada em: 15/03/2021\n💡 Idealizada por: Rody#4191 \n:gear: Criada por: Rody#4191\n🖌️ Design: Rody#4191 | Sayu\n🖊️ Start Cooper: Gowther#9233\n📡 Host: DisCloud\n🇩 Discord.js Version: 12.5.3\n🇯 Linguagem: 100% JavaScript`)
             }
         )
 

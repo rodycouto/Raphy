@@ -147,6 +147,12 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`O family3 de ${user} foi deletado.`)
     }
 
+    if (['dailycommands'].includes(args[0])) {
+
+        db.delete('CommandCountDaily')
+        return message.channel.send(`Feito!`)
+    }
+
     if (['title', 'titulo', 'título'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'delete título @user`') }

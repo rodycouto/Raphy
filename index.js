@@ -75,6 +75,11 @@ client.on("message", async (message) => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase()
 
+    if (message) {
+        db.add('CommandCountGeneral', 1)
+        db.add('CommandCountDaily', 1)
+    }
+
     if (db.get(`blacklist_${message.author.id}`)) {
         message.delete().catch(err => { return })
         return message.channel.send(`${message.author}, você está na blacklist e não tem acesso a nenhum dos meus comandos.`).then(msg => msg.delete({ timeout: 6000 })).catch(err => { return })

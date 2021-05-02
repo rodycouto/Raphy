@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
 
         if (!CanaisValidos) return
 
-        return CanaisValidos.send('Rebooting...')
+        return CanaisValidos.send('<a:carregando:836101628083437608> Rebooting...')
     })
 
     client.user.setActivity(`Rebooting...`, { type: "WATCHING" })
