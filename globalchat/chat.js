@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
-    
+
     if (db.get(`noglobalchat_${message.author.id}`)) {
         message.delete().catch(err => { return })
         return message.channel.send(`<:xis:835943511932665926> ${message.author}, você foi banido do chat global! Acha que foi um engano? \`` + prefix + 'support`').then(msg => msg.delete({ timeout: 6000 })).catch(err => { return })
@@ -71,7 +71,10 @@ exports.run = async (client, message, args) => {
             if (MensagemGlobal.length > 200) { return message.channel.send('<:xis:835943511932665926> Heeey! A mensagem não pode ter mais que **200 caracteres**.').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
             if (MensagemGlobal.length < 4) { return message.channel.send('<:xis:835943511932665926> Heeey! A mensagem não pode ter menos que **4 caracteres**.').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
             if (AchaLink(MensagemGlobal) === true) { return message.channel.send(`${message.author}, Por favor, não envie links no Global Chat.`).then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
-            if (['xvideos', 'pornhub', 'redtube'].includes(MensagemGlobal)) { message.delete().catch(err => { return }).then(msg => msg.channel.send('<:xis:835943511932665926> Eu nem preciso dizer o motivo desta mensagem ser bloqueada, não é?')).then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
+            if (['xvideos', 'pornhub', 'redtube'].includes(MensagemGlobal)) {
+                message.delete().catch(err => { return })
+                message.channel.send('<:xis:835943511932665926> Eu nem preciso dizer o motivo desta mensagem ser bloqueada, não é?').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
+            }
 
             client.guilds.cache.forEach(guild => {
 

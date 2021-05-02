@@ -2,34 +2,34 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-  let i = 'Isekai'
-  let h = 'Hentai'
-  let ms = 'Mahou Shoujo'
-  let y = 'Yuri'
-  let f = 'Fantasia'
-  let r = 'RPG'
-  let c = 'Comédia'
-  let s = 'Sobre Natural'
-  let e = 'Esporte'
-  let j = 'Jogo'
-  let a = 'Aventura'
-  let aç = 'Ação'
-  let am = 'Ação/Militar'
-  let p = 'Psicológico'
-  let d = 'Drama'
-  let sv = 'Simulador de Vida'
-  let mi = 'Mistério'
-  let ve = 'Vida Escolar'
-  let vc = 'Vida Cotidiana'
-  let dm = 'Demônio'
-  let vg = 'Vários Gêneros'
-  let rm = 'Românce'
-  let hr = 'Harém'
-  let m = 'Musical'
-  let ma = 'Magia'
-  let ec = 'Ecchi'
-  let cr = 'Comédia Romântica'
-  let s = 'Suspense'
+  var i = 'Isekai'
+  var h = 'Hentai'
+  var ms = 'Mahou Shoujo'
+  var y = 'Yuri'
+  var f = 'Fantasia'
+  var r = 'RPG'
+  var c = 'Comédia'
+  var s = 'Sobre Natural'
+  var e = 'Esporte'
+  var j = 'Jogo'
+  var a = 'Aventura'
+  var aç = 'Ação'
+  var am = 'Ação/Militar'
+  var p = 'Psicológico'
+  var d = 'Drama'
+  var sv = 'Simulador de Vida'
+  var mi = 'Mistério'
+  var ve = 'Vida Escolar'
+  var vc = 'Vida Cotidiana'
+  var dm = 'Demônio'
+  var vg = 'Vários Gêneros'
+  var rm = 'Românce'
+  var hr = 'Harém'
+  var m = 'Musical'
+  var ma = 'Magia'
+  var ec = 'Ecchi'
+  var cr = 'Comédia Romântica'
+  var s = 'Suspense'
 
   let list = [
     `100man no Inochi no Ue ni Ore wa Tatteiru \nGênero: ${f}`,
@@ -339,7 +339,7 @@ exports.run = async (client, message, args) => {
 
   let rand = list[Math.floor(Math.random() * list.length)]
 
-  const IndEmbed = new Discord.MessageEmbed()
+  let IndEmbed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .addFields(
       {
@@ -348,7 +348,7 @@ exports.run = async (client, message, args) => {
       }
     )
 
-  await message.inlineReply(IndEmbed).then(msg => {
+  return message.inlineReply(IndEmbed).then(msg => {
     msg.react('🔄').catch(err => { return }) // 1º Embed
     setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 40000)
 
@@ -356,8 +356,7 @@ exports.run = async (client, message, args) => {
       if (message.author.id !== user.id) return
 
       if (reaction.emoji.name === '🔄') { // 1º Embed - Principal
-        reaction.users.remove(user).catch(err => { return })
-        const IndEmbed1 = new Discord.MessageEmbed()
+        let IndEmbed1 = new Discord.MessageEmbed()
           .setColor('BLUE')
           .addFields(
             {
@@ -365,7 +364,7 @@ exports.run = async (client, message, args) => {
               value: `Nome: ${list[Math.floor(Math.random() * list.length)]}`
             }
           )
-        msg.edit(IndEmbed1)
+        msg.edit(IndEmbed1).catch(err => { return })
       }
     })
   })
