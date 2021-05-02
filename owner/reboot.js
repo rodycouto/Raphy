@@ -1,9 +1,8 @@
 exports.run = async (client, message, args) => {
 
-    const rody = message.author.id === ("451619591320371213")
-    if (!rody) {
+    if (message.author.id !== "451619591320371213") {
         message.delete().catch(err => { return })
-        return message.inlineReply('⚠️ Este é um comando restrito.')
+        return message.inlineReply('⚠️ Este é um comando restrito.').then(msg => msg.delete({ timeout: 5000 }))
     }
 
     client.guilds.cache.forEach(guild => {
