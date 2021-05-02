@@ -299,15 +299,12 @@ client.on('guildDelete', guild => {
 
 client.once("ready", () => {
     let envi = client.channels.cache.get('837408099781836849')
-    console.log(`Loguei com sucesso!`)
+    console.log('OK!')
 
-    client.guilds.cache.forEach(guild => {
-
-        let CanaisValidos = guild.channels.cache.find(ch => ch.name === "naya-global-chat")
-
-        if (!CanaisValidos) return
-
-        return CanaisValidos.send('Estou online 💞')
+    client.guilds.cache.forEach(Canal => {
+        try {
+            client.channels.cache.get(db.fetch(`globalchat_${Canal.id}`)).send('Estou online 💞')
+        } catch (e) { return }
     })
 
     if (!envi) { return } else if (envi) { return envi.send(`Cheguei ( ͡° ͜ʖ ͡°)`) }

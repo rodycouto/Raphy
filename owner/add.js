@@ -293,7 +293,7 @@ exports.run = async (client, message, args) => {
         if (id.length < 17) { return message.channel.send("Isso não é um ID") }
         if (isNaN(id)) { return message.channel.send("Isso não é um número.") }
 
-        db.add(`whitelist_${id}`, id)
+        db.add(`vip_${id}`, id)
         return message.channel.send(`<@${id}> foi adicionado a list vip com sucesso!`)
     }
 

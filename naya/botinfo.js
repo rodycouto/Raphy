@@ -20,6 +20,7 @@ exports.run = async (client, message, args) => {
                 value: '📃 Essa página aqui\n⚙️ Informações Técnicas\n❤️ Colaboradores\n💬 Suporte\n❌ Apaga a Central de Informações'
             }
         )
+        .setFooter('Desativando em 1 minuto...')
 
     let embed2 = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL())
@@ -31,6 +32,7 @@ exports.run = async (client, message, args) => {
                 value: (`🌐 Servidores: ${client.guilds.cache.size}\n💬 Canais: ${client.channels.cache.size}\n🫂 Usuários: ${client.users.cache.size}\n🛠️ Comandos usados: ${TotalCommands}\n🛠️ Comandos diário: ${DailyCommands}\n⏳ Ping Atual: ${Math.round(client.ws.ping)}ms\n🕛 Criada em: 15/03/2021\n💡 Idealizada por: Rody#1000 \n:gear: Criada por: Rody#1000\n🖌️ Design: Rody#1000 | Sayu\n🖊️ Start Cooper: Gowther#9233\n📡 Host: DisCloud\n🇩 Discord.js Version: 12.5.3\n🇯 Linguagem: 100% JavaScript`)
             }
         )
+        .setFooter('Desativando em 1 minuto...')
 
     let Thanks = new Discord.MessageEmbed()
         .setColor('GREEN')
@@ -43,6 +45,7 @@ exports.run = async (client, message, args) => {
                 value: '[Clique aqui pra ver a listinha](https://github.com/rodycouto/NayaCommands/blob/main/README.md#-naya-assistence)'
             }
         )
+        .setFooter('Desativando em 1 minuto...')
 
     let support = new Discord.MessageEmbed()
         .setColor('BLUE')
