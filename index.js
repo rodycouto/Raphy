@@ -1,11 +1,21 @@
 // Sharding Soon
 const Discord = require("discord.js")
+const translate = require("@k3rn31p4nic/google-translate-api")
 require("./inlineReply") // Remove in Discord.js V13
 const client = new Discord.Client({})
 const { token } = require("./config.json")
 const db = require("quick.db")
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
+
+client.translate = async (text, message) => {
+    const lang = await db.get(`lang_${message.guild.id}`)
+    if (lang === null) lang = 'portuguese'
+    if (!db.get(`lang_${message.guild.id}`)) lang = 'portuguese'
+
+    const translated = await translate(text, { from: 'pt', to: lang })
+    return translated.text
+}
 
 function is_url(str) {
     let regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;

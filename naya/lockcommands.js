@@ -31,10 +31,12 @@ exports.run = async (client, message, args) => {
     let confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setDescription(`Você deseja bloquear todos os meus comandos no canal ${channel}?`)
+        .setFooter('Cancelamento em 20 segundos.')
 
     await message.inlineReply(confirm).then(msg => {
-        msg.react('✅') // Check
-        msg.react('❌') // X
+        msg.react('✅').catch(err => { return }) // Check
+        msg.react('❌').catch(err => { return }) // X
+        setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 20000)
 
         msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return
