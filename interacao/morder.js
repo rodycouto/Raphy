@@ -44,8 +44,8 @@ exports.run = async (client, message, args) => {
   if (user.id === '837147659898191902') { return message.inlineReply('Paaara, não me morde não :cry:') }
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
-  let avatar = message.author.displayAvatarURL({ format: 'png' })
-  let avatar1 = user.displayAvatarURL({ format: 'png' })
+  let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+  let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
   let embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setAuthor(message.author.username + ` está mordendo ${user.username}`, avatar)
