@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
   if (message.mentions.members.bot) { return message.inlineReply('Você não pode beijar bots.') }
 
-  let avatar1 = user.displayAvatarURL({ format: 'png' })
+  let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
 
   let embed = new Discord.MessageEmbed()
     .setColor('BLUE')
