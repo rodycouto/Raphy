@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    let autorole1 = db.det(`autorole_${message.guild.id}`)
+    let autorole1 = db.get(`autorole_${message.guild.id}`)
     if (!autorole1) { return message.inlineReply('<:xis:835943511932665926> O Autorole 1 tem que estar ativado para habilitar o Autorole 2. `' + prefix + 'setautorole`') }
 
     const adm = new Discord.MessageEmbed()
@@ -104,21 +104,28 @@ exports.run = async (client, message, args) => {
         .setColor('#8B0000') // Red
         .setTitle('Este cargo já foi definido como Autorole!')
 
+    const iqual1 = new Discord.MessageEmbed()
+        .setColor('#8B0000') // Red
+        .setTitle('Este cargo já foi definido como Autorole 1!')
+
     const confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setDescription(`Você deseja definir o cargo ${role} como Autorole 2?`)
+        .setFooter('Cancelamento em 30 segundos.')
 
     if (!role) { return message.channel.send(norole) }
     if (!role.editable) { return message.channel.send(sobcarg).then(msg => msg.delete({ timeout: 4000 })).then(msg => msg.channel.send(soberol)) }
     if (role.id === autorole) { return message.inlineReply(iqual) }
+    if (role.id === autorole1) { return message.inlineReply(iqual1) }
 
     if (message.author.id !== message.guild.owner.id) {
         if (role.comparePositionTo(message.member.roles.highest) > -1) { return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${role}.`) }
     }
 
     await message.channel.send(confirm).then(msg => {
-        msg.react('✅') // Check
-        msg.react('❌') // X
+        msg.react('✅').catch(err => { return }) // Check
+        msg.react('❌').catch(err => { return }) // X
+        setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 30000)
 
         msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return

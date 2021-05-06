@@ -6,6 +6,7 @@ exports.run = async (client, message, args) => {
     let botperm = message.guild.me.hasPermission("MANAGE_ROLES")
     let userperms = message.member.hasPermission("MANAGE_ROLES")
     let autorole = db.get(`autorole_${message.guild.id}`)
+    let autorole2 = db.get(`autorole2_${message.guild.id}`)
     let role = message.mentions.roles.first()
 
     let prefix = db.get(`prefix_${message.guild.id}`)
@@ -78,12 +79,12 @@ exports.run = async (client, message, args) => {
         })
     }
 
-    let norole = new Discord.MessageEmbed()
+    const norole = new Discord.MessageEmbed()
         .setColor('#8B0000')
         .setTitle('Siga o formato correto')
         .setDescription('`' + prefix + 'setautorole @cargo`')
 
-    let soberol = new Discord.MessageEmbed()
+    const soberol = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Este cargo é maior que o meu.')
         .addFields(
@@ -93,29 +94,37 @@ exports.run = async (client, message, args) => {
             }
         )
 
-    let sobcarg = new Discord.MessageEmbed()
+    const sobcarg = new Discord.MessageEmbed()
         .setColor('#8B0000')
         .setDescription('<a:Pulse:839682326211854337> Um erro foi encontrado. Buscando solução...')
 
-    let iqual = new Discord.MessageEmbed()
+    const iqual = new Discord.MessageEmbed()
         .setColor('#8B0000') // Red
         .setTitle('Este cargo já foi definido como Autorole!')
 
-    let confirm = new Discord.MessageEmbed()
+
+    const iqual1 = new Discord.MessageEmbed()
+        .setColor('#8B0000') // Red
+        .setTitle('Este cargo já foi definido como Autorole 2!')
+
+    const confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setDescription(`Você deseja definir o cargo ${role} como autorole?`)
+        .setFooter('Cancelamento em 30 segundos.')
 
     if (!role) { return message.channel.send(norole) }
     if (!role.editable) { return message.channel.send(sobcarg).then(msg => msg.delete({ timeout: 4000 })).then(msg => msg.channel.send(soberol)) }
     if (role.id === autorole) { return message.inlineReply(iqual) }
+    if (role.id === autorole2) { return message.inlineReply(iqual1) }
 
     if (message.author.id !== message.guild.owner.id) {
         if (role.comparePositionTo(message.member.roles.highest) > -1) { return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${role}.`) }
     }
 
     await message.channel.send(confirm).then(msg => {
-        msg.react('✅') // Check
-        msg.react('❌') // X
+        msg.react('✅').catch(err => { return }) // Check
+        msg.react('❌').catch(err => { return }) // X
+        setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 30000)
 
         msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return
@@ -123,11 +132,11 @@ exports.run = async (client, message, args) => {
                 msg.delete().catch(err => { return })
                 db.set(`autorole_${message.guild.id}`, role.id)
 
-                let redefine = new Discord.MessageEmbed()
+                const redefine = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setDescription(`<a:Check:836347816036663309> O cargo ${role} foi definido como autorole com sucesso.`)
 
-                let timing = new Discord.MessageEmbed()
+                const timing = new Discord.MessageEmbed()
                     .setColor('BLUE')
                     .setDescription(`<a:Pulse:839682326211854337> Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
 
