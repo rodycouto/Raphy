@@ -803,11 +803,12 @@ exports.run = async (client, message, args) => {
         db.delete(`lotery_${user.id}`)
         db.delete(`work_${user.id}`)
         db.delete(`slut_${user.id}`)
+        db.delete(`PorquinhoTimeout_${user.id}`)
         db.delete(`preso_${user.id}`)
         db.delete(`pego_${user.id}`)
         db.delete(`procurado_${user.id}`)
         db.delete(`assaltotime_${user.id}`)
-        await message.inlineReply(`Todos os Timeouts de ${user} foram removidos.`)
+        return message.inlineReply(`Todos os Timeouts de ${user} foram removidos.`)
     }
 
     if (['timeoutid', 'tempoid', 'cooldownid'].includes(args[0])) {

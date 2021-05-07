@@ -4,6 +4,9 @@ const db = require("quick.db")
 exports.run = async (client, message, args) => {
   message.delete().catch(err => { return })
 
+  let prefix = db.get(`prefix_${message.guild.id}`)
+  if (prefix === null) prefix = "-"
+
   if (!message.member.permissions.has("MANAGE_MESSAGES")) {
     let perms = new Discord.MessageEmbed()
       .setColor('#8B0000')

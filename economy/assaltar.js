@@ -23,7 +23,8 @@ exports.run = async (client, message, args) => {
 
     let usermoney = db.get(`mpoints_${user.id}`)
     let autormoney = db.get(`mpoints_${message.author.id}`)
-    let amount = Math.floor(Math.random() * usermoney) + 1
+    let amount = Math.floor(Math.random() * autormoney) + 1
+
     if (usermoney == null) usermoney = 0
     if (autormoney == null) autormoney = 0
 
@@ -70,8 +71,10 @@ exports.run = async (client, message, args) => {
                     let luck = ['win', 'lose', 'preso', 'win', 'ferido']
                     let result = luck[Math.floor(Math.random() * luck.length)]
                     let tratamento = Math.floor(Math.random() * 5000) + 1
+
                     db.add(`cacheassalto_${message.author.id}`, usermoney)
                     db.subtract(`mpoints_${user.id}`, usermoney)
+
                     let cache = db.get(`cacheassalto_${message.author.id}`)
 
                     const assaltando = new Discord.MessageEmbed()
