@@ -34,7 +34,6 @@ exports.run = async (client, message, args) => {
             return message.inlineReply('O filtro global contra palavrões já está ativado.')
         } else {
             db.set('noglobalbadwords', 'ON')
-            message.inlineReply('ok')
             let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)
             if (message.channel.id === ServidoresAtivados) {
 
@@ -52,7 +51,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply('O filtro global contra palavrões já está desativado.')
         } else {
             db.delete('noglobalbadwords')
-            message.inlineReply('ok')
+
             let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)
             if (message.channel.id === ServidoresAtivados) {
 
