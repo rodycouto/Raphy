@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const db = require("quick.db")
 const ms = require("parse-ms")
-const PalavrinhasFeias = require("./filterchat.json")
+const { palavraum } = require("./filterchat.json")
 
 exports.run = async (client, message, args) => {
     message.delete({ timeout: 3000 }).catch(err => { return })
@@ -81,17 +81,47 @@ exports.run = async (client, message, args) => {
                 if (MensagemGlobal.length < 3) { return message.channel.send('<:xis:835943511932665926> Heeey! A mensagem não pode ter menos que **3 caracteres**.').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
                 if (AchaLink(MensagemGlobal) === true) { return message.channel.send(`${message.author}, Por favor, não envie links no Global Chat.`).then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
 
-                let PalavrasMuitoFeias = false
-                var i
-                for (i = 0; i < PalavrinhasFeias.length; i++) {
-                    if (MensagemGlobal.content.toLowerCase().includes(PalavrinhasFeias[i].toLowerCase()))
-                        PalavrasMuitoFeias = true
+                let filtro = db.get('noglobalbadwords')
+
+                if (filtro) {
+                    let confirm = false
+                    var i
+                    for (i = 0; i < palavraum.length; i++) {
+                        if (message.content.toLowerCase().includes(palavraum[i].toLowerCase()))
+                            confirm = true
+                    }
+
+                    if (confirm) {
+                        message.delete().catch(err => { return })
+                        message.channel.send('<:xis:835943511932665926> Essa mensagem contém palavras feias...').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
+                    } else {
+
+                        let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)
+                        if (message.channel.id === ServidoresAtivados) {
+
+                            const GlobalChatEmbedMensagem = new Discord.MessageEmbed()
+                                .setColor(color)
+                                .setAuthor(`${message.author.tag} | ${message.guild.name}`, avatar)
+                                .setDescription(`\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
+                                .setFooter(`${prefix}chat | ${message.author.id}`)
+                                .setTimestamp()
+
+                            if (vip) { GlobalChatEmbedMensagem.setDescription(`<a:vip:837441854332338227> Membro VIP\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+                            if (moderador) { GlobalChatEmbedMensagem.setDescription(`🎖️ Moderador Chat Global Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+                            if (ModeradorServidor) { GlobalChatEmbedMensagem.setDescription(`✨ Staff Servidor Raphy's House\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+                            if (rody) { GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Desenvolvedor\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+
+                            client.guilds.cache.forEach(Canal => {
+                                if (!rody) { db.set(`globaltiming_${message.author.id}`, Date.now()) }
+                                try {
+                                    client.channels.cache.get(db.fetch(`globalchat_${Canal.id}`)).send(GlobalChatEmbedMensagem)
+                                } catch (e) { return }
+                            })
+                        }
+                    }
                 }
 
-                if (PalavrasMuitoFeias) {
-                    message.delete().catch(err => { return })
-                    message.channel.send('<:xis:835943511932665926> Essa mensagem contém palavras feias...').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
-                } else {
+                if (!filtro) {
 
                     let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)
                     if (message.channel.id === ServidoresAtivados) {
@@ -101,22 +131,12 @@ exports.run = async (client, message, args) => {
                             .setAuthor(`${message.author.tag} | ${message.guild.name}`, avatar)
                             .setDescription(`\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                             .setFooter(`${prefix}chat | ${message.author.id}`)
+                            .setTimestamp()
 
-                        if (vip) {
-                            GlobalChatEmbedMensagem.setDescription(`<a:vip:837441854332338227> Membro VIP\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
-                        }
-
-                        if (moderador) {
-                            GlobalChatEmbedMensagem.setDescription(`🎖️ Moderador Chat Global Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
-                        }
-
-                        if (ModeradorServidor) {
-                            GlobalChatEmbedMensagem.setDescription(`✨ Staff Servidor Raphy's House\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
-                        }
-
-                        if (rody) {
-                            GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Desenvolvedor\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
-                        }
+                        if (vip) { GlobalChatEmbedMensagem.setDescription(`<a:vip:837441854332338227> Membro VIP\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+                        if (moderador) { GlobalChatEmbedMensagem.setDescription(`🎖️ Moderador Chat Global Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+                        if (ModeradorServidor) { GlobalChatEmbedMensagem.setDescription(`✨ Staff Servidor Raphy's House\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
+                        if (rody) { GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Desenvolvedor\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``) }
 
                         client.guilds.cache.forEach(Canal => {
                             if (!rody) { db.set(`globaltiming_${message.author.id}`, Date.now()) }
