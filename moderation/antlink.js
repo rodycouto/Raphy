@@ -38,15 +38,15 @@ exports.run = async (client, message, args) => {
                 if (reaction.emoji.name === '✅') { // Sim
                     msg.delete().catch(err => { return })
                     db.set(`nolink_${message.guild.id}`, "ON")
-                    let ok = new Discord.MessageEmbed()
+                    const ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setDescription('<a:Check:836347816036663309> Sistema Ant-Link ativado com sucesso!')
-                    setTimeout(function () { message.channel.send(ok) }, 3700)
+                    setTimeout(function () { message.channel.send(ok) }, 4100)
                     return message.inlineReply('<a:Pulse:839682326211854337> Ativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
                 }
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })
-                    message.inlineReply("Comando cancelado.")
+                    return message.inlineReply("Comando cancelado.")
                 }
             })
         })
@@ -74,13 +74,13 @@ exports.run = async (client, message, args) => {
                     const ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setTitle('<a:Check:836347816036663309> Sistema Ant-Link desativado com sucesso!')
-                    setTimeout(function () { message.channel.send(ok) }, 3700)
+                    setTimeout(function () { message.channel.send(ok) }, 4100)
                     return message.inlineReply('<a:Pulse:839682326211854337> Desativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
                 }
 
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })
-                    message.inlineReply("Comando cancelado.")
+                    return message.inlineReply("Comando cancelado.")
                 }
             })
         })
