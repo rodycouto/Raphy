@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         .setDescription('Com este comando você pode gerenciar os canais rapidamente.')
         .addField('Mude o Nome', '`' + prefix + 'channel name #canal NomeDoCanal` Edite o nome do canal\n')
         .addField('Mude o Tópico', '`' + prefix + 'channel topic O novo tópico irado do canal`')
-        .addField('Crie e Delete', '`' + prefix + 'channel create text/voice NomeDoCanal` Crie canais\n' + '`' + prefix + 'channel delete NomeDoCanal` Crie canais\n')
+        .addField('Crie e Delete', '`' + prefix + 'channel create text/voice NomeDoCanal`\n' + '`' + prefix + 'channel delete NomeDoCanal`')
         .setFooter(`Precisa de Ajuda? ${prefix}support`)
 
     if (!args[0]) { return message.inlineReply(noargs) }

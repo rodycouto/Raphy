@@ -38,11 +38,11 @@ exports.run = async (client, message, args) => {
 
             if (result === "win") {
                 db.add(`mpoints_${message.author.id}`, gorjeta)
-                return message.inlineReply(`Você trabalhou e ganhou ${work} <:RPoints:837666759389347910>RPoints, ${xp} XP e uma gorjeta de ${gorjeta} <:RPoints:837666759389347910>RPoints`)
+                return message.inlineReply(`Você trabalhou e ganhou ${work} <:RPoints:837666759389347910>RPoints, ${xp} <:level:766847577416138772>XP e uma gorjeta de ${gorjeta} <:RPoints:837666759389347910>RPoints`)
             }
 
             if (result === 'lose') {
-                return message.inlineReply(`Você trabalhou e ganhou ${work} <:RPoints:837666759389347910>RPoints e ${xp} XP`)
+                return message.inlineReply(`Você trabalhou e ganhou ${work} <:RPoints:837666759389347910>RPoints e ${xp} <:level:766847577416138772>XP`)
             }
         }
     }

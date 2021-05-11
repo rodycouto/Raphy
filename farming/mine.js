@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
 
     if (author2 !== null && timeout2 - (Date.now() - author2) > 0) {
         let time = ms(timeout2 - (Date.now() - author2))
-        return 
+        return
     } else {
 
         let timeout1 = 9140000
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
 
             return message.inlineReply(presomax)
         } else {
-            
+
             let prefix = db.get(`prefix_${message.guild.id}`)
             if (prefix === null) { prefix = "-" }
 
@@ -104,7 +104,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(sempicareta)
                 }
 
-                let a = ['wiin', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'mamute', 'nomamute', 'fossil', 'nomamute', 'nomamute', 'nomamute', 'nomamute']
+                let a = ['wiin', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'mamute', 'nomamute', 'fossil', 'nomamute', 'nomamute', 'nomamute', 'nomamute']
                 let randa = a[Math.floor(Math.random() * a.length)]
                 db.set(`minetiming_${message.author.id}`, Date.now())
 
