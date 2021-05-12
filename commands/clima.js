@@ -48,7 +48,7 @@ exports.run = async (client, message, args) => {
       .addField("Fuzo", `GMT ${location.timezone}`, true)
       .addField("Temperatura", `${current.temperature}° Graus`, true)
       .addField("Observação TimeTemp", current.observationtime, true)
-      .setFooter('Isso aqui não é previsão do tempo')
+      .setFooter('Este comando não é uma previsão do tempo.')
 
     return message.inlineReply(embed)
   })
