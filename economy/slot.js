@@ -111,6 +111,9 @@ exports.run = async (client, message, args) => {
     if (!db.get(`dogname_${message.author.id}`)) { dogname = "" }
 
     let medalha = await db.get(`medalha_${user.id}`)
+    if (medalha) { medalha = "\n🏅 Medalha Cammum" }
+    if (medalha === null) { medalha = "" }
+    if (!db.get(`medalha_${user.id}`)) { medalha = "" }
 
     let bola = await db.get(`bola_${user.id}`)
     if (bola) { bola = "\n🥎 Bola" }
@@ -197,8 +200,8 @@ exports.run = async (client, message, args) => {
             .setAuthor(`Inventário de ${user.user.username}`, avatar)
             .addField('Itens Comprados', `${nada}${arma}${picareta}${vara}${machado}${cartas}`)
             .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}shop | ${prefix}doar | ${prefix}slot vip`)
-        if (!medalha) { NormalSlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${diamante}${bola}${cachorro}${remedio}`) }
-        if (medalha) { NormalSlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}\n🏅 Medalha Cammum${dogname}`) }
+        if (!medalha) { NormalSlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${diamante}${cachorro}${bola}${remedio}`) }
+        if (medalha) { NormalSlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${diamante}${medalha}${dogname}`) }
         NormalSlotEmbed.addField('Mantimentos', `🐟 ${peixes} Peixes\n🥘 ${comida} Comidas\n🪱 ${iscas} Iscas\n🥤 ${agua} Água\n🎟️ ${fichas} Fichas\n🍤 ${camarao} Camarões\n🦴 ${ossos} Ossos\n🌹 ${rosas} Rosas\n🍎 ${apple} Maça\n🪨 ${minerio} Minérios\n💎 ${diamond} Diamantes`)
         NormalSlotEmbed.addField('Cores', `${nada4}${verde}${amarelo}${azul}`)
         return message.inlineReply(NormalSlotEmbed)

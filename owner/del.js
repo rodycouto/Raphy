@@ -50,6 +50,46 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Cachorrinho Brown foi deletado do slot de ${user}`)
     }
 
+    if (['money', 'rp', 'rpoints'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'del money @user`') }
+
+        db.delete(`mpoints_${user.id}`)
+        db.delete(`banco_${user.id}`)
+        return message.channel.send(`Todo o dinheiro de ${user} foi deletado com sucesso!`)
+    }
+
+    if (['moneyid', 'rpid', 'rpointsid'].includes(args[0])) {
+
+        let id = args[1]
+        if (!id) { return message.channel.send('`' + prefix + 'del moneyid ID`') }
+        if (id.length < 17) { return message.channel.send("<:xis:835943511932665926> Isso não é um ID") }
+        if (isNaN(id)) { return message.channel.send('<:xis:835943511932665926> Esse ID não é um número.') }
+
+        db.delete(`mpoints_${id}`)
+        db.delete(`banco_${id}`)
+        return message.channel.send(`Todo o dinheiro de <@${id}> *(${id})* foi deletado com sucesso!.`)
+    }
+
+    if (['medalha'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'del medalha @user`') }
+
+        db.delete(`medalha_${user.id}`)
+        return message.channel.send(`A medalha de ${user} foi deletada com sucesso!`)
+    }
+
+    if (['medalhaid'].includes(args[0])) {
+
+        let id = args[1]
+        if (!id) { return message.channel.send('`' + prefix + 'del medalhaid ID`') }
+        if (id.length < 17) { return message.channel.send("<:xis:835943511932665926> Isso não é um ID") }
+        if (isNaN(id)) { return message.channel.send('<:xis:835943511932665926> Esse ID não é um número.') }
+
+        db.delete(`medalha_${id}`)
+        return message.channel.send(`A medalha de <@${id}> *(${id})* foi deletada com sucesso!.`)
+    }
+
     if (['cachorroid', 'doguinhoid', 'dogid'].includes(args[0])) {
 
         let id = args[1]
@@ -57,7 +97,7 @@ exports.run = async (client, message, args) => {
         if (id.length < 17) { return message.channel.send("<:xis:835943511932665926> Isso não é um ID") }
         if (isNaN(id)) { return message.channel.send('<:xis:835943511932665926> Esse ID não é um número.') }
 
-        db.set(`cachorro_${id}`)
+        db.delete(`cachorro_${id}`)
         return message.channel.send(`Cachorrinho Brown foi deletado do slot de <@${id}> *(${id})*.`)
     }
 
