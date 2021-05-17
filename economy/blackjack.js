@@ -1,3 +1,4 @@
+/*
 const db = require("quick.db")
 const Discord = require("discord.js")
 const ms = require("parse-ms")
@@ -12,14 +13,14 @@ exports.run = async (client, message, args) => {
   let author1 = await db.fetch(`pego_${message.author.id}`)
 
   if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
-      let time = ms(timeout1 - (Date.now() - author1))
+    let time = ms(timeout1 - (Date.now() - author1))
 
-      const presomax = new Discord.MessageEmbed()
-          .setColor('#8B0000')
-          .setTitle('🚨 Você está em prisão máxima!')
-          .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
+    const presomax = new Discord.MessageEmbed()
+      .setColor('#8B0000')
+      .setTitle('🚨 Você está em prisão máxima!')
+      .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
 
-      return message.inlineReply(presomax)
+    return message.inlineReply(presomax)
   } else {
 
     if (args[0] === 'all' || args[0] === 'max') {
@@ -289,3 +290,4 @@ exports.run = async (client, message, args) => {
     await loop()
   }
 }
+*/
