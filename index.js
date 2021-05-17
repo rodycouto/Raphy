@@ -288,13 +288,13 @@ client.on("guildMemberAdd", (member) => {
 client.on("guildMemberAdd", (member) => {
     let role = db.get(`autorole_${member.guild.id}`)
     if (role === null) { return }
-    return member.roles.add(role)
+    return member.roles.add(role).catch(err => { return })
 })
 
 client.on("guildMemberAdd", (member) => {
     let role2 = db.get(`autorole2_${member.guild.id}`)
     if (role2 === null) { return }
-    return member.roles.add(role2)
+    return member.roles.add(role2).catch(err => { return })
 })
 
 client.on("ready", () => {
