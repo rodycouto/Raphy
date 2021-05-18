@@ -10,9 +10,9 @@ exports.run = async (client, message, args) => {
 
     let canal = message.mentions.channels.first() || message.channel
 
-    if (args[1]) { return message.inlineReply("<:xis:835943511932665926> | Por favor, mencione apenas o canal que deseja esconder.") }
+    if (args[1]) { return message.inlineReply("<:xis:835943511932665926> | Por favor, mencione apenas o canal que deseja deixar visivel.") }
 
     canal.updateOverwrite(message.guild.roles.cache.find(e => e.name.toLowerCase().trim() == "@everyone"), { VIEW_CHANNEL: true })
 
-    return message.channel.send(`🔓 ${message.author} deixou o canal ${canal} visivel! | Para esconder o canal, use ` + '`' + prefix + 'unhide`')
+    return message.channel.send(`🔓 ${message.author} deixou o canal ${canal} visivel! | Para esconder o canal, use ` + '`' + prefix + 'hide`')
 }
