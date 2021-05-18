@@ -79,7 +79,7 @@ exports.run = async (client, message, args) => {
 
   let embed = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setAuthor(message.author.username + ` está abraçando `, avatar)
+    .setAuthor(message.author.username + ` está abraçando ${user.username}`, avatar)
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 

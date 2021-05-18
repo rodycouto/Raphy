@@ -50,7 +50,6 @@ exports.run = async (client, message, args) => {
 
         if (UserMoney < '0') { return message.inlineReply(`<:xis:835943511932665926> ${user} está negativado. Tenha piedade!`) }
         if (UserBank + UserMoney < Valor) { return message.inlineReply('<:xis:835943511932665926> Não tem todo esse dinheiro.') }
-        if (UserMoney < Valor) { return message.inlineReply(`<:xis:835943511932665926> | ${user} não tem todo esse dinheiro na carteira.`) }
 
         const ConfirmBattle = new Discord.MessageEmbed()
             .setColor('BLUE')
@@ -59,12 +58,22 @@ exports.run = async (client, message, args) => {
             .addField('Valor apostado', `${Valor}<:RPoints:837666759389347910>RPoints`)
             .setFooter('Cancelamento em 30 segundos.')
 
+        let cache = db.get(`cachebattle_${message.author.id}`)
+        if (cache === null) {cache = '0'}
+        
+        db.add(`cachebattle_${message.author.id}`, Valor * 2)
+        db.subtract(`mpoints_${message.author.id}`, Valor)
+
         return message.inlineReply(ConfirmBattle).then(msg => {
             msg.react('⚔️').catch(err => { return }) // Check
             msg.react('❌').catch(err => { return }) // X
             setTimeout(function () {
                 db.delete(`duelotimeout_${message.author.id}`)
-                msg.reactions.removeAll().catch(err => { return })
+                msg.reactions.removeAll().catch(err => {
+
+                    if (err) { return }
+                    if (!err) { db.add(`mpoints_${message.author.id}`, Valor) }
+                })
             }, 30000)
             db.set(`duelotimeout_${message.author.id}`, Date.now())
 
@@ -78,10 +87,7 @@ exports.run = async (client, message, args) => {
                 if (reaction.emoji.name === '⚔️') { // Sim
                     msg.delete().catch(err => { return })
 
-                    db.add(`cachebattle_${message.author.id}`, Valor * 2)
-                    db.subtract(`mpoints_${message.author.id}`, Valor)
                     db.subtract(`mpoints_${user.id}`, Valor)
-                    let cache = db.get(`cachebattle_${message.author.id}`)
 
                     const BattleEmbed = new Discord.MessageEmbed()
                         .setColor('#8B0000')
