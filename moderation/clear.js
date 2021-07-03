@@ -58,7 +58,7 @@ exports.run = async (client, message, args) => {
     let i = true
     while (i) {
       let deleteAble = await message.channel.messages.fetch({ limit: 100 }).catch(err => { return })
-      if (deleteAble.size < 100) {
+      if (deleteAble.size < 100 || deleteAble.size === 0) {
         await message.channel.bulkDelete(deleteAble).catch(err => { return })
         messages += deleteAble.size
         i = false
